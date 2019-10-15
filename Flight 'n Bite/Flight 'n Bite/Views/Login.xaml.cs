@@ -45,11 +45,10 @@ namespace Flight__n_Bite.Views
             Regex regEx = new Regex(@"\w\d{1,3}");
             if (!regEx.Match(seatNumber).Success)
             {
-
+                txbValidationLabel.Text = "Wrong format. Format is X00.";
             } else
             {
                 _settings.IsFullScreen = false;
-
                 Frame.Navigate(typeof(MainPage));
             }
         }
