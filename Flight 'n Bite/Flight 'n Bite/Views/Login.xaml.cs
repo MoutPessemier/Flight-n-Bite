@@ -23,9 +23,20 @@ namespace Flight__n_Bite.Views
     /// </summary>
     public sealed partial class Login : Page
     {
+        Services.SettingsServices.SettingsService _settings;
+
         public Login()
         {
             this.InitializeComponent();
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+            {
+                // designtime
+            }
+            else
+            {
+                _settings = Services.SettingsServices.SettingsService.Instance;
+            }
+            _settings.IsFullScreen = true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,6 +48,8 @@ namespace Flight__n_Bite.Views
 
             } else
             {
+                _settings.IsFullScreen = false;
+
                 Frame.Navigate(typeof(MainPage));
             }
         }
