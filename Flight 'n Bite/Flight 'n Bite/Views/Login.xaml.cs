@@ -53,15 +53,49 @@ namespace Flight__n_Bite.Views
                 txbValidationLabel.Visibility = Visibility.Visible;
                 txbValidationLabel.Text = "Wrong format. Format is X00.";
             }
-            if (string.IsNullOrEmpty(txbFirstName.Text) || string.IsNullOrEmpty(txbLastName.Text) || string.IsNullOrWhiteSpace(txbFirstName.Text) || string.IsNullOrWhiteSpace(txbLastName.Text)) {
+            if (string.IsNullOrEmpty(txbFirstName.Text) || string.IsNullOrEmpty(txbLastName.Text) || string.IsNullOrWhiteSpace(txbFirstName.Text) || string.IsNullOrWhiteSpace(txbLastName.Text))
+            {
                 txbNameValidation.Visibility = Visibility.Visible;
                 txbNameValidation.Text = "First or last name cannot be empty";
             }
-            if(string.IsNullOrEmpty(txbNameValidation.Text) && string.IsNullOrEmpty(txbValidationLabel.Text))
+            if (string.IsNullOrEmpty(txbNameValidation.Text) && string.IsNullOrEmpty(txbValidationLabel.Text))
             {
                 var currentUser = new Passenger() { SeatIdentifier = txbSeatNumber.Text, FirstName = txbFirstName.Text, LastName = txbLastName.Text };
                 _settings.IsFullScreen = false;
                 Frame.Navigate(typeof(MainPage));
+            }
+        }
+
+        private void Button_Click_Personnel(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txbPersonnelUserName.Text) || string.IsNullOrWhiteSpace(txbPersonnelUserName.Text) || string.IsNullOrEmpty(pswPasswordBox.Text) || string.IsNullOrWhiteSpace(pswPasswordBox.Text))
+            {
+                txbPersonnelValidation.Text = "Username or password cannot be empty";
+            }
+            var isLoggedIn = LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Text);
+            if (isLoggedIn)
+            {
+                _settings.IsFullScreen = false;
+                Frame.Navigate(typeof(MainPage));
+            }
+        }
+
+        private bool LoginPersonnel(string username, string password)
+        {
+            return false;
+        }
+
+        private void Toggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (toggle.IsOn)
+            {
+                PersonnelLogin.Visibility = Visibility.Visible;
+                PassengerLogin.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                PersonnelLogin.Visibility = Visibility.Collapsed;
+                PassengerLogin.Visibility = Visibility.Visible;
             }
         }
     }
