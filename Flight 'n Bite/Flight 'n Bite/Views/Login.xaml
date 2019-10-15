@@ -21,7 +21,10 @@
         </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Orientation="Vertical">
             <TextBox x:Name="txbSeatNumber" Height="32" PlaceholderText="Seatnumber" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
-            <TextBlock x:Name="txbValidationLabel" Foreground="Red" Margin="10" />
+            <TextBlock x:Name="txbValidationLabel" Foreground="Red" Margin="10" Visibility="Collapsed" />
+            <TextBox x:Name="txbFirstName" Height="32" PlaceholderText="Firstname" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
+            <TextBox x:Name="txbLastName" Height="32" PlaceholderText="Lastname" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
+            <TextBlock x:Name="txbNameValidation" Foreground="Red" Margin="10" Visibility="Collapsed" />
             <Button Margin="10,50,10,0" HorizontalAlignment="Center" Height="32"  Width="300" Content="Log in" Click="Button_Click"/>
         </StackPanel>
     </Grid>

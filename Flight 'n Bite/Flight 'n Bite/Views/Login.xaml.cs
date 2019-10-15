@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flight__n_Bite.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -41,13 +42,24 @@ namespace Flight__n_Bite.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            txbValidationLabel.Text = "";
+            txbValidationLabel.Visibility = Visibility.Collapsed;
+            txbNameValidation.Text = "";
+            txbNameValidation.Visibility = Visibility.Collapsed;
             var seatNumber = txbSeatNumber.Text;
             Regex regEx = new Regex(@"\w\d{1,3}");
             if (!regEx.Match(seatNumber).Success)
             {
+                txbValidationLabel.Visibility = Visibility.Visible;
                 txbValidationLabel.Text = "Wrong format. Format is X00.";
-            } else
+            }
+            if (string.IsNullOrEmpty(txbFirstName.Text) || string.IsNullOrEmpty(txbLastName.Text) || string.IsNullOrWhiteSpace(txbFirstName.Text) || string.IsNullOrWhiteSpace(txbLastName.Text)) {
+                txbNameValidation.Visibility = Visibility.Visible;
+                txbNameValidation.Text = "First or last name cannot be empty";
+            }
+            if(string.IsNullOrEmpty(txbNameValidation.Text) && string.IsNullOrEmpty(txbValidationLabel.Text))
             {
+                var currentUser = new Passenger() { SeatIdentifier = txbSeatNumber.Text, FirstName = txbFirstName.Text, LastName = txbLastName.Text };
                 _settings.IsFullScreen = false;
                 Frame.Navigate(typeof(MainPage));
             }
