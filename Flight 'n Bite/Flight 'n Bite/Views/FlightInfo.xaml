@@ -6,8 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Template10.Controls"
+    xmlns:vm="using:Flight__n_Bite.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+   
+    <Page.DataContext>
+        <vm:FlightViewModel></vm:FlightViewModel>
+    </Page.DataContext>
+
+
     <StackPanel>
         <controls:PageHeader x:Name="pageHeader" Text="Flight Info">
         </controls:PageHeader>
@@ -29,20 +36,20 @@
             <StackPanel VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="12" Text="FlightNumber:"></TextBlock>
-                    <TextBlock Margin="12" Text="X44795"></TextBlock>
+                    <TextBlock Margin="12" Text="{Binding Number}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="12" Text="Departure:"></TextBlock>
-                    <TextBlock Margin="12" Text="Brussel"></TextBlock>
+                    <TextBlock Margin="12" Text="{Binding Departure}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="12" Text="Arrival:"></TextBlock>
-                    <TextBlock Margin="12" Text="Madrid"></TextBlock>
+                    <TextBlock Margin="12" Text="{Binding Arrival}"></TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                <!--<StackPanel Orientation="Horizontal">
                     <TextBlock Margin="12" Text="Capacity:"></TextBlock>
                     <TextBlock Margin="12" Text="3000"></TextBlock>
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
         </Grid>
     </StackPanel>
