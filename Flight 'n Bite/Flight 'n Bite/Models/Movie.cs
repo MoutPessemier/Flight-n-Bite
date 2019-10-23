@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Flight__n_Bite.Models
 {
-    public class Flight
+    public class Movie
     {
         #region Properties
-        public int Id { get; set; }
-        public string Number { get; set; }
-        public string Departure { get; set; }
-        public string Arrival { get; set; }
-
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public double Rating { get; set; }
+        public string PosterUri { get; set; }
         #endregion
-        public Flight()
+
+        public Movie()
         {
 
         }

@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Flight__n_Bite.Models
 {
-    public class Flight
+    class Music
     {
         #region Properties
-        public int Id { get; set; }
-        public string Number { get; set; }
-        public string Departure { get; set; }
-        public string Arrival { get; set; }
-
+        public string Title { get; set; }
+        public string Artist { get; set; }
+        public string Album { get; set; }
+        public string CoverUri { get; set; }
         #endregion
-        public Flight()
+
+        public Music()
         {
 
         }
