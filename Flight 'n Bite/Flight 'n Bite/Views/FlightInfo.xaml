@@ -11,7 +11,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
    
     <Page.DataContext>
-        <vm:FlightViewModel></vm:FlightViewModel>
+        <vm:FlightViewModel x:Name="vm1"/>
     </Page.DataContext>
 
 
@@ -36,15 +36,15 @@
             <StackPanel VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="12" Text="FlightNumber:"></TextBlock>
-                    <TextBlock Margin="12" Text="{Binding Number}"></TextBlock>
+                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Number,Mode=OneWay}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="12" Text="Departure:"></TextBlock>
-                    <TextBlock Margin="12" Text="{Binding Departure}"></TextBlock>
+                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Departure,Mode=OneWay}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="12" Text="Arrival:"></TextBlock>
-                    <TextBlock Margin="12" Text="{Binding Arrival}"></TextBlock>
+                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Arrival,Mode=OneWay}"></TextBlock>
                 </StackPanel>
                 <!--<StackPanel Orientation="Horizontal">
                     <TextBlock Margin="12" Text="Capacity:"></TextBlock>
