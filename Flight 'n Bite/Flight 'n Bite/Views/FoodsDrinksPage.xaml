@@ -6,19 +6,25 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:vm="using:Flight__n_Bite.ViewModels"
+    xmlns:models="using:Flight__n_Bite.Models"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:FoodsDrinksPageViewModel x:Name="vm"/>
+    </Page.DataContext>
 
     <Grid>
         <Pivot>
             <PivotItem Header="All Products">
-                <GridView>
+                <GridView ItemsSource="{x:Bind vm.Products}">
                     <GridView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="models:Product">
                             <StackPanel Orientation="Vertical">
                                 <Image></Image>
-                                <TextBlock x:Name="name"></TextBlock>
-                                <TextBlock x:Name="description"></TextBlock>
-                                <TextBlock x:Name="price"></TextBlock>
+                                <TextBlock x:Name="name" Text="{x:Bind Name}"/>
+                                <TextBlock x:Name="description" Text="{x:Bind Description}"/>
+                                <TextBlock x:Name="price" Text="{x:Bind Price}"/>
                             </StackPanel>
                         </DataTemplate>
                     </GridView.ItemTemplate>
