@@ -1,4 +1,5 @@
-﻿using Flight__n_Bite.Models;
+﻿using Flight__n_Bite.data;
+using Flight__n_Bite.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -27,13 +28,13 @@ namespace Flight__n_Bite.ViewModels
 
         public FlightViewModel()
         {
-            loadFlight();
+            LoadFlight();
         }
 
-        private async void loadFlight()
+        private async void LoadFlight()
         {
-            HttpClient httpClient = new HttpClient();
-            string json = await httpClient.GetStringAsync(new Uri("http://localhost:49527/api/flight"));
+            HttpService httpService = HttpService.instance;
+            string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/flight"));
             Flight = JsonConvert.DeserializeObject<Flight>(json);
 
 
