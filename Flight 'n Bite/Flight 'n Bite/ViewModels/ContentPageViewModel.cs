@@ -12,5 +12,10 @@ namespace Flight__n_Bite.ViewModels
     {
         public ObservableCollection<Music> MusicList { get; set; }
         public ObservableCollection<Movie> MovieList { get; set; }
+
+        public ContentPageViewModel()
+        {
+                
+        }
     }
 }
