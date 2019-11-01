@@ -27,7 +27,7 @@ namespace Flight_n_Bite_API.Data
             modelBuilder.Entity<Flight>().HasData(
                 new Flight() { Id = 1, Number = "X44795", Departure = "Brussel", Arrival = "Madrid" }
                 );
-        }
+        }   
 
 
     }

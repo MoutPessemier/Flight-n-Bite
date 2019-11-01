@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="Flight__n_Bite.Views.FoodsDrinksPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Flight__n_Bite.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:Flight__n_Bite.ViewModels"
+    xmlns:models="using:Flight__n_Bite.Models"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:FoodsDrinksPageViewModel x:Name="vm"/>
+    </Page.DataContext>
+
+    <Grid>
+        <Pivot>
+            <PivotItem Header="All Products">
+                <GridView ItemsSource="{x:Bind vm.Products}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Product">
+                            <StackPanel Orientation="Vertical">
+                                <Image></Image>
+                                <TextBlock x:Name="name" Text="{x:Bind Name}"/>
+                                <TextBlock x:Name="description" Text="{x:Bind Description}"/>
+                                <TextBlock x:Name="price" Text="{x:Bind Price}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </PivotItem>
+            <PivotItem Header="My orders">
+                <ListView>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="id"></TextBlock>
+                                <TextBlock x:Name="date"></TextBlock>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock x:Name="product"></TextBlock>
+                                    <TextBlock x:Name="price"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>
