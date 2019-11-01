@@ -12,6 +12,8 @@ namespace Flight_n_Bite_API.Data
     {
 
         public DbSet<Flight> Flights { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Music> Songs { get; set; }
 
         public FlightDbContext(DbContextOptions<FlightDbContext> options) : base(options)
         {

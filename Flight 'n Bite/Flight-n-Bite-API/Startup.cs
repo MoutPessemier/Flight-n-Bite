@@ -32,6 +32,8 @@ namespace Flight_n_Bite_API
             services.AddDbContext<FlightDbContext>(options => options.UseSqlServer(connectionstring));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IFlightRepository, FlightRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IMusicRepository, MusicRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

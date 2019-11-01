@@ -6,22 +6,38 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:Flight__n_Bite.ViewModels"
+    xmlns:converters="using:Flight__n_Bite.Util"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
         <viewmodels:MovieOverviewViewModel x:Name="vm" />
     </Page.DataContext>
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:ListConverter x:Key="listConverter" />
+            <converters:RatingConverter x:Key="ratingConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
 
-    <StackPanel Orientation="Vertical">
-
-        <TextBlock Text="{x:Bind vm.Movie.Title}" FontSize="24" TextWrapping="WrapWholeWords"/>
-        <TextBlock Text="Cast" />
-        <!--converter nodig-->
-        <TextBlock />
-        <TextBlock />
-        <TextBlock />
-        <TextBlock />
-        <MediaElement Grid.Column="1" Height="720" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    <StackPanel Orientation="Vertical" Margin="10">
+        <StackPanel.Background>
+            <ImageBrush ImageSource="{x:Bind vm.Movie.PosterUri}"/>
+        </StackPanel.Background>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{x:Bind vm.Movie.Title}"  FontSize="24"  TextWrapping="WrapWholeWords"/>
+                <TextBlock Text="{x:Bind vm.Movie.Description}" FontSize="20" Margin="0,0,0,10" TextWrapping="WrapWholeWords" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Rating" FontSize="20" />
+                <TextBlock Text="{x:Bind vm.Movie.Rating, Converter={StaticResource ratingConverter}}" FontSize="20" />
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Text="Cast" FontSize="20" />
+        <TextBlock Text="{x:Bind vm.Movie.Cast, Converter={StaticResource listConverter}}"/>
+        <TextBlock Text="Director" FontSize="20" />
+        <TextBlock Text="{x:Bind vm.Movie.Director}" Margin="0,0,0,10" />
+        <MediaPlayerElement x:Name="mediaPlayer" Height="720" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </StackPanel>
 </Page>
