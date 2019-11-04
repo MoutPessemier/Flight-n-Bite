@@ -125,9 +125,6 @@
     <Compile Include="Views\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FlightInfo.xaml.cs">
-      <DependentUpon>FlightInfo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\FoodsDrinksPage.xaml.cs">
       <DependentUpon>FoodsDrinksPage.xaml</DependentUpon>
     </Compile>
