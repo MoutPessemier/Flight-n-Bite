@@ -7,12 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Template10.Controls"
     xmlns:vm="using:Flight__n_Bite.ViewModels"
+    xmlns:models="using:Flight__n_Bite.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
    
-    <Page.DataContext>
-        <vm:FlightViewModel x:Name="vm1"/>
-    </Page.DataContext>
+
 
 
     <StackPanel>
@@ -30,10 +29,13 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
+                <StackPanel.DataContext>
+                    <vm:FlightViewModel x:Name="vm1"/>
+                </StackPanel.DataContext>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="12" Text="FlightNumber:"></TextBlock>
                     <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Number,Mode=OneWay}"></TextBlock>
@@ -50,6 +52,32 @@
                     <TextBlock Margin="12" Text="Capacity:"></TextBlock>
                     <TextBlock Margin="12" Text="3000"></TextBlock>
                 </StackPanel>-->
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" Grid.Column="1" Grid.Row="0">
+                <StackPanel.DataContext>
+                    <vm:WeatherViewModel x:Name="vm2"/>
+                </StackPanel.DataContext>
+                <StackPanel Orientation="Horizontal">
+                    <!--works-->
+                    <TextBlock Margin="12" Text="Temperature:"></TextBlock>
+                    <TextBlock Margin="12" Text="{x:Bind vm2.Dates[0].Temperature,Mode=OneWay}"></TextBlock>
+
+                    
+                    <!--works not-->
+                    <ListView Name="lvMovies" ItemsSource="{x:Bind vm2.Dates}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Day">
+                                <StackPanel>
+                                    <TextBlock x:Name="txtDate" Text="{x:Bind Date}"/>
+                                    <TextBlock Margin="12" Text="Temperature:"></TextBlock>
+                                    <TextBlock x:Name="txtTemperature" Text="{x:Bind Temperature}"/>
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
             </StackPanel>
         </Grid>
     </StackPanel>
