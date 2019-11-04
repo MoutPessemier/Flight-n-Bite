@@ -109,7 +109,7 @@
     <Compile Include="Util\IntegerToCurrencyConverter.cs" />
     <Compile Include="ViewModels\ContentPageViewModel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
-    <Compile Include="ViewModels\FoodsDrinksViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
