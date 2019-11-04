@@ -12,15 +12,25 @@ namespace Flight_n_Bite_API.Data
         private readonly IFlightRepository _flightRepository;
         private readonly IMovieRepository _movieRepository;
         private readonly IMusicRepository _musicRepository;
-        private IArtistRepository _artistRepository;
+        private readonly IArtistRepository _artistRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly IOrderRepository _orderRepository;
 
-        public DataInitializer(FlightDbContext context, IFlightRepository flightRepository, IMovieRepository movieRepository, IMusicRepository musicRepository, IArtistRepository artistRepository)
+        public DataInitializer(FlightDbContext context,
+            IFlightRepository flightRepository,
+            IMovieRepository movieRepository,
+            IMusicRepository musicRepository,
+            IArtistRepository artistRepository,
+            IProductRepository productRepository,
+            IOrderRepository orderRepository)
         {
             _context = context;
             _flightRepository = flightRepository;
             _movieRepository = movieRepository;
             _musicRepository = musicRepository;
             _artistRepository = artistRepository;
+            _productRepository = productRepository;
+            _orderRepository = orderRepository;
         }
 
         public void InitializeData()

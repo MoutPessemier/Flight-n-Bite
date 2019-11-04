@@ -1,10 +1,6 @@
 ﻿using Flight_n_Bite_API.Data.Mappers;
 using Flight_n_Bite_API.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Flight_n_Bite_API.Data
 {
@@ -16,6 +12,9 @@ namespace Flight_n_Bite_API.Data
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Music> Songs { get; set; }
         public DbSet<Artist> Artists { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderLine> OrderLines { get; set; }
 
         public FlightDbContext(DbContextOptions<FlightDbContext> options) : base(options){}
 
@@ -33,6 +32,9 @@ namespace Flight_n_Bite_API.Data
             builder.ApplyConfiguration(new MovieGenreConfiguration());
             builder.ApplyConfiguration(new ArtistMovieConfiguration());
             builder.ApplyConfiguration(new ArtistMusicConfiguration());
+            builder.ApplyConfiguration(new ProductConfiguration());
+            builder.ApplyConfiguration(new OrderConfiguration());
+            builder.ApplyConfiguration(new OrderLineConfiguration());
         }
     }
 }

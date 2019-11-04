@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Flight__n_Bite.Models
+namespace Flight_n_Bite_API.Model
 {
     public class Order
     {

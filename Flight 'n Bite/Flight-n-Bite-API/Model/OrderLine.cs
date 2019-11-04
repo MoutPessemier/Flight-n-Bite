@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace Flight_n_Bite_API.Model
 {
-    public interface IProductRepository
+    public class OrderLine
     {
-        List<Product> GetProducts();
-        void Add(Product product);
-        void SaveChanges();
+        public int Id { get; set; }
+        public Product Product { get; set; }
+        public int Amount { get; set; }
     }
 }
