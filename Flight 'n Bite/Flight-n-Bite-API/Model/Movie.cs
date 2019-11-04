@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Flight_n_Bite_API.Model
 {
@@ -13,8 +11,18 @@ namespace Flight_n_Bite_API.Model
         public string Description { get; set; }
         public double Rating { get; set; }
         public string PosterUri { get; set; }
-        public IEnumerable<String> Cast { get; set; }
-        public String Director { get; set; }
+        public IList<Artist> Cast { get; set; }
+        public string Director { get; set; }
         #endregion
+
+        public Movie()
+        {
+            Cast = new List<Artist>();
+        }
+
+        public void AddActor(Artist artist)
+        {
+            Cast.Add(artist);
+        }
     }
 }

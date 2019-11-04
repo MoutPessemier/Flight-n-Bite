@@ -25,11 +25,11 @@
             <ImageBrush ImageSource="{x:Bind vm.Movie.PosterUri}"/>
         </StackPanel.Background>
         <StackPanel Orientation="Horizontal">
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Margin="0,0,10,0">
                 <TextBlock Text="{x:Bind vm.Movie.Title}"  FontSize="24"  TextWrapping="WrapWholeWords"/>
                 <TextBlock Text="{x:Bind vm.Movie.Description}" FontSize="20" Margin="0,0,0,10" TextWrapping="WrapWholeWords" />
             </StackPanel>
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
                 <TextBlock Text="Rating" FontSize="20" />
                 <TextBlock Text="{x:Bind vm.Movie.Rating, Converter={StaticResource ratingConverter}}" FontSize="20" />
             </StackPanel>

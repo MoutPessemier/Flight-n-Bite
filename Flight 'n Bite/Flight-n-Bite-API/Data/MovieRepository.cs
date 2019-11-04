@@ -1,4 +1,5 @@
 ﻿using Flight_n_Bite_API.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +16,24 @@ namespace Flight_n_Bite_API.Data
             _context = context;
         }
 
+        public void Add(Movie movie)
+        {
+            _context.Movies.Add(movie);
+        }
+
         public Movie GetMovie(int id)
         {
-            return _context.Movies.FirstOrDefault(m => m.Id == id);
+            return _context.Movies.Include(a => a.Cast).FirstOrDefault(m => m.Id == id);
         }
 
         public IEnumerable<Movie> GetMovies()
         {
-            return _context.Movies.ToList();
+            return _context.Movies.Include(a => a.Cast).ToList();
+        }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
         }
     }
 }

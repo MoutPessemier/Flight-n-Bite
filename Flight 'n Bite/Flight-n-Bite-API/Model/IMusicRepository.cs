@@ -9,5 +9,7 @@ namespace Flight_n_Bite_API.Model
     {
         IEnumerable<Music> GetSongs();
         Music GetSong(int id);
+        void Add(Music music);
+        void SaveChagnes();
     }
 }
