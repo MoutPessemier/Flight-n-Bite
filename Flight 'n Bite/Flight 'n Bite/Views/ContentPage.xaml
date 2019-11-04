@@ -17,7 +17,7 @@
     <Grid>
         <Pivot Title="Content">
             <PivotItem Header="Movies">
-                <GridView ItemsSource="{x:Bind vm.MovieList}">
+                <GridView ItemsSource="{x:Bind vm.MovieList}" ItemClick="GridView_ItemClick" >
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="models:Movie">
                             <StackPanel Orientation="Vertical">
@@ -36,11 +36,12 @@
                         <ListView ItemsSource="{x:Bind vm.MusicList}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="models:Music">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image Source="{x:Bind CoverUri}" />
-                                        <TextBlock Text="{x:Bind Title}" />
-                                        <TextBlock Text="{x:Bind Artist}" />
-                                        <TextBlock Text="{x:Bind Album}" />
+                                    <StackPanel Width="auto" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <SymbolIcon Width="Auto" Height="Auto" Symbol="Play" />
+                                        <TextBlock Margin="10,0,0,0" Text="{x:Bind Title}" />
+                                        <TextBlock Margin="10,0,0,0" Text="{x:Bind Artist}" />
+                                        <TextBlock Margin="10,0,0,0" Text="{x:Bind Album}" />
+                                        <Image HorizontalAlignment="Right" Margin="10,0,0,0" Source="{x:Bind CoverUri}" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
