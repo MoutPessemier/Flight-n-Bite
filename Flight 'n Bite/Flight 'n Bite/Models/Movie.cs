@@ -13,6 +13,8 @@ namespace Flight__n_Bite.Models
         public string Description { get; set; }
         public double Rating { get; set; }
         public string PosterUri { get; set; }
+        public IEnumerable<String> Cast { get; set; }
+        public String Director { get; set; }
         #endregion
 
         public Movie()

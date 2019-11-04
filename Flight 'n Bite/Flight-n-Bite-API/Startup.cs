@@ -32,12 +32,19 @@ namespace Flight_n_Bite_API
             services.AddDbContext<FlightDbContext>(options => options.UseSqlServer(connectionstring));
             services.AddDbContext<ProductDbContext>(options => options.UseSqlServer(connectionstring));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<FlightDbContext>(options => options.UseSqlServer(connectionstring));
+
+            services.AddScoped<DataInitializer>();
             services.AddScoped<IFlightRepository, FlightRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IMusicRepository, MusicRepository>();
+            services.AddScoped<IArtistRepository, ArtistRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataInitializer dataInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -45,6 +52,9 @@ namespace Flight_n_Bite_API
             }
 
             app.UseMvc();
+            app.UseCors("AllowAllOrigins");
+
+            dataInitializer.InitializeData();
         }
     }
 }
