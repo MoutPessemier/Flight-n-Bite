@@ -28,11 +28,6 @@ namespace Flight__n_Bite.data
             _httpClient = new HttpClient();
         }
 
-        internal ObservableCollection<Product> GetProducts()
-        {
-            return new ObservableCollection<Product>() { new Product() { Id = 1, Name = "test", Description = "dit is een test", Price = 100 } };
-        }
-
         public async Task<string> GetStringAsync(Uri uri)
         {
             string json = await _httpClient.GetStringAsync(uri);

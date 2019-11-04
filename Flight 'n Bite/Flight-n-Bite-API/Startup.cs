@@ -27,11 +27,13 @@ namespace Flight_n_Bite_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionstring = @"Server=(localdb)\MSSQLLocalDB;Database=FlightDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+            var connectionstring = @"Server=(localdb)\MSSQLLocalDB;Database=Flight-n-biteDB;Trusted_Connection=True;MultipleActiveResultSets=true";
 
             services.AddDbContext<FlightDbContext>(options => options.UseSqlServer(connectionstring));
+            services.AddDbContext<ProductDbContext>(options => options.UseSqlServer(connectionstring));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IFlightRepository, FlightRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,11 +8,16 @@
     mc:Ignorable="d"
     xmlns:vm="using:Flight__n_Bite.ViewModels"
     xmlns:models="using:Flight__n_Bite.Models"
+    xmlns:util="using:Flight__n_Bite.Util"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <vm:FoodsDrinksPageViewModel x:Name="vm"/>
+        <vm:FoodsDrinksViewModel x:Name="vm"/>
     </Page.DataContext>
+
+    <Page.Resources>
+        <util:IntegerToCurrencyConverter x:Key="IntegerCurrencyConverter" />
+    </Page.Resources>
 
     <Grid>
         <Pivot>
@@ -22,9 +27,9 @@
                         <DataTemplate x:DataType="models:Product">
                             <StackPanel Orientation="Vertical">
                                 <Image></Image>
-                                <TextBlock x:Name="name" Text="{x:Bind Name}"/>
-                                <TextBlock x:Name="description" Text="{x:Bind Description}"/>
-                                <TextBlock x:Name="price" Text="{x:Bind Price}"/>
+                                <TextBlock x:Name="name" FontSize="32" Text="{x:Bind Name}"/>
+                                <TextBlock x:Name="description" FontSize="12" Text="{x:Bind Description}"/>
+                                <TextBlock x:Name="price" FontFamily="24" Text="{x:Bind Price, Converter={StaticResource IntegerCurrencyConverter}}"/>
                             </StackPanel>
                         </DataTemplate>
                     </GridView.ItemTemplate>
