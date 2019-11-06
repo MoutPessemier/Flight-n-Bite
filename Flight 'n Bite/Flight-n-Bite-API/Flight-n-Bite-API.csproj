@@ -4,7 +4,6 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <RootNamespace>Flight_n_Bite_API</RootNamespace>
-    <UserSecretsId>21e8fd61-51e7-44d5-a92d-3194c9388f38</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

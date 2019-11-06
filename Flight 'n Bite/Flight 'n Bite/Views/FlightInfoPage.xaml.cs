@@ -20,9 +20,9 @@ namespace Flight__n_Bite.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class FlightInfo : Page
+    public sealed partial class FlightInfoPage : Page
     {
-        public FlightInfo()
+        public FlightInfoPage()
         {
             this.InitializeComponent();
         }
