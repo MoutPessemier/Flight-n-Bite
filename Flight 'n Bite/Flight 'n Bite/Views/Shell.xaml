@@ -28,7 +28,7 @@
 
             </Controls:HamburgerButtonInfo>
             <!--  FlightInfo button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FlightInfo">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FlightInfoPage">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon  Width="48"
                                 Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE709;"/>

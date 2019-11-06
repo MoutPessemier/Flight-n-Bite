@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,31 +8,34 @@ using System.Threading.Tasks;
 
 namespace Flight__n_Bite.Models
 {
-    public class Order : INotifyPropertyChanged
+    public class Day: INotifyPropertyChanged
     {
-        public int Id { get; set; }
-        private Passenger _passenger { get; set; }
-        public Passenger Passenger {
+        #region Properties
+        [JsonProperty("date")]
+        private string _date;
+        public string Date {
             get {
-                return _passenger;
+                return _date;
             }
             set {
-                _passenger = value;
-                OnPropertyChanged("Passenger");
+                _date = value;
+                OnPropertyChanged("Date");
             }
         }
-        private List<OrderLine> _orderLines { get; set; }
-        public List<OrderLine> OrderLines {
+        [JsonProperty("value")]
+        private double _temperature;
+        public double Temperature {
             get {
-                return _orderLines;
+                return _temperature;
             }
             set {
-                _orderLines = value;
-                OnPropertyChanged("Orderlines");
+                _temperature = value;
+                OnPropertyChanged("Temperature");
             }
         }
+        #endregion
 
-        public Order()
+        public Day()
         {
 
         }
@@ -46,4 +49,5 @@ namespace Flight__n_Bite.Models
             }
         }
     }
+
 }

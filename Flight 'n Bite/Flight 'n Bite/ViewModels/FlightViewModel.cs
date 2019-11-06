@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -34,6 +35,7 @@ namespace Flight__n_Bite.ViewModels
         private async void LoadFlight()
         {
             HttpService httpService = HttpService.instance;
+           
             string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/flight"));
             Flight = JsonConvert.DeserializeObject<Flight>(json);
         }

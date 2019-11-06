@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -8,31 +9,22 @@ using System.Threading.Tasks;
 
 namespace Flight__n_Bite.Models
 {
-    public class Order : INotifyPropertyChanged
+    public class Weather : INotifyPropertyChanged
     {
+        #region Properties
         public int Id { get; set; }
-        private Passenger _passenger { get; set; }
-        public Passenger Passenger {
+        private ObservableCollection<Day> _dates;
+        public ObservableCollection<Day> Dates {
             get {
-                return _passenger;
+                return _dates;
             }
             set {
-                _passenger = value;
-                OnPropertyChanged("Passenger");
+                _dates = value;
+                OnPropertyChanged("Dates");
             }
         }
-        private List<OrderLine> _orderLines { get; set; }
-        public List<OrderLine> OrderLines {
-            get {
-                return _orderLines;
-            }
-            set {
-                _orderLines = value;
-                OnPropertyChanged("Orderlines");
-            }
-        }
-
-        public Order()
+        #endregion
+        public Weather()
         {
 
         }
