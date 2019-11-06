@@ -13,7 +13,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <vm:ProductViewModel x:Name="productVM"/>
+        <vm:ProductViewModel x:Name="vm"/>
     </Page.DataContext>
 
     <Page.Resources>
@@ -25,7 +25,7 @@
         </controls:PageHeader>
         <Pivot>
             <PivotItem Header="All Products">
-                <GridView ItemsSource="{x:Bind productVM.Products}">
+                <GridView ItemsSource="{x:Bind vm.Products}">
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="models:Product">
                             <StackPanel Orientation="Vertical">
@@ -39,7 +39,7 @@
                 </GridView>
             </PivotItem>
             <PivotItem Header="My orders">
-                <ListView ItemsSource="{x:Bind productVM.Orders}">
+                <ListView ItemsSource="{x:Bind vm.Orders}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:Order">
                             <StackPanel Orientation="Vertical">
