@@ -15,9 +15,19 @@ namespace Flight_n_Bite_API.Data
             _flightDbContext = flightDbContext;
         }
 
+        public void Add(Flight flight)
+        {
+            _flightDbContext.Add(flight);
+        }
+
         public Flight GetFlight()
         {
             return _flightDbContext.Flights.FirstOrDefault();
+        }
+
+        public void SaveChanges()
+        {
+            _flightDbContext.SaveChanges();
         }
     }
 }
