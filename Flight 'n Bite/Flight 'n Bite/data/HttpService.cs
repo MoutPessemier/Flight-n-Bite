@@ -34,7 +34,8 @@ namespace Flight__n_Bite.data
             _httpClient = new HttpClient();
 
             //Nu leeg gelaten --> Waar Users screts in Universal Windows??
-            var username = ""; var password = "";
+            var username = Application.Current.Resources["WeatherAPI_username"];
+            var password = Application.Current.Resources["WeatherAPI_password"];
 
             var authValue = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{username}:{password}")));
 

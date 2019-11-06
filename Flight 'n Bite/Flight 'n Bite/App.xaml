@@ -10,6 +10,8 @@
             </ResourceDictionary.MergedDictionaries>
             
             <!--  custom resources  -->
+            <x:String x:Key="WeatherAPI_username">nop_vermeulen</x:String>
+            <x:String x:Key="WeatherAPI_password">k3WEFwoUYd6m7</x:String>
 
         </ResourceDictionary>
     </Application.Resources>
