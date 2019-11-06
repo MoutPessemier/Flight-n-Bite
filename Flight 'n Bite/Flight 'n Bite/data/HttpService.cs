@@ -52,6 +52,7 @@ namespace Flight__n_Bite.data
         public async Task<string> GetStringAsync(Uri uri)
         {
             string json = await _httpClient.GetStringAsync(uri);
+            Debug.Write("HALLLOOOOO" + json + "HIEEER");
             return json;
         }
 
