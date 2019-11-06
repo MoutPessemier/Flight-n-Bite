@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -36,6 +37,7 @@ namespace Flight__n_Bite.data
         public async Task<string> GetStringAsync(Uri uri)
         {
             string json = await _httpClient.GetStringAsync(uri);
+            Debug.Write("HALLLOOOOO" + json + "HIEEER");
             return json;
         }
     }
