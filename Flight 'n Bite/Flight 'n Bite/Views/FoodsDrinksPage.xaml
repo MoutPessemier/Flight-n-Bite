@@ -9,6 +9,7 @@
     xmlns:vm="using:Flight__n_Bite.ViewModels"
     xmlns:models="using:Flight__n_Bite.Models"
     xmlns:util="using:Flight__n_Bite.Util"
+    xmlns:controls="using:Template10.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
@@ -19,7 +20,9 @@
         <util:IntegerToCurrencyConverter x:Key="IntegerCurrencyConverter" />
     </Page.Resources>
 
-    <Grid>
+    <StackPanel>
+        <controls:PageHeader x:Name="pageHeader" Text="Foods 'n drinks info">
+        </controls:PageHeader>
         <Pivot>
             <PivotItem Header="All Products">
                 <GridView ItemsSource="{x:Bind productVM.Products}">
@@ -68,5 +71,5 @@
                 </ListView>
             </PivotItem>
         </Pivot>
-    </Grid>
+    </StackPanel>
 </Page>
