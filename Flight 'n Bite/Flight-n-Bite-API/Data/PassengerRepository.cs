@@ -7,28 +7,28 @@ using System.Threading.Tasks;
 
 namespace Flight_n_Bite_API.Data
 {
-    public class OrderLineRepository : IOrderLineRepository
+    public class PassengerRepository : IPassengerRepository
     {
         private readonly FlightDbContext _context;
 
-        public OrderLineRepository(FlightDbContext context)
+        public PassengerRepository(FlightDbContext context)
         {
             _context = context;
         }
 
-        public void Add(OrderLine orderLine)
+        public void Add(Passenger passenger)
         {
-            _context.OrderLines.Add(orderLine);
+            _context.Passengers.Add(passenger);
         }
 
-        public OrderLine GetOrderLineById(int id)
+        public Passenger GetPassenger(int passengerId)
         {
-            return _context.OrderLines.FirstOrDefault(ol => ol.Id == id);
+            return _context.Passengers.FirstOrDefault(p => p.Id == passengerId);
         }
 
-        public List<OrderLine> GetOrderLines()
+        public List<Passenger> GetPassengers()
         {
-            return _context.OrderLines.Include(ol => ol.Product).ToList();
+            return _context.Passengers.ToList();
         }
 
         public void SaveChanges()

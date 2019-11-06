@@ -30,7 +30,6 @@ namespace Flight_n_Bite_API
             var connectionstring = @"Server=(localdb)\MSSQLLocalDB;Database=Flight-n-biteDB;Trusted_Connection=True;MultipleActiveResultSets=true";
 
             services.AddDbContext<FlightDbContext>(options => options.UseSqlServer(connectionstring));
-            services.AddDbContext<ProductDbContext>(options => options.UseSqlServer(connectionstring));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<FlightDbContext>(options => options.UseSqlServer(connectionstring));
@@ -41,6 +40,10 @@ namespace Flight_n_Bite_API
             services.AddScoped<IMusicRepository, MusicRepository>();
             services.AddScoped<IArtistRepository, ArtistRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderLineRepository, OrderLineRepository>();
+            services.AddScoped<IPersonnelRepository, PersonnelRepository>();
+            services.AddScoped<IPassengerRepository, PassengerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -19,27 +19,32 @@ namespace Flight__n_Bite.ViewModels
 
         public ProductViewModel()
         {
+            Products = new ObservableCollection<Product>();
+            Orders = new ObservableCollection<Order>();
             LoadFoodsDrinks();
             LoadOrders();
         }
 
         private async void LoadFoodsDrinks()
-        {
+        { 
             string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/product"));
-            Products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(json);
+            IList<Product> productList = JsonConvert.DeserializeObject<ObservableCollection<Product>>(json);
+
+            foreach(var p in productList)
+            {
+                Products.Add(p);
+            }
         }
 
         private async void LoadOrders()
         {
             string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/order"));
-            Orders = JsonConvert.DeserializeObject<ObservableCollection<Order>>(json);
-        }
+            IList<Order> orderList = JsonConvert.DeserializeObject<ObservableCollection<Order>>(json);
 
-        public async Task<string> getProductNameAsync(int productId)
-        {
-            string json = await httpService.GetStringAsync(new Uri($"http://localhost:49527/api/product/{productId}"));
-            Product product = JsonConvert.DeserializeObject<Product>(json);
-            return product.Name;
+            foreach(var o in orderList)
+            {
+                Orders.Add(o);
+            }
         }
     }
 }

@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace Flight_n_Bite_API.Model
 {
-    public interface IOrderLineRepository
+    public interface IPassengerRepository
     {
-        List<OrderLine> GetOrderLines();
-        OrderLine GetOrderLineById(int id);
-        void Add(OrderLine orderLine);
+        List<Passenger> GetPassengers();
+        Passenger GetPassenger(int passengerId);
+        void Add(Passenger passenger);
         void SaveChanges();
     }
 }

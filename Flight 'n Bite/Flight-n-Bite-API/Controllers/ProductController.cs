@@ -25,7 +25,7 @@ namespace Flight_n_Bite_API.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Product> getProductById(int id)
+        public Product GetProductById(int id)
         {
             return _productRepository.GetProducts().FirstOrDefault(p => p.Id == id);
         }
