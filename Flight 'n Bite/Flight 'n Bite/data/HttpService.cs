@@ -34,7 +34,7 @@ namespace Flight__n_Bite.data
             _httpClient = new HttpClient();
 
             //Nu leeg gelaten --> Waar Users screts in Universal Windows??
-            var username = ""; var password = "";
+            var username = "nop_vermeulen"; var password = "k3WEFwuUYd6m7";
 
             var authValue = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{username}:{password}")));
 
