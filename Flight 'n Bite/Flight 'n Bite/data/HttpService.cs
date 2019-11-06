@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Flight__n_Bite.Models;
+using Windows.UI.Xaml;
 
 namespace Flight__n_Bite.data
 {
@@ -45,10 +46,6 @@ namespace Flight__n_Bite.data
 
             };
 
-        }
-            internal ObservableCollection<Product> GetProducts()
-        {
-            return new ObservableCollection<Product>() { new Product() { Id = 1, Name = "test", Description = "dit is een test", Price = 100 } };
         }
 
         public async Task<string> GetStringAsync(Uri uri)

@@ -12,15 +12,34 @@ namespace Flight_n_Bite_API.Data
         private readonly IFlightRepository _flightRepository;
         private readonly IMovieRepository _movieRepository;
         private readonly IMusicRepository _musicRepository;
-        private IArtistRepository _artistRepository;
+        private readonly IArtistRepository _artistRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IOrderLineRepository _orderLineRepository;
+        private readonly IPassengerRepository _passengerRepository;
+        private readonly IPersonnelRepository _personnelRepository;
 
-        public DataInitializer(FlightDbContext context, IFlightRepository flightRepository, IMovieRepository movieRepository, IMusicRepository musicRepository, IArtistRepository artistRepository)
+        public DataInitializer(FlightDbContext context,
+            IFlightRepository flightRepository,
+            IMovieRepository movieRepository,
+            IMusicRepository musicRepository,
+            IArtistRepository artistRepository,
+            IProductRepository productRepository,
+            IOrderRepository orderRepository,
+            IOrderLineRepository orderLineRepository,
+            IPassengerRepository passengerRepository,
+            IPersonnelRepository personnelRepository)
         {
             _context = context;
             _flightRepository = flightRepository;
             _movieRepository = movieRepository;
             _musicRepository = musicRepository;
             _artistRepository = artistRepository;
+            _productRepository = productRepository;
+            _orderRepository = orderRepository;
+            _orderLineRepository = orderLineRepository;
+            _passengerRepository = passengerRepository;
+            _personnelRepository = personnelRepository;
         }
 
         public void InitializeData()
@@ -540,6 +559,51 @@ namespace Flight_n_Bite_API.Data
                 _musicRepository.Add(whenItsAllGone);
                 _musicRepository.SaveChagnes();
             }
+
+            var jef = new Passenger() { FirstName = "Jef", LastName = "Malfliet", SeatIdentifier = "J1" };
+            var nante = new Passenger() { FirstName = "Nante", LastName = "Vermeulen", SeatIdentifier = "n2" };
+            var mout = new Passenger() { FirstName = "Mout", LastName = "Pessemier", SeatIdentifier = "m3" };
+
+            var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0 };
+            var soldatenkoek = new Product() { Name = "soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0 };
+            var borrelnootjes = new Product() { Name = "borrelnootjes", Description = "Perfect voor bij een sterke trappist", Price = 3.0 };
+            var trappist = new Product() { Name = "Trappist", Description = "Perfect voor bij lekker borrelnootjes", Price = 7.5 };
+
+            var orderline1 = new OrderLine() { Product = fristi, Amount = 5 };
+            var orderline2 = new OrderLine() { Product = soldatenkoek, Amount = 2 };
+            var orderline3 = new OrderLine() { Product = borrelnootjes, Amount = 1 };
+            var orderline4 = new OrderLine() { Product = trappist, Amount = 2 };
+            var orderline5 = new OrderLine() { Product = fristi, Amount = 1 };
+           
+            var order1 = new Order() { Passenger = jef, OrderLines = new List<OrderLine>() { orderline1, orderline2} };
+            var order2 = new Order() { Passenger = nante, OrderLines = new List<OrderLine>() { orderline3, orderline4 } };
+            var order3 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 } };
+            var order4 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 } };
+
+            _passengerRepository.Add(jef);
+            _passengerRepository.Add(nante);
+            _passengerRepository.Add(mout);
+            _passengerRepository.SaveChanges();
+
+            _productRepository.Add(fristi);
+            _productRepository.Add(soldatenkoek);
+            _productRepository.Add(borrelnootjes);
+            _productRepository.Add(trappist);
+            _productRepository.SaveChanges();
+
+            _orderLineRepository.Add(orderline1);
+            _orderLineRepository.Add(orderline2);
+            _orderLineRepository.Add(orderline3);
+            _orderLineRepository.Add(orderline4);
+            _orderLineRepository.Add(orderline5);
+            _orderLineRepository.SaveChanges();
+
+            _orderRepository.Add(order1);
+            _orderRepository.Add(order2);
+            _orderRepository.Add(order3);
+            _orderRepository.Add(order4);
+            _orderRepository.SaveChanges();
+
         }
     }
 }
