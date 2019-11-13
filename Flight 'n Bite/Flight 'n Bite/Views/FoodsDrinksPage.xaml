@@ -10,6 +10,7 @@
     xmlns:models="using:Flight__n_Bite.Models"
     xmlns:util="using:Flight__n_Bite.Util"
     xmlns:controls="using:Template10.Controls"
+    xmlns:usercontrols="using:Flight__n_Bite.Views.UserControls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
@@ -21,29 +22,49 @@
     </Page.Resources>
 
     <StackPanel>
-        <controls:PageHeader x:Name="pageHeader" Text="Foods 'n drinks info">
-        </controls:PageHeader>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualState">
+                    <VisualState.Setters>
+                        <Setter Target="stackPanel.(FrameworkElement.Width)" Value="500"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1600"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="VisualState1">
+                    <VisualState.Setters>
+                        <Setter Target="gridView.(Grid.Row)" Value="1"/>
+                        <Setter Target="stackPanel.(Grid.Column)" Value="0"/>
+                        <Setter Target="stackPanel.(FrameworkElement.Width)" Value="auto"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <controls:PageHeader x:Name="pageHeader" Text="Foods 'n drinks info"/>
         <Pivot>
             <PivotItem Header="All Products">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <GridView Grid.Row="0" Grid.Column="0" ItemsSource="{x:Bind vm.Products}" ItemClick="GridView_ItemClick">
+                    <GridView x:Name="gridView" Grid.Row="0" Grid.Column="0" ItemsSource="{x:Bind Path=vm.Products}" ItemClick="GridView_ItemClick">
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="models:Product">
-                                <StackPanel Orientation="Vertical">
-                                    <Image></Image>
-                                    <TextBlock x:Name="name" FontSize="32" Text="{x:Bind Name}"/>
-                                    <TextBlock x:Name="description" FontSize="12" Text="{x:Bind Description}" Width="250"/>
-                                    <TextBlock x:Name="price" FontFamily="24" Text="{x:Bind Price, Converter={StaticResource IntegerCurrencyConverter}}"/>
-                                </StackPanel>
+                                <usercontrols:ProductGridUserControl/>
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
-                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Background="AliceBlue">
-                        <Image></Image>
+                    <StackPanel Width="auto" x:Name="stackPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Background="AliceBlue">
+                        <Image/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -61,13 +82,13 @@
                 </Grid>
             </PivotItem>
             <PivotItem Header="My orders">
-                <ListView ItemsSource="{x:Bind vm.Orders}">
+                <ListView ItemsSource="{x:Bind Path=vm.Orders}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:Order">
                             <StackPanel Orientation="Vertical">
-                                <TextBlock FontSize="32" x:Name="id" Text="{x:Bind Id}"/>
-                                <TextBlock FontSize="32">OrderLines:</TextBlock>
-                                <ListView ItemsSource="{x:Bind OrderLines}">
+                                <TextBlock FontSize="32" x:Name="id" Text="{x:Bind Path=Id}"/>
+                                <TextBlock FontSize="32"><Run Text="OrderLines:"/></TextBlock>
+                                <ListView ItemsSource="{x:Bind Path=OrderLines}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate x:DataType="models:OrderLine">
                                             <Grid>
@@ -79,10 +100,10 @@
                                                     <ColumnDefinition Width="*"/>
                                                     <ColumnDefinition Width="auto"/>
                                                 </Grid.ColumnDefinitions>
-                                                <TextBlock Grid.Row="0" Grid.Column="0">Product:</TextBlock>
-                                                <TextBlock Grid.Row="1" Grid.Column="0" x:Name="product" Text="{x:Bind Product.Name}"/>
-                                                <TextBlock Grid.Row="0" Grid.Column="1">Amount:</TextBlock>
-                                                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="amount" Text="{x:Bind Amount}"/>
+                                                <TextBlock Grid.Row="0" Grid.Column="0"><Run Text="Product:"/></TextBlock>
+                                                <TextBlock Grid.Row="1" Grid.Column="0" x:Name="product" Text="{x:Bind Path=Product.Name}"/>
+                                                <TextBlock Grid.Row="0" Grid.Column="1"><Run Text="Amount:"/></TextBlock>
+                                                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="amount" Text="{x:Bind Path=Amount}"/>
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
