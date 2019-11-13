@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Flight__n_Bite.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -29,7 +32,16 @@ namespace Flight__n_Bite.Views
 
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frame.Navigate(typeof(MovieOverview));
+            var item = ((GridView)sender).SelectedItem as Movie;
+            Frame.Navigate(typeof(MovieOverview), item);
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Debug.Write(sender);
+            var item = ((ListView)sender).SelectedItem as Music;
+            Debug.Write(item);
+            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri($"ms-appx:///Assets/Music/{item.Artist.Name} - {item.Title}.mp4"));
         }
     }
 }

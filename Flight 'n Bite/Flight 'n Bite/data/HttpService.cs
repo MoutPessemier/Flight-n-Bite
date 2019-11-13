@@ -35,7 +35,6 @@ namespace Flight__n_Bite.data
         {
             _httpClient = new HttpClient();
 
-            //Nu leeg gelaten --> Waar Users screts in Universal Windows??
             var username = Application.Current.Resources["WeatherAPI_username"];
             var password = Application.Current.Resources["WeatherAPI_password"];
 
@@ -52,7 +51,6 @@ namespace Flight__n_Bite.data
         public async Task<string> GetStringAsync(Uri uri)
         {
             string json = await _httpClient.GetStringAsync(uri);
-            Debug.Write("HALLLOOOOO" + json + "HIEEER");
             return json;
         }
 

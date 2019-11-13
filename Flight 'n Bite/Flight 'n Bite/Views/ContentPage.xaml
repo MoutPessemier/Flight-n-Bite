@@ -8,6 +8,7 @@
     xmlns:models="using:Flight__n_Bite.Models"
     xmlns:controls="using:Template10.Controls"
     xmlns:usercontrols="using:Flight__n_Bite.Views.UserControls"
+    xmlns:converters="using:Flight__n_Bite.Util"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -20,7 +21,7 @@
         </controls:PageHeader>
         <Pivot Title="" Margin="0,30,0,0">
             <PivotItem Header="Movies">
-                <GridView ItemsSource="{x:Bind vm.MovieList}" >
+                <GridView ItemsSource="{x:Bind vm.MovieList}" Margin="0,0,0,10" ItemClick="GridView_ItemClick" >
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="models:Movie">
                             <usercontrols:MovieGridUserControl></usercontrols:MovieGridUserControl>
@@ -28,18 +29,26 @@
                     </GridView.ItemTemplate>
                 </GridView>
             </PivotItem>
-            <PivotItem Header="Music">
-                <ScrollViewer>
-                    <StackPanel Orientation="Vertical">
-                        <ListView ItemsSource="{x:Bind vm.MusicList}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Music">
-                                    <usercontrols:MusicListUserControl></usercontrols:MusicListUserControl>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                </ScrollViewer>
+            <PivotItem Header="Music" Margin="0,0,0,10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical" >
+                            <ListView ItemsSource="{x:Bind vm.MusicList}" ItemClick="ListView_ItemClick">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:Music">
+                                        <usercontrols:MusicListUserControl></usercontrols:MusicListUserControl>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </ScrollViewer>
+                    <MediaPlayerElement x:Name="mediaPlayer" Height="100" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Grid>
             </PivotItem>
         </Pivot>
     </Grid>
