@@ -18,9 +18,9 @@ namespace Flight_n_Bite_API.Data
             _context.Personnels.Add(Personnel);
         }
 
-        public Personnel GetPersonnel(int PersonnelId)
+        public Personnel GetPersonnel(string username)
         {
-            return _context.Personnels.FirstOrDefault(p => p.Id == PersonnelId);
+            return _context.Personnels.FirstOrDefault(p => p.UserName == username);
         }
 
         public List<Personnel> GetAllPersonnel()

@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Flight_n_Bite_API.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Flight_n_Bite_API.Controllers
@@ -27,6 +30,25 @@ namespace Flight_n_Bite_API.Controllers
         public Passenger GetPassenger(int id)
         {
             return _passengerRepository.GetPassenger(id);
+        }
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public async Task<ActionResult<Passenger>> LogIn(Passenger model)
+        {
+            var passenger = _passengerRepository.GetPassenger(model.SeatIdentifier);
+            if (passenger != null)
+            {
+                if(passenger.FirstName == model.FirstName && passenger.LastName == model.LastName)
+                {
+                    return passenger;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            return BadRequest();
         }
     }
 }

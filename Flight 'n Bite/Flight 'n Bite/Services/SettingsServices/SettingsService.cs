@@ -62,5 +62,16 @@ namespace Flight__n_Bite.Services.SettingsServices
                 Views.Shell.HamburgerMenu.IsFullScreen = value;
             }
         }
+
+        public bool IsPersonnel {
+            get { return _helper.Read<bool>(nameof(IsPersonnel), false); }
+            set {
+                _helper.Write(nameof(IsPersonnel), value);
+                Views.Shell.viewModel.IsPersonnel = value ? Visibility.Visible:Visibility.Collapsed;
+                Views.Shell.viewModel.IsPassenger = value ? Visibility.Collapsed : Visibility.Visible;
+
+            }
+        }
+
     }
 }
