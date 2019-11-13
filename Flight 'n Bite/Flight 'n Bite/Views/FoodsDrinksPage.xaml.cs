@@ -26,5 +26,10 @@ namespace Flight__n_Bite.Views
         {
             this.InitializeComponent();
         }
+
+        private void GridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }
