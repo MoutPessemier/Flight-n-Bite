@@ -6,17 +6,42 @@
       xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:behaviors="using:Template10.Behaviors"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="using:Flight__n_Bite.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:views="using:Flight__n_Bite.Views"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      xmlns:views="using:Flight__n_Bite.Views"
       mc:Ignorable="d">
+    
 
     <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
-
         <Controls:HamburgerMenu.PrimaryButtons>
-            <!--  FlightInfo button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FlightInfoPage">
+            <!--  mainpage button  -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:MainPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Width="48"
+                                Height="48"
+                                Symbol="Home" />
+                    <TextBlock Margin="12,0,0,0"
+                               VerticalAlignment="Center"
+                               Text="Home" />
+                </StackPanel>
+
+            </Controls:HamburgerButtonInfo>
+
+                <!--  passengeroverviewpage button  -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PassengerOverviewPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Width="48"
+                                Height="48"
+                                Symbol="Home" />
+                        <TextBlock Margin="12,0,0,0"
+                               VerticalAlignment="Center"
+                               Text="Passengers" />
+                    </StackPanel>
+
+                </Controls:HamburgerButtonInfo>
+
+                <!--  FlightInfo button  -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FlightInfoPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon  Width="48"
                                 Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE709;"/>
@@ -28,7 +53,7 @@
 
             </Controls:HamburgerButtonInfo>
             <!--  ContentPage button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:ContentPage">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:ContentPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon  Width="48"
                                 Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B2;"/>
@@ -41,7 +66,7 @@
             </Controls:HamburgerButtonInfo>
 
             <!--  FlightInfo button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FoodsDrinksPage">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FoodsDrinksPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon  Width="48"
                                 Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED56;"/>
@@ -91,6 +116,18 @@
                                VerticalAlignment="Center"
                                Text="Settings" />
                 </StackPanel>
+            </Controls:HamburgerButtonInfo>
+
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:Login">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon  Width="48"
+                                Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B5;"/>
+
+                    <TextBlock Margin="12,0,0,0"
+                               VerticalAlignment="Center"
+                               Text="Log Out" />
+                </StackPanel>
+
             </Controls:HamburgerButtonInfo>
         </Controls:HamburgerMenu.SecondaryButtons>
 

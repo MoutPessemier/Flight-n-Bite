@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="data\HttpService.cs" />
+    <Compile Include="Models\DTO\PersonnelLoginDTO.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Order.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\MovieOverviewViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\WeatherViewModel.cs" />
     <Compile Include="Views\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
@@ -140,6 +142,9 @@
     </Compile>
     <Compile Include="Views\MovieOverview.xaml.cs">
       <DependentUpon>MovieOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PassengerOverviewPage.xaml.cs">
+      <DependentUpon>PassengerOverviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -208,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MovieOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PassengerOverviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

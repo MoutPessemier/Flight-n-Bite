@@ -34,6 +34,7 @@ namespace Flight__n_Bite.data
         private HttpService()
         {
             _httpClient = new HttpClient();
+       
 
             var username = Application.Current.Resources["WeatherAPI_username"];
             var password = Application.Current.Resources["WeatherAPI_password"];
@@ -61,5 +62,11 @@ namespace Flight__n_Bite.data
             return json;
         }
 
+        public async Task<string> PostAsync(String uri, StringContent content)
+        {
+            var res = await _httpClient.PostAsync(uri, content);
+            return await res.Content.ReadAsStringAsync();
+
+        }
     }
 }

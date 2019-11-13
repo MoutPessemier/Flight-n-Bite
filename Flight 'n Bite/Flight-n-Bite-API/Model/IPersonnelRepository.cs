@@ -8,7 +8,7 @@ namespace Flight_n_Bite_API.Model
     public interface IPersonnelRepository
     {
         List<Personnel> GetAllPersonnel();
-        Personnel GetPersonnel(int PersonnelId);
+        Personnel GetPersonnel(string username);
         void Add(Personnel Personnel);
         void SaveChanges();
     }
