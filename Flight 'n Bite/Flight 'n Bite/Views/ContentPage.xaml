@@ -7,6 +7,7 @@
     xmlns:viewmodels="using:Flight__n_Bite.ViewModels"
     xmlns:models="using:Flight__n_Bite.Models"
     xmlns:controls="using:Template10.Controls"
+    xmlns:usercontrols="using:Flight__n_Bite.Views.UserControls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -17,17 +18,12 @@
     <Grid>
         <controls:PageHeader x:Name="pageHeader" Text="Content Page">
         </controls:PageHeader>
-        <Pivot Title="Content">
+        <Pivot Title="" Margin="0,30,0,0">
             <PivotItem Header="Movies">
                 <GridView ItemsSource="{x:Bind vm.MovieList}" >
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="models:Movie">
-                            <StackPanel Orientation="Vertical">
-                                <Image Source="{x:Bind PosterUri}" />
-                                <TextBlock Text="{x:Bind Title}" />
-                                <TextBlock Text="{x:Bind Description}" TextWrapping="WrapWholeWords" />
-                                <TextBlock Text="{x:Bind Rating}"/>
-                            </StackPanel>
+                            <usercontrols:MovieGridUserControl></usercontrols:MovieGridUserControl>
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
@@ -38,13 +34,7 @@
                         <ListView ItemsSource="{x:Bind vm.MusicList}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="models:Music">
-                                    <StackPanel Width="auto" Orientation="Horizontal" VerticalAlignment="Center">
-                                        <SymbolIcon Width="Auto" Height="Auto" Symbol="Play" />
-                                        <TextBlock Margin="10,0,0,0" Text="{x:Bind Title}" />
-                                        <TextBlock Margin="10,0,0,0" Text="{x:Bind Artist}" />
-                                        <TextBlock Margin="10,0,0,0" Text="{x:Bind Album}" />
-                                        <Image HorizontalAlignment="Right" Margin="10,0,0,0" Source="{x:Bind CoverUri}" />
-                                    </StackPanel>
+                                    <usercontrols:MusicListUserControl></usercontrols:MusicListUserControl>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>

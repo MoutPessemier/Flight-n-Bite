@@ -62,7 +62,7 @@ namespace Flight__n_Bite.Views
             {
                 var currentUser = new Passenger() { SeatIdentifier = txbSeatNumber.Text, FirstName = txbFirstName.Text, LastName = txbLastName.Text };
                 _settings.IsFullScreen = false;
-                Frame.Navigate(typeof(MainPage));
+                Frame.Navigate(typeof(FlightInfoPage));
             }
         }
 
@@ -76,7 +76,7 @@ namespace Flight__n_Bite.Views
             if (isLoggedIn)
             {
                 _settings.IsFullScreen = false;
-                Frame.Navigate(typeof(MainPage));
+                Frame.Navigate(typeof(FlightInfoPage));
             }
         }
 

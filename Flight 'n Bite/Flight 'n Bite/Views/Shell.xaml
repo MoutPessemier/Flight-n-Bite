@@ -15,18 +15,6 @@
     <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
 
         <Controls:HamburgerMenu.PrimaryButtons>
-            <!--  mainpage button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:MainPage">
-                <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Width="48"
-                                Height="48"
-                                Symbol="Home" />
-                    <TextBlock Margin="12,0,0,0"
-                               VerticalAlignment="Center"
-                               Text="Home" />
-                </StackPanel>
-
-            </Controls:HamburgerButtonInfo>
             <!--  FlightInfo button  -->
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FlightInfoPage">
                 <StackPanel Orientation="Horizontal">
@@ -61,19 +49,6 @@
                     <TextBlock Margin="12,0,0,0"
                                VerticalAlignment="Center"
                                Text="Foods 'n Drinks" />
-                </StackPanel>
-
-            </Controls:HamburgerButtonInfo>
-
-
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:TestPage">
-                <StackPanel Orientation="Horizontal">
-                    <FontIcon  Width="48"
-                                Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED56;"/>
-
-                    <TextBlock Margin="12,0,0,0"
-                               VerticalAlignment="Center"
-                               Text="TEST" />
                 </StackPanel>
 
             </Controls:HamburgerButtonInfo>
