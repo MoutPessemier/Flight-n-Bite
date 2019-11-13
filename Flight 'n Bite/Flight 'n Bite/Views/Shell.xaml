@@ -77,19 +77,6 @@
                 </StackPanel>
 
             </Controls:HamburgerButtonInfo>
-
-
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:TestPage">
-                <StackPanel Orientation="Horizontal">
-                    <FontIcon  Width="48"
-                                Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED56;"/>
-
-                    <TextBlock Margin="12,0,0,0"
-                               VerticalAlignment="Center"
-                               Text="TEST" />
-                </StackPanel>
-
-            </Controls:HamburgerButtonInfo>
         </Controls:HamburgerMenu.PrimaryButtons>
 
         <Controls:HamburgerMenu.SecondaryButtons>
