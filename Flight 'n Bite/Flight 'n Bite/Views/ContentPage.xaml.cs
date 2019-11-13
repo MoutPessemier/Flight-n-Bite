@@ -32,16 +32,19 @@ namespace Flight__n_Bite.Views
 
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var item = ((GridView)sender).SelectedItem as Movie;
-            Frame.Navigate(typeof(MovieOverview), item);
+            var item = e.ClickedItem as Movie;
+            // TODO: fix this navigation
+             Frame.Navigate(typeof(MovieOverview), item);
+            //Frame.Navigate(typeof(MovieOverview));
+
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Debug.Write(sender);
-            var item = ((ListView)sender).SelectedItem as Music;
-            Debug.Write(item);
-            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri($"ms-appx:///Assets/Music/{item.Artist.Name} - {item.Title}.mp4"));
+            var item = e.ClickedItem as Music;
+            // TODO: fix media player
+            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/Music/'{item.Artist.Name} - {item.Title}.mp3'"));
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flight__n_Bite.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,10 +27,24 @@ namespace Flight__n_Bite.Views
         public MovieOverview()
         {
             this.InitializeComponent();
-            
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            var Movie = (Movie)e.Parameter;
+
+            //var s = e.Parameter as string;
+            //vm.Movie = e.Parameter as string;
+          //  SetSource();
+        }
+
+        private void SetSource()
+        {
             mediaPlayer.Source = MediaSource.CreateFromUri(new Uri($"ms-appx:///Assets/Movies/{vm.Movie.Title}.mp4"));
         }
 
-        
+
     }
 }
