@@ -8,6 +8,7 @@ using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Template10.Mvvm;
+using Flight__n_Bite.ViewModels;
 
 namespace Flight__n_Bite.Views
 {
@@ -16,12 +17,15 @@ namespace Flight__n_Bite.Views
         public static Shell Instance { get; set; }
         public static HamburgerMenu HamburgerMenu => Instance.MyHamburgerMenu;
         Services.SettingsServices.SettingsService _settings;
+        public static ShellViewModel viewModel;
+
 
         public Shell()
         {
             Instance = this;
             InitializeComponent();
             _settings = Services.SettingsServices.SettingsService.Instance;
+            viewModel = new ShellViewModel();
         }
 
         public Shell(INavigationService navigationService) : this()

@@ -12,9 +12,7 @@ namespace Flight_n_Bite_API.Data.Mappers
 
             builder.HasKey(p => p.Id);
 
-            builder.Property(p => p.FirstName).IsRequired(true);
-
-            builder.Property(p => p.Password).IsRequired(true);
+            builder.Property(p => p.UserName).IsRequired(true);
         }
     }
 }
