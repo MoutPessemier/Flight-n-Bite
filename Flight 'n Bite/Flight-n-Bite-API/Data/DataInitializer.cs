@@ -572,11 +572,47 @@ namespace Flight_n_Bite_API.Data
             var jef = new Passenger() { FirstName = "Jef", LastName = "Malfliet", SeatIdentifier = "X2" };
             var nante = new Passenger() { FirstName = "Nante", LastName = "Vermeulen", SeatIdentifier = "X3" };
             var mout = new Passenger() { FirstName = "Mout", LastName = "Pessemier", SeatIdentifier = "X4" };
+            jef.addTravelBuddy(nante);
+            //jef.addTravelBuddy(mout);
+
+            //nante.addTravelBuddy(jef);
+            nante.addTravelBuddy(mout);
+
+            //mout.addTravelBuddy(jef);
+            //mout.addTravelBuddy(nante);
+
+            var indy = new Passenger() { FirstName = "Indy", LastName = "Van Cangem", SeatIdentifier = "X5" };
+            var bram = new Passenger() { FirstName = "Bram", LastName = "Van Overbeke", SeatIdentifier = "x6" };
+            var robbe = new Passenger() { FirstName = "Robbe", LastName = "Van De Vyver", SeatIdentifier = "x7" };
+
+            indy.addTravelBuddy(bram);
+            //indy.addTravelBuddy(robbe);
+
+            //bram.addTravelBuddy(indy);
+            bram.addTravelBuddy(robbe);
+
+            //robbe.addTravelBuddy(indy);
+            //robbe.addTravelBuddy(bram);
+
+
+
+            _passengerRepository.Add(k);
+            _passengerRepository.Add(jef);
+            _passengerRepository.Add(nante);
+            _passengerRepository.Add(mout);
+            _passengerRepository.Add(indy);
+            _passengerRepository.Add(bram);
+            _passengerRepository.Add(robbe);
+            _passengerRepository.SaveChanges();
 
             var personel = new Personnel { UserName = "Piloot@hotmail.com" };
             var personel2 = new Personnel { UserName = "Stewardess@hotmail.com"};
             await CreateUser(personel.UserName, "Piloot123!");
             await CreateUser(personel2.UserName, "Stewardess123!");
+
+            _personnelRepository.Add(personel);
+            _personnelRepository.Add(personel2);
+            _personnelRepository.SaveChanges();
 
 
             var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0 };
@@ -594,14 +630,6 @@ namespace Flight_n_Bite_API.Data
             var order2 = new Order() { Passenger = nante, OrderLines = new List<OrderLine>() { orderline3, orderline4 } };
             var order3 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 } };
             var order4 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 } };
-
-            _personnelRepository.Add(personel);
-
-            _passengerRepository.Add(k);
-            _passengerRepository.Add(jef);
-            _passengerRepository.Add(nante);
-            _passengerRepository.Add(mout);
-            _passengerRepository.SaveChanges();
 
             _productRepository.Add(fristi);
             _productRepository.Add(soldatenkoek);
