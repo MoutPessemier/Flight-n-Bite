@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,9 +10,10 @@ using System.Threading.Tasks;
 
 namespace Flight__n_Bite.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class Movie : INotifyPropertyChanged
     {
-        #region Fields
+        #region Fields        
         private string _title;
         private string _description;
         private double _rating;
@@ -20,7 +23,9 @@ namespace Flight__n_Bite.Models
         #endregion
 
         #region Properties
+        [JsonProperty]
         public int Id { get; set; }
+        [JsonProperty]
         public string Title {
             get {
                 return _title;
@@ -30,6 +35,7 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("Title");
             }
         }
+        [JsonProperty]
         public string Description {
             get {
                 return _description;
@@ -39,6 +45,7 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("Description");
             }
         }
+        [JsonProperty]
         public double Rating {
             get {
                 return _rating;
@@ -48,6 +55,7 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("Rating");
             }
         }
+        [JsonProperty]
         public string PosterUri {
             get {
                 return _posterUri;
@@ -57,6 +65,7 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("PosterUri");
             }
         }
+        [JsonProperty]
         public IList<Artist> Cast {
             get {
                 return _cast;
@@ -66,6 +75,7 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("Cast");
             }
         }
+        [JsonProperty]
         public string Director {
             get {
                 return _director;
