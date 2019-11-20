@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flight_n_Bite_API.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -43,6 +44,17 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("Arrival");
             }
         }
+        private IList<Seat> _seats;
+        public IList<Seat> Seats {
+            get {
+                return _seats;
+            }
+            set {
+                _seats = value;
+                OnPropertyChanged("Seats");
+            }
+        }
+
         #endregion
         public Flight()
         {

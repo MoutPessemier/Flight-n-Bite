@@ -12,7 +12,18 @@ namespace Flight_n_Bite_API.Model
         public string Number { get; set; }
         public string Departure { get; set; }
         public string Arrival { get; set; }
+        public IList<Seat> Seats { get; set; }
+
+        public Flight()
+        {
+            Seats = new List<Seat>();
+        }
+        public void AddSeat(Seat seat)
+        {
+            Seats.Add(seat);
+        }
     }
+    
 
         
 }

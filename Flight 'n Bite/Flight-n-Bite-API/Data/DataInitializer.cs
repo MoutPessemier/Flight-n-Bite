@@ -54,7 +54,16 @@ namespace Flight_n_Bite_API.Data
             _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
+                var seat1 = new Seat() { Number = "X1" };
+                var seat2 = new Seat() { Number = "X2" };
+                var seat3= new Seat() { Number = "X3" };
+                var seat4 = new Seat() { Number = "X4" };
+                var seat5 = new Seat() { Number = "X5" };
+                var seat6 = new Seat() { Number = "X6" };
+                var seat7 = new Seat() { Number = "X7" };
                 var flight = new Flight() { Number = "X44795", Departure = "Brussel", Arrival = "Madrid" };
+                flight.AddSeat(seat1); flight.AddSeat(seat2); flight.AddSeat(seat3); flight.AddSeat(seat4); flight.AddSeat(seat5); flight.AddSeat(seat6); flight.AddSeat(seat7);
+           
                 _flightRepository.Add(flight);
                 _flightRepository.SaveChanges();
 

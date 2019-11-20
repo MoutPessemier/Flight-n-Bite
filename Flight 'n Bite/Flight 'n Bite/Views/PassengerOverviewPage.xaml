@@ -5,10 +5,27 @@
     xmlns:local="using:Flight__n_Bite.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:Flight__n_Bite.ViewModels"
+    xmlns:converters="using:Flight__n_Bite.Util"
+    xmlns:models="using:Flight_n_Bite_API.Model"
+    xmlns:controls="using:Template10.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
 
+    <Page.DataContext>
+        <viewmodels:FlightViewModel x:Name="vm" />
+    </Page.DataContext>
+
+    <Grid>
+        <controls:PageHeader x:Name="pageHeader" Text="Passengers">
+        </controls:PageHeader>
+        <GridView ItemsSource="{x:Bind vm.Flight.Seats}" >
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:Seat">
+                    <TextBlock x:Name="txtDescription" Text="{x:Bind Number}" Height="120" />
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>
