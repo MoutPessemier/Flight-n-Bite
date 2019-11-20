@@ -40,6 +40,7 @@ namespace Flight_n_Bite_API
             services.AddScoped<IOrderLineRepository, OrderLineRepository>();
             services.AddScoped<IPersonnelRepository, PersonnelRepository>();
             services.AddScoped<IPassengerRepository, PassengerRepository>();
+            services.AddScoped<IGroupRepository, GroupRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
