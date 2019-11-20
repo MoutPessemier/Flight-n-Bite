@@ -26,7 +26,7 @@
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="VisualState">
                     <VisualState.Setters>
-                        <Setter Target="newOrderlineStackpanel.(FrameworkElement.Width)" Value="500"/>
+                        <Setter Target="newOrderlines.(FrameworkElement.Width)" Value="500"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="1600"/>
@@ -35,8 +35,8 @@
                 <VisualState x:Name="VisualState1">
                     <VisualState.Setters>
                         <Setter Target="gridView.(Grid.Row)" Value="1"/>
-                        <Setter Target="newOrderlineStackpanel.(Grid.Column)" Value="0"/>
-                        <Setter Target="newOrderlineStackpanel.(FrameworkElement.Width)" Value="auto"/>
+                        <Setter Target="newOrderlines.(Grid.Column)" Value="0"/>
+                        <Setter Target="newOrderlines.(FrameworkElement.Width)" Value="auto"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0"/>
@@ -67,14 +67,19 @@
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
-                    <StackPanel Width="auto"
-                                x:Name="newOrderlineStackpanel"
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Orientation="Vertical"
-                                Background="AliceBlue"
-                                Visibility="{x:Bind vm.NewOrderLineVisible, Mode=OneWay}">
-                    </StackPanel>
+                    <ListView Width="auto"
+                              x:Name="newOrderlines"
+                              Grid.Row="0"
+                              Grid.Column="1"
+                              Background="AliceBlue"
+                              Visibility="{x:Bind vm.NewOrderLineVisible, Mode=OneWay}"
+                              ItemsSource="{x:Bind Path=vm.NewOrderLines}">
+                        <ListView.ItemTemplate>
+                              <DataTemplate x:DataType="models:OrderLine">
+                                <usercontrols:OrderLineListviewUserControl/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
             </PivotItem>
             <PivotItem Header="My orders">

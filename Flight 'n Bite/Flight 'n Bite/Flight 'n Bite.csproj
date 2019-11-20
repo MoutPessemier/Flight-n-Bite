@@ -159,6 +159,9 @@
     <Compile Include="Views\Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\OrderLineListviewUserControl.xaml.cs">
+      <DependentUpon>OrderLineListviewUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\ProductGridUserControl.xaml.cs">
       <DependentUpon>ProductGridUserControl.xaml</DependentUpon>
     </Compile>
@@ -235,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\OrderLineListviewUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

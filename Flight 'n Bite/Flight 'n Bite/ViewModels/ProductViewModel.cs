@@ -15,35 +15,16 @@ namespace Flight__n_Bite.ViewModels
     {
         public ObservableCollection<Product> Products { get; set; }
         public ObservableCollection<Order> Orders { get; set; }
-        public OrderLine _newOrderLine { get; set; }
+        public ObservableCollection<OrderLine> NewOrderLines { get; set; }
         public Visibility _newOrderLineVisible { get; private set; }
         private HttpService httpService = HttpService.instance;
         public event PropertyChangedEventHandler PropertyChanged;
-        public OrderLine NewOrderLine {
-            get {
-                return _newOrderLine;
-            }
-            set {
-                _newOrderLine = value;
-                OnPropertyChanged("NewOrderline");
-            }
-        }
-
-        public Visibility NewOrderLineVisible {
-            get {
-                return _newOrderLineVisible;
-            }
-            set {
-                _newOrderLineVisible = value;
-                OnPropertyChanged("NewOrderLineVisible");
-            }
-        }
 
         public ProductViewModel()
         {
             Products = new ObservableCollection<Product>();
             Orders = new ObservableCollection<Order>();
-            NewOrderLine = new OrderLine() { Amount = 1 };
+            NewOrderLines = new ObservableCollection<OrderLine>();
             LoadFoodsDrinks();
             LoadOrders();
         }
@@ -70,17 +51,29 @@ namespace Flight__n_Bite.ViewModels
             }
         }
 
+        public void AddOrderLine(OrderLine newOrderLine)
+        {
+            NewOrderLines.Add(newOrderLine);
+            OnPropertyChanged("NewOrderlines");
+        }
+
+        public void DeleteOrderLine(OrderLine newOrderLine)
+        {
+            NewOrderLines.Remove(newOrderLine);
+            OnPropertyChanged("NewOrderlines");
+        }
+
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (propertyName.Equals("NewOrderline"))
+            if (propertyName.Equals("NewOrderlines"))
             {
-                if (_newOrderLine.Product == null)
+                if (NewOrderLines.Count == 0)
                 {
-                    NewOrderLineVisible = Visibility.Collapsed;
+                    _newOrderLineVisible = Visibility.Collapsed;
                 }
                 else
                 {
-                    NewOrderLineVisible = Visibility.Visible;
+                    _newOrderLineVisible = Visibility.Visible;
                 }
             }
 
@@ -89,20 +82,5 @@ namespace Flight__n_Bite.ViewModels
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        //<Image/>
-        //               <Grid>
-        //                   <Grid.ColumnDefinitions>
-        //                       <ColumnDefinition/>
-        //                   </Grid.ColumnDefinitions>
-        //                   <Grid.RowDefinitions>
-        //                       <RowDefinition/>
-        //                       <RowDefinition/>
-        //                       <RowDefinition/>
-        //                   </Grid.RowDefinitions>
-        //                   <TextBlock Grid.Row="0" Grid.Column= "0" x:Name= "name" FontSize= "32" Text= "test" />
-        //                   < TextBlock Grid.Row= "1" Grid.Column= "0" x:Name= "description" FontSize= "12" Text= "test" />
-        //                   < TextBlock Grid.Row= "2" Grid.Column= "0" x:Name= "price" FontFamily= "24" Text= "test" />
-        //               </ Grid >
     }
 }
