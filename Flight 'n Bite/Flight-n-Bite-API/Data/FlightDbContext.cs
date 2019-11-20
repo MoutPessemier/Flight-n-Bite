@@ -1,11 +1,12 @@
 ﻿using Flight_n_Bite_API.Data.Mappers;
 using Flight_n_Bite_API.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Flight_n_Bite_API.Data
 {
 
-    public class FlightDbContext : DbContext
+    public class FlightDbContext : IdentityDbContext
     {
 
         public DbSet<Flight> Flights { get; set; }
@@ -17,6 +18,7 @@ namespace Flight_n_Bite_API.Data
         public DbSet<OrderLine> OrderLines { get; set; }
         public DbSet<Personnel> Personnels { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Group> Groups { get; set; }
 
         public FlightDbContext(DbContextOptions<FlightDbContext> options) : base(options){}
 

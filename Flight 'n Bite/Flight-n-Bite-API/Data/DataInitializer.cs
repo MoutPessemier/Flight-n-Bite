@@ -1,7 +1,9 @@
 ﻿using Flight_n_Bite_API.Model;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Flight_n_Bite_API.Data
@@ -18,6 +20,9 @@ namespace Flight_n_Bite_API.Data
         private readonly IOrderLineRepository _orderLineRepository;
         private readonly IPassengerRepository _passengerRepository;
         private readonly IPersonnelRepository _personnelRepository;
+        private readonly IGroupRepository _groupRepository;
+        private readonly UserManager<IdentityUser> _userManager;
+
 
         public DataInitializer(FlightDbContext context,
             IFlightRepository flightRepository,
@@ -28,7 +33,9 @@ namespace Flight_n_Bite_API.Data
             IOrderRepository orderRepository,
             IOrderLineRepository orderLineRepository,
             IPassengerRepository passengerRepository,
-            IPersonnelRepository personnelRepository)
+            IPersonnelRepository personnelRepository,
+            IGroupRepository groupRepository,
+            UserManager<IdentityUser> userManager)
         {
             _context = context;
             _flightRepository = flightRepository;
@@ -40,9 +47,12 @@ namespace Flight_n_Bite_API.Data
             _orderLineRepository = orderLineRepository;
             _passengerRepository = passengerRepository;
             _personnelRepository = personnelRepository;
+            _groupRepository = groupRepository;
+            _userManager = userManager;
+
         }
 
-        public void InitializeData()
+        public async Task InitializeData()
         {
             _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
@@ -560,9 +570,46 @@ namespace Flight_n_Bite_API.Data
                 _musicRepository.SaveChagnes();
             }
 
-            var jef = new Passenger() { FirstName = "Jef", LastName = "Malfliet", SeatIdentifier = "J1" };
-            var nante = new Passenger() { FirstName = "Nante", LastName = "Vermeulen", SeatIdentifier = "n2" };
-            var mout = new Passenger() { FirstName = "Mout", LastName = "Pessemier", SeatIdentifier = "m3" };
+            var k = new Passenger() { FirstName = "k", LastName = "k", SeatIdentifier = "X1" };
+ 
+            var jef = new Passenger() { FirstName = "Jef", LastName = "Malfliet", SeatIdentifier = "X2" };
+            var nante = new Passenger() { FirstName = "Nante", LastName = "Vermeulen", SeatIdentifier = "X3" };
+            var mout = new Passenger() { FirstName = "Mout", LastName = "Pessemier", SeatIdentifier = "X4" };
+            Group coolios = new Group();
+            coolios.JoinGroup(jef);
+            coolios.JoinGroup(nante);
+            coolios.JoinGroup(mout);
+
+            var indy = new Passenger() { FirstName = "Indy", LastName = "Van Cangem", SeatIdentifier = "X5" };
+            var bram = new Passenger() { FirstName = "Bram", LastName = "Van Overbeke", SeatIdentifier = "x6" };
+            var robbe = new Passenger() { FirstName = "Robbe", LastName = "Van De Vyver", SeatIdentifier = "x7" };
+            Group stinkios = new Group();
+            stinkios.JoinGroup(indy);
+            stinkios.JoinGroup(bram);
+            stinkios.JoinGroup(robbe);
+
+            _passengerRepository.Add(k);
+            _passengerRepository.Add(jef);
+            _passengerRepository.Add(nante);
+            _passengerRepository.Add(mout);
+            _passengerRepository.Add(indy);
+            _passengerRepository.Add(bram);
+            _passengerRepository.Add(robbe);
+            _passengerRepository.SaveChanges();
+
+            _groupRepository.AddGroup(coolios);
+            _groupRepository.AddGroup(stinkios);
+            _groupRepository.SaveChanges();
+
+            var personel = new Personnel { UserName = "Piloot@hotmail.com" };
+            var personel2 = new Personnel { UserName = "Stewardess@hotmail.com"};
+            await CreateUser(personel.UserName, "Piloot123!");
+            await CreateUser(personel2.UserName, "Stewardess123!");
+
+            _personnelRepository.Add(personel);
+            _personnelRepository.Add(personel2);
+            _personnelRepository.SaveChanges();
+
 
             var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0 };
             var soldatenkoek = new Product() { Name = "soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0 };
@@ -579,11 +626,6 @@ namespace Flight_n_Bite_API.Data
             var order2 = new Order() { Passenger = nante, OrderLines = new List<OrderLine>() { orderline3, orderline4 } };
             var order3 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 } };
             var order4 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 } };
-
-            _passengerRepository.Add(jef);
-            _passengerRepository.Add(nante);
-            _passengerRepository.Add(mout);
-            _passengerRepository.SaveChanges();
 
             _productRepository.Add(fristi);
             _productRepository.Add(soldatenkoek);
@@ -604,6 +646,12 @@ namespace Flight_n_Bite_API.Data
             _orderRepository.Add(order4);
             _orderRepository.SaveChanges();
 
+        }
+
+        private async Task CreateUser(string username, string password)
+        {
+            var user = new IdentityUser {UserName = username,Email= username};
+            await _userManager.CreateAsync(user, password);
         }
     }
 }

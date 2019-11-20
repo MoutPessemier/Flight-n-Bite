@@ -1,10 +1,17 @@
-﻿using Flight__n_Bite.Models;
+﻿using Flight__n_Bite.data;
+using Flight__n_Bite.Models;
+using Flight__n_Bite.Models.DTO;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -43,7 +50,7 @@ namespace Flight__n_Bite.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             txbValidationLabel.Text = "";
-            txbValidationLabel.Visibility = Visibility.Collapsed;
+           txbValidationLabel.Visibility = Visibility.Collapsed; 
             txbNameValidation.Text = "";
             txbNameValidation.Visibility = Visibility.Collapsed;
             var seatNumber = txbSeatNumber.Text;
@@ -60,29 +67,88 @@ namespace Flight__n_Bite.Views
             }
             if (string.IsNullOrEmpty(txbNameValidation.Text) && string.IsNullOrEmpty(txbValidationLabel.Text))
             {
-                var currentUser = new Passenger() { SeatIdentifier = txbSeatNumber.Text, FirstName = txbFirstName.Text, LastName = txbLastName.Text };
-                _settings.IsFullScreen = false;
-                Frame.Navigate(typeof(MainPage));
+                HandlePassengerLogin();
+               
             }
+        }
+
+        private async void HandlePassengerLogin()
+        {
+            var currentPassenger = await LoginPassenger(new Passenger() { SeatIdentifier = txbSeatNumber.Text, FirstName = txbFirstName.Text, LastName = txbLastName.Text });
+
+            if (currentPassenger != null && currentPassenger.FirstName != null)
+            {
+                _settings.IsFullScreen = false;
+                _settings.IsPersonnel = false;
+                Frame.Navigate(typeof(FlightInfoPage));
+
+            }
+            else
+            {
+                txbValidationLabel.Visibility = Visibility.Visible;
+                txbValidationLabel.Text = "Firstname,lastname and seat doesn't match";
+            }
+
+
+        }
+
+        private async Task<Passenger> LoginPassenger(Passenger passenger)
+
+        {
+            HttpService httpService = HttpService.instance;
+            string currentPassengerjson = JsonConvert.SerializeObject(passenger);
+            var json = await httpService.PostAsync("http://localhost:49527/api/passenger/login", new StringContent(currentPassengerjson, Encoding.UTF8, "application/json"));
+            try
+            {
+                return JsonConvert.DeserializeObject<Passenger>(json);
+
+            }
+            catch 
+            {
+                return null;
+            }
+
         }
 
         private void Button_Click_Personnel(object sender, RoutedEventArgs e)
         {
+            txbPersonnelValidation.Visibility = Visibility.Collapsed;
             if (string.IsNullOrEmpty(txbPersonnelUserName.Text) || string.IsNullOrWhiteSpace(txbPersonnelUserName.Text) || string.IsNullOrEmpty(pswPasswordBox.Text) || string.IsNullOrWhiteSpace(pswPasswordBox.Text))
             {
                 txbPersonnelValidation.Text = "Username or password cannot be empty";
+                txbPersonnelValidation.Visibility = Visibility.Visible;
+
             }
-            var isLoggedIn = LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Text);
+            HandleLoginPersonnel();
+            
+        }
+
+        private async void HandleLoginPersonnel()
+        {
+            var isLoggedIn = await LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Text);
             if (isLoggedIn)
             {
                 _settings.IsFullScreen = false;
-                Frame.Navigate(typeof(MainPage));
+                _settings.IsPersonnel = true;
+                Frame.Navigate(typeof(PassengerOverviewPage));
+            }
+            else
+            {
+                txbPersonnelValidation.Text = "Username or password are wrong";
+                txbPersonnelValidation.Visibility = Visibility.Visible;
+
             }
         }
 
-        private bool LoginPersonnel(string username, string password)
+        private async  Task<Boolean> LoginPersonnel(string username, string password)
         {
-            return false;
+            HttpService httpService = HttpService.instance;
+
+            string personneljson = JsonConvert.SerializeObject(new PersonnelLoginDTO(){ UserName = username, Password = password });
+
+            var json = await httpService.PostAsync("http://localhost:49527/api/personnel/login", new StringContent(personneljson, Encoding.UTF8, "application/json"));
+           
+            return json == "true";
         }
 
         private void Toggle_Toggled(object sender, RoutedEventArgs e)

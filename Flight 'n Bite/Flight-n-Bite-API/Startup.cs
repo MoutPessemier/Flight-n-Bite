@@ -2,6 +2,7 @@
 using Flight_n_Bite_API.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +28,7 @@ namespace Flight_n_Bite_API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<FlightDbContext>(options => options.UseSqlServer(connectionstring));
+            services.AddIdentity<IdentityUser, IdentityRole>(cfg => cfg.User.RequireUniqueEmail = true).AddEntityFrameworkStores<FlightDbContext>();
 
             services.AddScoped<DataInitializer>();
             services.AddScoped<IFlightRepository, FlightRepository>();
@@ -38,6 +40,7 @@ namespace Flight_n_Bite_API
             services.AddScoped<IOrderLineRepository, OrderLineRepository>();
             services.AddScoped<IPersonnelRepository, PersonnelRepository>();
             services.AddScoped<IPassengerRepository, PassengerRepository>();
+            services.AddScoped<IGroupRepository, GroupRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +54,7 @@ namespace Flight_n_Bite_API
             app.UseMvc();
             app.UseCors("AllowAllOrigins");
 
-            dataInitializer.InitializeData();
+           dataInitializer.InitializeData().Wait();
         }
     }
 }

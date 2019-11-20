@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace Flight_n_Bite_API.Model
 {
-    public interface IPersonnelRepository
+    public interface IGroupRepository
     {
-        List<Personnel> GetAllPersonnel();
-        Personnel GetPersonnel(string username);
-        void Add(Personnel Personnel);
+        List<Group> GetGroups();
+        void AddGroup(Group group);
         void SaveChanges();
     }
 }
