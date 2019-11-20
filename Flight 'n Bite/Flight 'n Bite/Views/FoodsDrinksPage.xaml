@@ -26,7 +26,7 @@
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="VisualState">
                     <VisualState.Setters>
-                        <Setter Target="stackPanel.(FrameworkElement.Width)" Value="500"/>
+                        <Setter Target="newOrderlineStackpanel.(FrameworkElement.Width)" Value="500"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="1600"/>
@@ -35,8 +35,8 @@
                 <VisualState x:Name="VisualState1">
                     <VisualState.Setters>
                         <Setter Target="gridView.(Grid.Row)" Value="1"/>
-                        <Setter Target="stackPanel.(Grid.Column)" Value="0"/>
-                        <Setter Target="stackPanel.(FrameworkElement.Width)" Value="auto"/>
+                        <Setter Target="newOrderlineStackpanel.(Grid.Column)" Value="0"/>
+                        <Setter Target="newOrderlineStackpanel.(FrameworkElement.Width)" Value="auto"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0"/>
@@ -56,28 +56,24 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <GridView x:Name="gridView" Grid.Row="0" Grid.Column="0" ItemsSource="{x:Bind Path=vm.Products}" ItemClick="GridView_ItemClick">
+                    <GridView IsItemClickEnabled="True"
+                              x:Name="gridView"
+                              Grid.Row="0"
+                              Grid.Column="0"
+                              ItemsSource="{x:Bind Path=vm.Products}">
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="models:Product">
                                 <usercontrols:ProductGridUserControl/>
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
-                    <StackPanel Width="auto" x:Name="stackPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Background="AliceBlue">
-                        <Image/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Grid.Column="0" x:Name="name" FontSize="32" Text="Test"/>
-                            <TextBlock Grid.Row="1" Grid.Column="0" x:Name="description" FontSize="12" Text="Test"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" x:Name="price" FontFamily="24" Text="Test"/>
-                        </Grid>
+                    <StackPanel Width="auto"
+                                x:Name="newOrderlineStackpanel"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Orientation="Vertical"
+                                Background="AliceBlue"
+                                Visibility="{x:Bind vm.NewOrderLineVisible, Mode=OneWay}">
                     </StackPanel>
                 </Grid>
             </PivotItem>

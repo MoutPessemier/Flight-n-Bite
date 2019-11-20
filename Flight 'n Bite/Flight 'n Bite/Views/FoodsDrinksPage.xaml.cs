@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Flight__n_Bite.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -29,7 +31,7 @@ namespace Flight__n_Bite.Views
 
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            vm.NewOrderLine = new OrderLine() { Product = (Product)e.ClickedItem };
         }
     }
 }
