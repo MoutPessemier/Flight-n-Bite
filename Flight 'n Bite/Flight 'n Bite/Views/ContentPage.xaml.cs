@@ -43,7 +43,7 @@ namespace Flight__n_Bite.Views
         {
             var item = e.ClickedItem as Music;
             // TODO: fix media player
-            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/Music/'{item.Artist.Name} - {item.Title}.mp3'"));
+            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri($"ms-appx:///Assets/Music/{item.Artist.Name} - {item.Title}.mp3"));
 
         }
     }
