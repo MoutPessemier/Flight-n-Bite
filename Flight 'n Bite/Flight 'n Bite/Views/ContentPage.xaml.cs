@@ -24,7 +24,7 @@ namespace Flight__n_Bite.Views
         {
             var item = e.ClickedItem as Movie;
             var Nav = NavigationService.GetForFrame(Frame);
-            Nav.Navigate(typeof(MovieOverview), item);
+            Nav.Navigate(typeof(MoviesOverview), item);
 
         }
 

@@ -147,11 +147,11 @@
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MovieOverview.xaml.cs">
-      <DependentUpon>MovieOverview.xaml</DependentUpon>
+    <Compile Include="Views\MoviesOverview.xaml.cs">
+      <DependentUpon>MoviesOverview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PassengerOverviewPage.xaml.cs">
-      <DependentUpon>PassengerOverviewPage.xaml</DependentUpon>
+    <Compile Include="Views\PassengersOverviewPage.xaml.cs">
+      <DependentUpon>PassengersOverviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -223,15 +223,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MovieOverview.xaml">
+    <Page Include="Views\MoviesOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PassengerOverviewPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PassengerOverviewPage.xaml">
+    <Page Include="Views\PassengersOverviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -42,9 +42,9 @@ namespace Flight__n_Bite.ViewModels
         {
             string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/group/" + Shell.Passenger.Id));
             Group group = JsonConvert.DeserializeObject<Group>(json);
-            foreach(var m in group.Chat)
+            foreach (var m in group.Chat)
             {
-                if(m.Passenger.Id == Shell.Passenger.Id)
+                if (m.Passenger.Id == Shell.Passenger.Id)
                 {
                     m.Alignment = HorizontalAlignment.Right;
                 }
@@ -58,7 +58,7 @@ namespace Flight__n_Bite.ViewModels
             var json = await httpService.PostAsync("http://localhost:49527/api/group/sendMessage", new StringContent(messageJson, Encoding.UTF8, "application/json"));
             try
             {
-                var m =  JsonConvert.DeserializeObject<Message>(json);
+                var m = JsonConvert.DeserializeObject<Message>(json);
                 if (m.Passenger.Id == Shell.Passenger.Id)
                 {
                     m.Alignment = HorizontalAlignment.Right;
@@ -67,7 +67,7 @@ namespace Flight__n_Bite.ViewModels
             }
             catch
             {
-                
+
             }
         }
     }

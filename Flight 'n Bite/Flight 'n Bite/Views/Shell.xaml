@@ -16,7 +16,7 @@
         <Controls:HamburgerMenu.PrimaryButtons>
 
                 <!--  passengeroverviewpage button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PassengerOverviewPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PassengersOverviewPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Width="48"
                                 Height="48"

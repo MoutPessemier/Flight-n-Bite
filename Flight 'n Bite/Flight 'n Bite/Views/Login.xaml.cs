@@ -50,7 +50,7 @@ namespace Flight__n_Bite.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             txbValidationLabel.Text = "";
-           txbValidationLabel.Visibility = Visibility.Collapsed; 
+            txbValidationLabel.Visibility = Visibility.Collapsed;
             txbNameValidation.Text = "";
             txbNameValidation.Visibility = Visibility.Collapsed;
             var seatNumber = txbSeatNumber.Text;
@@ -68,7 +68,7 @@ namespace Flight__n_Bite.Views
             if (string.IsNullOrEmpty(txbNameValidation.Text) && string.IsNullOrEmpty(txbValidationLabel.Text))
             {
                 HandlePassengerLogin();
-               
+
             }
         }
 
@@ -80,7 +80,6 @@ namespace Flight__n_Bite.Views
             {
                 _settings.IsFullScreen = false;
                 _settings.IsPersonnel = false;
-
                 Shell.Passenger = currentPassenger;
                 Frame.Navigate(typeof(FlightInfoPage));
 
@@ -89,7 +88,6 @@ namespace Flight__n_Bite.Views
             {
                 txbValidationLabel.Visibility = Visibility.Visible;
                 txbValidationLabel.Text = "Firstname,lastname and seat doesn't match";
-
             }
 
 
@@ -106,26 +104,7 @@ namespace Flight__n_Bite.Views
                 return JsonConvert.DeserializeObject<Passenger>(json);
 
             }
-            catch 
-            {
-                return null;
-            }
-
-
-        }
-
-        private async Task<Passenger> LoginPassenger(Passenger passenger)
-
-        {
-            HttpService httpService = HttpService.instance;
-            string currentPassengerjson = JsonConvert.SerializeObject(passenger);
-            var json = await httpService.PostAsync("http://localhost:49527/api/passenger/login", new StringContent(currentPassengerjson, Encoding.UTF8, "application/json"));
-            try
-            {
-                return JsonConvert.DeserializeObject<Passenger>(json);
-
-            }
-            catch 
+            catch
             {
                 return null;
             }
@@ -142,24 +121,18 @@ namespace Flight__n_Bite.Views
 
             }
             HandleLoginPersonnel();
-            
+
         }
 
         private async void HandleLoginPersonnel()
         {
-
             var personnel = await LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Text);
             if (personnel != null && personnel.Username != null)
             {
                 _settings.IsFullScreen = false;
                 _settings.IsPersonnel = true;
                 Shell.Personnel = personnel;
-            var isLoggedIn = await LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Text);
-            if (isLoggedIn)
-            {
-                _settings.IsFullScreen = false;
-                _settings.IsPersonnel = true;
-                Frame.Navigate(typeof(PassengerOverviewPage));
+                Frame.Navigate(typeof(PassengersOverviewPage));
             }
             else
             {
@@ -169,12 +142,11 @@ namespace Flight__n_Bite.Views
             }
         }
 
-        private async  Task<Personnel> LoginPersonnel(string username, string password)
-
+        private async Task<Personnel> LoginPersonnel(string username, string password)
         {
             HttpService httpService = HttpService.instance;
 
-            string personneljson = JsonConvert.SerializeObject(new PersonnelLoginDTO(){ UserName = username, Password = password });
+            string personneljson = JsonConvert.SerializeObject(new PersonnelLoginDTO() { UserName = username, Password = password });
 
             var json = await httpService.PostAsync("http://localhost:49527/api/personnel/login", new StringContent(personneljson, Encoding.UTF8, "application/json"));
 
@@ -187,8 +159,6 @@ namespace Flight__n_Bite.Views
             {
                 return null;
             }
-           
-            return json == "true";
         }
 
         private void Toggle_Toggled(object sender, RoutedEventArgs e)
