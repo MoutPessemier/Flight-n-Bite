@@ -1,5 +1,8 @@
 ﻿using Flight__n_Bite.Models;
+using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
+using Template10.Services.NavigationService;
 using Windows.Media.Core;
 using Windows.UI.Xaml.Controls;
 
@@ -20,9 +23,8 @@ namespace Flight__n_Bite.Views
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var item = e.ClickedItem as Movie;
-            // TODO: fix this navigation
-             Frame.Navigate(typeof(MovieOverview), item);
-            //Frame.Navigate(typeof(MovieOverview));
+            var Nav = NavigationService.GetForFrame(Frame);
+            Nav.Navigate(typeof(MovieOverview), item);
 
         }
 

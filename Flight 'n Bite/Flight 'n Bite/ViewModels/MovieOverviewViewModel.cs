@@ -1,18 +1,37 @@
 ﻿using Flight__n_Bite.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Flight__n_Bite.ViewModels
 {
-    class MovieOverviewViewModel
+    public class MovieOverviewViewModel : INotifyPropertyChanged
     {
-        public Movie Movie { get; set; }
+        private Movie _movie;
+        public Movie Movie {
+            get {
+                return _movie;
+            }
+            set {
+                _movie = value;
+                OnPropertyChanged("Movie");
+            }
+        }
         public MovieOverviewViewModel()
         {
+        }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            if (PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

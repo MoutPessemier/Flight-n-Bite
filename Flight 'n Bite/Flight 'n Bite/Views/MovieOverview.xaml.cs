@@ -1,9 +1,12 @@
 ﻿using Flight__n_Bite.Models;
+using Flight__n_Bite.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Template10.Services.SerializationService;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Media.Core;
@@ -22,8 +25,11 @@ namespace Flight__n_Bite.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    ///         
     public sealed partial class MovieOverview : Page
+
     {
+
         public MovieOverview()
         {
             this.InitializeComponent();
@@ -31,13 +37,9 @@ namespace Flight__n_Bite.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-
-            var Movie = (Movie)e.Parameter;
-
-            //var s = e.Parameter as string;
-            //vm.Movie = e.Parameter as string;
-          //  SetSource();
+            vm.Movie = SerializationService.Json.Deserialize<Movie>(e.Parameter.ToString());
+           // Debug.WriteLine(movie.Cast.First().Name);
+            SetSource();
         }
 
         private void SetSource()
