@@ -23,7 +23,6 @@ namespace Flight__n_Bite.Views
         public static Personnel Personnel { get; set; }
 
 
-
         public Shell()
         {
             Instance = this;

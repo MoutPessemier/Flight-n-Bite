@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="Flight__n_Bite.Views.PassengersOverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Flight__n_Bite.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:Flight__n_Bite.ViewModels"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:models="using:Flight__n_Bite.Models"
+    xmlns:util="using:Flight__n_Bite.Util"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <util:PassengerToSeatConverter x:Key="PassengerToSeatConverter" />
+    </Page.Resources>
+    <Page.DataContext>
+        <viewmodels:PassengersViewModel x:Name="vm" />
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <controls:PageHeader x:Name="pageHeader" Text="Passengers" Grid.ColumnSpan="2" Height="48"/>
+        <GridView ItemsSource="{x:Bind vm.Passengers}"  IsItemClickEnabled="False" x:Name="grid"
+    CanDragItems="False"
+    AllowDrop="False"
+    CanReorderItems="False"
+    SelectionMode="Multiple"
+    SelectionChanged="Grid_SelectionChanged"
+    FlowDirection="LeftToRight" Grid.ColumnSpan="2" Margin="-10,10,10,-10">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:PassengerSeat">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock x:Name="txtSeat" Text="{x:Bind Seat.Number}" Height="120" />
+                        <TextBlock x:Name="txtTaken" Text="{x:Bind Passenger,Converter={StaticResource PassengerToSeatConverter}}"></TextBlock>
+
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+        <Button Click="Button_Click" >Switch Seats</Button>
+
+    </Grid>
+</Page>

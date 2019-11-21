@@ -36,5 +36,10 @@ namespace Flight_n_Bite_API.Data
         {
             _context.SaveChanges();
         }
+
+        public void Update(Passenger passenger)
+        {
+            _context.Passengers.Update(passenger);
+        }
     }
 }

@@ -96,26 +96,37 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="data\HttpService.cs" />
+    <Compile Include="Models\DTO\MessageDTO.cs" />
     <Compile Include="Models\DTO\PersonnelLoginDTO.cs" />
+    <Compile Include="Models\DTO\SwitchsSeatsDTO.cs" />
+    <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderLine.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Music.cs" />
     <Compile Include="Models\Passenger.cs" />
+    <Compile Include="Models\PassengerSeat.cs" />
     <Compile Include="Models\Personnel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\RootObject.cs" />
+    <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\Weather.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
+    <Compile Include="Util\ArtistConverter.cs" />
     <Compile Include="Util\ListConverter.cs" />
+    <Compile Include="Util\PassengerToSeatConverter.cs" />
     <Compile Include="Util\RatingConverter.cs" />
     <Compile Include="Util\IntegerToCurrencyConverter.cs" />
     <Compile Include="Util\StringToDateConverter.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\ContentPageViewModel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
+    <Compile Include="ViewModels\PassengersViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
@@ -126,11 +137,11 @@
     <Compile Include="Views\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Chat.xaml.cs">
+      <DependentUpon>Chat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ContentPage.xaml.cs">
       <DependentUpon>ContentPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DetailPage.xaml.cs">
-      <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FlightInfoPage.xaml.cs">
       <DependentUpon>FlightInfoPage.xaml</DependentUpon>
@@ -141,14 +152,11 @@
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Views\MoviesOverview.xaml.cs">
+      <DependentUpon>MoviesOverview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MovieOverview.xaml.cs">
-      <DependentUpon>MovieOverview.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PassengerOverviewPage.xaml.cs">
-      <DependentUpon>PassengerOverviewPage.xaml</DependentUpon>
+    <Compile Include="Views\PassengersOverviewPage.xaml.cs">
+      <DependentUpon>PassengersOverviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -158,6 +166,15 @@
     </Compile>
     <Compile Include="Views\Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MovieGridUserControl.xaml.cs">
+      <DependentUpon>MovieGridUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MusicListUserControl.xaml.cs">
+      <DependentUpon>MusicListUserControl.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -191,11 +208,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ContentPage.xaml">
+    <Page Include="Views\Chat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DetailPage.xaml">
+    <Page Include="Views\ContentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,15 +228,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\MovieOverview.xaml">
+    <Page Include="Views\MoviesOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PassengerOverviewPage.xaml">
+    <Page Include="Views\PassengersOverviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,6 +245,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MovieGridUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MusicListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,11 +1,16 @@
-﻿using System;
+﻿using Flight__n_Bite.data;
+using Flight__n_Bite.Model.DTO;
+using Flight__n_Bite.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Media.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -21,15 +26,15 @@ namespace Flight__n_Bite.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MovieOverview : Page
+    public sealed partial class TestPage : Page
     {
-        public MovieOverview()
+        public TestPage()
         {
             this.InitializeComponent();
-            
-            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri($"ms-appx:///Assets/Movies/{vm.Movie.Title}.mp4"));
         }
 
-        
+
+        }
     }
-}
+
+

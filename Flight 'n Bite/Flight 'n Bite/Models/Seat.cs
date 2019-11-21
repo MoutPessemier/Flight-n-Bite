@@ -1,30 +1,26 @@
-﻿using Flight__n_Bite.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Flight__n_Bite.ViewModels
+namespace Flight_n_Bite_API.Model
 {
-    public class MovieOverviewViewModel : INotifyPropertyChanged
+    public class Seat : INotifyPropertyChanged
     {
-        private Movie _movie;
-        public Movie Movie {
+
+        public int Id { get; set; }
+        private string _number;
+        public string Number {
             get {
-                return _movie;
+                return _number;
             }
             set {
-                _movie = value;
-                OnPropertyChanged("Movie");
+                _number = value;
+                OnPropertyChanged("Number");
             }
         }
-        public MovieOverviewViewModel()
-        {
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -34,4 +30,5 @@ namespace Flight__n_Bite.ViewModels
             }
         }
     }
+
 }

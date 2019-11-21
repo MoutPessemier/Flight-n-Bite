@@ -50,7 +50,7 @@ namespace Flight__n_Bite.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             txbValidationLabel.Text = "";
-           txbValidationLabel.Visibility = Visibility.Collapsed; 
+            txbValidationLabel.Visibility = Visibility.Collapsed;
             txbNameValidation.Text = "";
             txbNameValidation.Visibility = Visibility.Collapsed;
             var seatNumber = txbSeatNumber.Text;
@@ -68,7 +68,7 @@ namespace Flight__n_Bite.Views
             if (string.IsNullOrEmpty(txbNameValidation.Text) && string.IsNullOrEmpty(txbValidationLabel.Text))
             {
                 HandlePassengerLogin();
-               
+
             }
         }
 
@@ -104,7 +104,7 @@ namespace Flight__n_Bite.Views
                 return JsonConvert.DeserializeObject<Passenger>(json);
 
             }
-            catch 
+            catch
             {
                 return null;
             }
@@ -121,7 +121,7 @@ namespace Flight__n_Bite.Views
 
             }
             HandleLoginPersonnel();
-            
+
         }
 
         private async void HandleLoginPersonnel()
@@ -132,7 +132,7 @@ namespace Flight__n_Bite.Views
                 _settings.IsFullScreen = false;
                 _settings.IsPersonnel = true;
                 Shell.Personnel = personnel;
-                Frame.Navigate(typeof(PassengerOverviewPage));
+                Frame.Navigate(typeof(PassengersOverviewPage));
             }
             else
             {
@@ -142,11 +142,11 @@ namespace Flight__n_Bite.Views
             }
         }
 
-        private async  Task<Personnel> LoginPersonnel(string username, string password)
+        private async Task<Personnel> LoginPersonnel(string username, string password)
         {
             HttpService httpService = HttpService.instance;
 
-            string personneljson = JsonConvert.SerializeObject(new PersonnelLoginDTO(){ UserName = username, Password = password });
+            string personneljson = JsonConvert.SerializeObject(new PersonnelLoginDTO() { UserName = username, Password = password });
 
             var json = await httpService.PostAsync("http://localhost:49527/api/personnel/login", new StringContent(personneljson, Encoding.UTF8, "application/json"));
 

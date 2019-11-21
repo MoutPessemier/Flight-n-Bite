@@ -1,25 +1,96 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Flight__n_Bite.Models
 {
-    public class Movie
+    public class Movie : INotifyPropertyChanged
     {
+        #region Fields        
+        private string _title;
+        private string _description;
+        private double _rating;
+        private string _posterUri;
+        private IList<Artist> _cast;
+        private string _director;
+        #endregion
+
         #region Properties
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public double Rating { get; set; }
-        public string PosterUri { get; set; }
-        public IEnumerable<String> Cast { get; set; }
-        public String Director { get; set; }
+        public int Id { get; set; }
+        public string Title {
+            get {
+                return _title;
+            }
+            set {
+                _title = value;
+                OnPropertyChanged("Title");
+            }
+        }
+        public string Description {
+            get {
+                return _description;
+            }
+            set {
+                _description = value;
+                OnPropertyChanged("Description");
+            }
+        }
+        public double Rating {
+            get {
+                return _rating;
+            }
+            set {
+                _rating = value;
+                OnPropertyChanged("Rating");
+            }
+        }
+        public string PosterUri {
+            get {
+                return _posterUri;
+            }
+            set {
+                _posterUri = value;
+                OnPropertyChanged("PosterUri");
+            }
+        }
+        public IList<Artist> Cast {
+            get {
+                return _cast;
+            }
+            set {
+                _cast = value;
+                OnPropertyChanged("Cast");
+            }
+        }
+        public string Director {
+            get {
+                return _director;
+            }
+            set {
+                _director = value;
+                OnPropertyChanged("Director");
+            }
+        }
         #endregion
 
         public Movie()
         {
 
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            if (PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

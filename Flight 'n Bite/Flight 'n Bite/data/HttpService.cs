@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -35,7 +36,6 @@ namespace Flight__n_Bite.data
             _httpClient = new HttpClient();
        
 
-            //Nu leeg gelaten --> Waar Users screts in Universal Windows??
             var username = Application.Current.Resources["WeatherAPI_username"];
             var password = Application.Current.Resources["WeatherAPI_password"];
 

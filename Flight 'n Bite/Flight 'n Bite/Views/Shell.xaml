@@ -14,21 +14,9 @@
 
     <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
         <Controls:HamburgerMenu.PrimaryButtons>
-            <!--  mainpage button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:MainPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
-                <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Width="48"
-                                Height="48"
-                                Symbol="Home" />
-                    <TextBlock Margin="12,0,0,0"
-                               VerticalAlignment="Center"
-                               Text="Home" />
-                </StackPanel>
-
-            </Controls:HamburgerButtonInfo>
 
                 <!--  passengeroverviewpage button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PassengerOverviewPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PassengersOverviewPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Width="48"
                                 Height="48"
@@ -65,7 +53,8 @@
 
             </Controls:HamburgerButtonInfo>
 
-            <!--  FlightInfo button  -->
+            <!--  Foods 'n Drinks button  -->
+
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FoodsDrinksPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon  Width="48"
@@ -74,6 +63,19 @@
                     <TextBlock Margin="12,0,0,0"
                                VerticalAlignment="Center"
                                Text="Foods 'n Drinks" />
+                </StackPanel>
+
+            </Controls:HamburgerButtonInfo>
+
+            <!-- Chat button -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:Chat" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon  Width="48"
+                                Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8BD;"/>
+
+                    <TextBlock Margin="12,0,0,0"
+                               VerticalAlignment="Center"
+                               Text="Chat" />
                 </StackPanel>
 
             </Controls:HamburgerButtonInfo>
@@ -131,8 +133,6 @@
                 </StackPanel>
 
             </Controls:HamburgerButtonInfo>
-
-
 
         </Controls:HamburgerMenu.SecondaryButtons>
 

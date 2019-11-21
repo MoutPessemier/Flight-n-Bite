@@ -38,8 +38,6 @@ namespace Flight__n_Bite.ViewModels
            
             string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/flight"));
             Flight = JsonConvert.DeserializeObject<Flight>(json);
-
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
