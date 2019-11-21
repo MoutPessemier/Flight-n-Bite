@@ -30,6 +30,7 @@ namespace Flight_n_Bite_API.Data
         public List<Group> GetGroups()
         {
             return _context.Groups.Include(p => p.Companions).Include(p=> p.Chat).ToList();
+
         }
 
         public void SaveChanges()

@@ -1,28 +1,31 @@
-﻿using Flight__n_Bite.Models;
-using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Flight__n_Bite.ViewModels
+namespace Flight__n_Bite.Models
 {
-    public class MovieOverviewViewModel : INotifyPropertyChanged
+    public class Artist: INotifyPropertyChanged
     {
-        private Movie _movie;
-        public Movie Movie {
+        #region Fields
+        private string _name;
+        #endregion
+
+        #region Properties
+        public int Id { get; set; }
+        public string Name {
             get {
-                return _movie;
+                return _name;
             }
             set {
-                _movie = value;
-                OnPropertyChanged("Movie");
+                _name = value;
+                OnPropertyChanged("Name");
             }
         }
-        public MovieOverviewViewModel()
+        #endregion
+
+        public Artist()
         {
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

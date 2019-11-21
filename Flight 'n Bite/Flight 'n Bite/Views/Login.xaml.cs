@@ -80,6 +80,7 @@ namespace Flight__n_Bite.Views
             {
                 _settings.IsFullScreen = false;
                 _settings.IsPersonnel = false;
+
                 Shell.Passenger = currentPassenger;
                 Frame.Navigate(typeof(FlightInfoPage));
 
@@ -88,6 +89,26 @@ namespace Flight__n_Bite.Views
             {
                 txbValidationLabel.Visibility = Visibility.Visible;
                 txbValidationLabel.Text = "Firstname,lastname and seat doesn't match";
+
+            }
+
+
+        }
+
+        private async Task<Passenger> LoginPassenger(Passenger passenger)
+
+        {
+            HttpService httpService = HttpService.instance;
+            string currentPassengerjson = JsonConvert.SerializeObject(passenger);
+            var json = await httpService.PostAsync("http://localhost:49527/api/passenger/login", new StringContent(currentPassengerjson, Encoding.UTF8, "application/json"));
+            try
+            {
+                return JsonConvert.DeserializeObject<Passenger>(json);
+
+            }
+            catch 
+            {
+                return null;
             }
 
 
@@ -126,12 +147,18 @@ namespace Flight__n_Bite.Views
 
         private async void HandleLoginPersonnel()
         {
+
             var personnel = await LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Text);
             if (personnel != null && personnel.Username != null)
             {
                 _settings.IsFullScreen = false;
                 _settings.IsPersonnel = true;
                 Shell.Personnel = personnel;
+            var isLoggedIn = await LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Text);
+            if (isLoggedIn)
+            {
+                _settings.IsFullScreen = false;
+                _settings.IsPersonnel = true;
                 Frame.Navigate(typeof(PassengerOverviewPage));
             }
             else
@@ -143,6 +170,7 @@ namespace Flight__n_Bite.Views
         }
 
         private async  Task<Personnel> LoginPersonnel(string username, string password)
+
         {
             HttpService httpService = HttpService.instance;
 
@@ -159,6 +187,8 @@ namespace Flight__n_Bite.Views
             {
                 return null;
             }
+           
+            return json == "true";
         }
 
         private void Toggle_Toggled(object sender, RoutedEventArgs e)

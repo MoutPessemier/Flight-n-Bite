@@ -35,7 +35,7 @@
             </StackPanel>
         </StackPanel>
         <TextBlock Text="Cast" FontSize="20" />
-        <TextBlock Text="{x:Bind vm.Movie.Cast, Converter={StaticResource listConverter}}"/>
+        <!--<TextBlock Text="{x:Bind vm.Movie.Cast, Converter={StaticResource listConverter}}"/>-->
         <TextBlock Text="Director" FontSize="20" />
         <TextBlock Text="{x:Bind vm.Movie.Director}" Margin="0,0,0,10" />
         <MediaPlayerElement x:Name="mediaPlayer" Height="720" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Center" />

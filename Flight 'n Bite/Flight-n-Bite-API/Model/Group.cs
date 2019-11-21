@@ -11,10 +11,12 @@ namespace Flight_n_Bite_API.Model
         public List<Passenger> Companions { get; set; }
         public List<Message> Chat { get; set; }
 
+
         public Group()
         {
             Companions = new List<Passenger>();
             Chat = new List<Message>();
+
         }
 
         public void JoinGroup(Passenger passenger)
@@ -26,5 +28,6 @@ namespace Flight_n_Bite_API.Model
         {
             Chat.Add(message);
         }
+
     }
 }

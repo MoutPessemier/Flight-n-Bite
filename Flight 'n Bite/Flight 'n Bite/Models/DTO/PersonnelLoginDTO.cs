@@ -1,4 +1,4 @@
-﻿    
+
 namespace Flight__n_Bite.Models.DTO
 
 {
