@@ -10,5 +10,7 @@ namespace Flight_n_Bite_API.Model
         List<Group> GetGroups();
         void AddGroup(Group group);
         void SaveChanges();
+        Group GetGroupByPassenger(int passengerId);
+        Group GetGroupById(int groupId);
     }
 }
