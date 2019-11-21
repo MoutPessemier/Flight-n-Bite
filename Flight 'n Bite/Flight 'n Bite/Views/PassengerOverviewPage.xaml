@@ -20,24 +20,29 @@
     </Page.DataContext>
 
     <Grid>
-        <controls:PageHeader x:Name="pageHeader" Text="Passengers">
-        </controls:PageHeader>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <controls:PageHeader x:Name="pageHeader" Text="Passengers" Grid.ColumnSpan="2" Height="48"/>
         <GridView ItemsSource="{x:Bind vm.Passengers}"  IsItemClickEnabled="False" x:Name="grid"
     CanDragItems="False"
     AllowDrop="False"
     CanReorderItems="False"
     SelectionMode="Multiple"
     SelectionChanged="Grid_SelectionChanged"
-    FlowDirection="LeftToRight">
+    FlowDirection="LeftToRight" Grid.ColumnSpan="2" Margin="-10,10,10,-10">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:PassengerSeat">
                     <StackPanel Orientation="Vertical">
                         <TextBlock x:Name="txtSeat" Text="{x:Bind Seat.Number}" Height="120" />
                         <TextBlock x:Name="txtTaken" Text="{x:Bind Passenger,Converter={StaticResource PassengerToSeatConverter}}"></TextBlock>
-                        <Button Click="Button_Click" ></Button>
+
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
+        <Button Click="Button_Click" >Switch Seats</Button>
+
     </Grid>
 </Page>

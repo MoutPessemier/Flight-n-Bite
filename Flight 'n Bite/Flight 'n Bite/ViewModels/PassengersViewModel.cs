@@ -23,15 +23,20 @@ namespace Flight__n_Bite.ViewModels
             Passengers = new ObservableCollection<PassengerSeat>();
         }
 
-        private async void LoadFlightAndPassengers()
+        private void LoadFlightAndPassengers()
         {
+            refreshSeats();
+        }
+        public async void refreshSeats()
+        {
+
             HttpService httpService = HttpService.instance;
 
             string jsonflight = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/flight"));
             var seats = JsonConvert.DeserializeObject<Flight>(jsonflight).Seats;
             string jsonPassenger = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/passenger"));
             var passengers = JsonConvert.DeserializeObject<List<Passenger>>(jsonPassenger);
-
+            Passengers.Clear();
             foreach (var seat in seats)
             {
                 var passenger = passengers.FirstOrDefault(p => p.SeatIdentifier == seat.Number);
@@ -42,9 +47,6 @@ namespace Flight__n_Bite.ViewModels
 
 
             }
-
-
-
         }
 
        

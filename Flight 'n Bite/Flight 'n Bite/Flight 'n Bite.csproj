@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="data\HttpService.cs" />
     <Compile Include="Models\DTO\PersonnelLoginDTO.cs" />
+    <Compile Include="Models\DTO\SwitchsSeatsDTO.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderLine.cs" />
