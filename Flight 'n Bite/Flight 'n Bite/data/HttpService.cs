@@ -62,11 +62,16 @@ namespace Flight__n_Bite.data
             return json;
         }
 
-        public async Task<string> PostAsync(String uri, StringContent content)
+        public async Task<string> PostAsync(string uri, StringContent content)
         {
             var res = await _httpClient.PostAsync(uri, content);
             return await res.Content.ReadAsStringAsync();
+        }
 
+        public async Task<string> DeleteByIdAsync(string uri, int id)
+        {
+            var res = await _httpClient.DeleteAsync(uri + id);
+            return await res.Content.ReadAsStringAsync();
         }
     }
 }

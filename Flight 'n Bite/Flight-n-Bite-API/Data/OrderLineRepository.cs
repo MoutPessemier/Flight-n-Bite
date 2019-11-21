@@ -16,7 +16,13 @@ namespace Flight_n_Bite_API.Data
 
         public void Add(OrderLine orderLine)
         {
+            orderLine.Product = _context.Products.FirstOrDefault(p => p.Id == orderLine.Product.Id);
             _context.OrderLines.Add(orderLine);
+        }
+
+        public void Delete(OrderLine orderLine)
+        {
+            _context.OrderLines.Remove(orderLine);
         }
 
         public OrderLine GetOrderLineById(int id)

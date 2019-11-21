@@ -5,7 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -19,12 +22,22 @@ namespace Flight__n_Bite.ViewModels
         public Visibility _newOrderLineVisible { get; private set; }
         private HttpService httpService = HttpService.instance;
         public event PropertyChangedEventHandler PropertyChanged;
-
+        private int _newAmount { get; set; }
+        public int NewAmount {
+            get {
+                return _newAmount;
+            }
+            set {
+                _newAmount = value;
+                OnPropertyChanged("NewAmount");
+            }
+        }
         public ProductViewModel()
         {
             Products = new ObservableCollection<Product>();
             Orders = new ObservableCollection<Order>();
             NewOrderLines = new ObservableCollection<OrderLine>();
+            _newAmount = 1;
             LoadFoodsDrinks();
             LoadOrders();
         }
@@ -51,15 +64,21 @@ namespace Flight__n_Bite.ViewModels
             }
         }
 
-        public void AddOrderLine(OrderLine newOrderLine)
+        public async void AddOrderLine(OrderLine newOrderLine)
         {
-            NewOrderLines.Add(newOrderLine);
+            string newOrderLinejson = JsonConvert.SerializeObject(newOrderLine);
+            string json = await httpService.PostAsync("http://localhost:49527/api/orderLine/addOrderLine", new StringContent(newOrderLinejson, Encoding.UTF8, "application/json"));
+            OrderLine orderLineWithId = JsonConvert.DeserializeObject<OrderLine>(json);
+            NewOrderLines.Add(orderLineWithId);
             OnPropertyChanged("NewOrderlines");
+            OnPropertyChanged("newAmountReset");
         }
 
-        public void DeleteOrderLine(OrderLine newOrderLine)
+        public async void DeleteOrderLine(int id)
         {
-            NewOrderLines.Remove(newOrderLine);
+            await httpService.DeleteByIdAsync("http://localhost:49527/api/orderLine/deleteOrderLine/", id);
+            OrderLine deleteOrderLine = NewOrderLines.FirstOrDefault(ol => ol.Id == id);
+            NewOrderLines.Remove(deleteOrderLine);
             OnPropertyChanged("NewOrderlines");
         }
 
@@ -75,6 +94,11 @@ namespace Flight__n_Bite.ViewModels
                 {
                     _newOrderLineVisible = Visibility.Visible;
                 }
+            }
+
+            if (propertyName.Equals("newAmountReset"))
+            {
+                _newAmount = 1;
             }
 
             if (PropertyChanged != null)

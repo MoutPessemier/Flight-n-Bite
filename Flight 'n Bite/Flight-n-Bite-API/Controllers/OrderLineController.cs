@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Flight_n_Bite_API.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +28,22 @@ namespace Flight_n_Bite_API.Controllers
         public OrderLine GetOrderLine(int id)
         {
             return _orderLineRepository.GetOrderLineById(id);
+        }
+
+        [HttpPost("addOrderLine")]
+        public ActionResult<OrderLine> AddOrderLine(OrderLine orderLine)
+        {
+            _orderLineRepository.Add(orderLine);
+            _orderLineRepository.SaveChanges();
+            return orderLine;
+        }
+
+        [HttpDelete("deleteOrderLine/{id}")]
+        public void DeleteOrderLine(int id)
+        {
+            OrderLine orderLine = _orderLineRepository.GetOrderLineById(id);
+            _orderLineRepository.Delete(orderLine);
+            _orderLineRepository.SaveChanges();
         }
     }
 }
