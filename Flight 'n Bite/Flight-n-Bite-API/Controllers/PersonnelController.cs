@@ -34,7 +34,8 @@ namespace Flight_n_Bite_API.Controllers
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<ActionResult<Boolean>> logIn(PersonnelLoginDTO model)
+        public async Task<ActionResult<Personnel>> logIn(PersonnelLoginDTO model)
+
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
 
@@ -44,7 +45,8 @@ namespace Flight_n_Bite_API.Controllers
 
                 if (result.Succeeded)
                 {
-                    return  true;
+                    return _personnelRepository.GetPersonnel(model.UserName);
+
                 }
 
             }

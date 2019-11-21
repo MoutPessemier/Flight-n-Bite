@@ -1,0 +1,28 @@
+﻿<UserControl
+    x:Class="Flight__n_Bite.Views.UserControls.MusicListUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Flight__n_Bite.Views.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:Flight__n_Bite.Util"
+    mc:Ignorable="d"
+    d:DesignHeight="50"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:ArtistConverter x:Key="artistConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+        <Image x:Name="imgCover" Width="50" Height="50" Source="{Binding CoverUri}" />
+        <StackPanel Orientation="Horizontal"  Margin="10,0,0,0">
+            <FontIcon  Width="48" Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE768;" Margin="0,0,10,0"/>
+            <TextBlock Text="{Binding Title}" Width="Auto" Margin="0,0,20,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Artist, Converter={StaticResource artistConverter}}" Width="Auto"  VerticalAlignment="Center"  Margin="0,0,20,0" />
+            <TextBlock Text="{Binding Album}"  Width="Auto"  VerticalAlignment="Center" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

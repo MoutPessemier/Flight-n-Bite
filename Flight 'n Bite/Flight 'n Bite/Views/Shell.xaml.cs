@@ -9,6 +9,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Template10.Mvvm;
 using Flight__n_Bite.ViewModels;
+using Flight__n_Bite.Models;
 
 namespace Flight__n_Bite.Views
 {
@@ -18,6 +19,8 @@ namespace Flight__n_Bite.Views
         public static HamburgerMenu HamburgerMenu => Instance.MyHamburgerMenu;
         Services.SettingsServices.SettingsService _settings;
         public static ShellViewModel viewModel;
+        public static Passenger Passenger { get; set; }
+        public static Personnel Personnel { get; set; }
 
 
         public Shell()

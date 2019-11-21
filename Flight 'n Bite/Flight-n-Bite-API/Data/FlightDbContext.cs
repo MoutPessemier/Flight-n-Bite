@@ -18,6 +18,7 @@ namespace Flight_n_Bite_API.Data
         public DbSet<OrderLine> OrderLines { get; set; }
         public DbSet<Personnel> Personnels { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Group> Groups { get; set; }
 
         public FlightDbContext(DbContextOptions<FlightDbContext> options) : base(options){}
 
@@ -40,6 +41,7 @@ namespace Flight_n_Bite_API.Data
             builder.ApplyConfiguration(new OrderLineConfiguration());
             builder.ApplyConfiguration(new PassengerConfiguration());
             builder.ApplyConfiguration(new PersonnelConfiguration());
+            builder.ApplyConfiguration(new MessageConfiguration());
         }
     }
 }

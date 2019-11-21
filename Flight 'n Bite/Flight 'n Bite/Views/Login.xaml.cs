@@ -50,7 +50,7 @@ namespace Flight__n_Bite.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             txbValidationLabel.Text = "";
-           txbValidationLabel.Visibility = Visibility.Collapsed; 
+            txbValidationLabel.Visibility = Visibility.Collapsed;
             txbNameValidation.Text = "";
             txbNameValidation.Visibility = Visibility.Collapsed;
             var seatNumber = txbSeatNumber.Text;
@@ -68,7 +68,7 @@ namespace Flight__n_Bite.Views
             if (string.IsNullOrEmpty(txbNameValidation.Text) && string.IsNullOrEmpty(txbValidationLabel.Text))
             {
                 HandlePassengerLogin();
-               
+
             }
         }
 
@@ -80,6 +80,7 @@ namespace Flight__n_Bite.Views
             {
                 _settings.IsFullScreen = false;
                 _settings.IsPersonnel = false;
+                Shell.Passenger = currentPassenger;
                 Frame.Navigate(typeof(FlightInfoPage));
 
             }
@@ -103,7 +104,7 @@ namespace Flight__n_Bite.Views
                 return JsonConvert.DeserializeObject<Passenger>(json);
 
             }
-            catch 
+            catch
             {
                 return null;
             }
@@ -120,17 +121,18 @@ namespace Flight__n_Bite.Views
 
             }
             HandleLoginPersonnel();
-            
+
         }
 
         private async void HandleLoginPersonnel()
         {
-            var isLoggedIn = await LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Text);
-            if (isLoggedIn)
+            var personnel = await LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Text);
+            if (personnel != null && personnel.Username != null)
             {
                 _settings.IsFullScreen = false;
                 _settings.IsPersonnel = true;
-                Frame.Navigate(typeof(PassengerOverviewPage));
+                Shell.Personnel = personnel;
+                Frame.Navigate(typeof(PassengersOverviewPage));
             }
             else
             {
@@ -140,15 +142,23 @@ namespace Flight__n_Bite.Views
             }
         }
 
-        private async  Task<Boolean> LoginPersonnel(string username, string password)
+        private async Task<Personnel> LoginPersonnel(string username, string password)
         {
             HttpService httpService = HttpService.instance;
 
-            string personneljson = JsonConvert.SerializeObject(new PersonnelLoginDTO(){ UserName = username, Password = password });
+            string personneljson = JsonConvert.SerializeObject(new PersonnelLoginDTO() { UserName = username, Password = password });
 
             var json = await httpService.PostAsync("http://localhost:49527/api/personnel/login", new StringContent(personneljson, Encoding.UTF8, "application/json"));
-           
-            return json == "true";
+
+            try
+            {
+                return JsonConvert.DeserializeObject<Personnel>(json);
+
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private void Toggle_Toggled(object sender, RoutedEventArgs e)
