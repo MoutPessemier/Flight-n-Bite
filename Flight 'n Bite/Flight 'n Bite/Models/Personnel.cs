@@ -10,7 +10,7 @@ namespace Flight__n_Bite.Models
     {
         #region Properties
         public int Id { get; set; }
-        public string FirstName { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
         #endregion
 
