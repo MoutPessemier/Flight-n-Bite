@@ -31,12 +31,13 @@ namespace Flight_n_Bite_API.Controllers
             return _groupRepository.GetGroupByPassenger(passengerId);
         }
 
-        [HttpPost]
-        public Group SendMessage(int groupId, Message message)
+        [HttpPost("sendMessage")]
+        public Message SendMessage(Message message)
         {
-            Group group = _groupRepository.GetGroupById(groupId);
+            Group group = _groupRepository.GetGroupByPassenger(message.Passenger.Id);
             group.SendMessage(message);
-            return group;
+            _groupRepository.SaveChanges();
+            return message;
         }
     }
 }
