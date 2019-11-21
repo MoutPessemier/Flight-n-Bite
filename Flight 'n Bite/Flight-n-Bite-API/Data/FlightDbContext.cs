@@ -41,6 +41,7 @@ namespace Flight_n_Bite_API.Data
             builder.ApplyConfiguration(new OrderLineConfiguration());
             builder.ApplyConfiguration(new PassengerConfiguration());
             builder.ApplyConfiguration(new PersonnelConfiguration());
+            builder.ApplyConfiguration(new MessageConfiguration());
         }
     }
 }

@@ -24,5 +24,20 @@ namespace Flight_n_Bite_API.Controllers
         {
             return _groupRepository.GetGroups();
         }
+
+        [HttpGet("{passengerId}")]
+        public Group GetGroup(int passengerId)
+        {
+            return _groupRepository.GetGroupByPassenger(passengerId);
+        }
+
+        [HttpPost("sendMessage")]
+        public Message SendMessage(Message message)
+        {
+            Group group = _groupRepository.GetGroupByPassenger(message.Passenger.Id);
+            group.SendMessage(message);
+            _groupRepository.SaveChanges();
+            return message;
+        }
     }
 }

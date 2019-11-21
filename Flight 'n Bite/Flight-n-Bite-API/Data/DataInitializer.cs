@@ -588,6 +588,8 @@ namespace Flight_n_Bite_API.Data
             stinkios.JoinGroup(bram);
             stinkios.JoinGroup(robbe);
 
+            coolios.Chat.Add(new Message() { body = "Nante is een mokke", Passenger = jef });
+
             _passengerRepository.Add(k);
             _passengerRepository.Add(jef);
             _passengerRepository.Add(nante);
