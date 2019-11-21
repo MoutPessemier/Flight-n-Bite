@@ -32,23 +32,30 @@ namespace Flight__n_Bite.ViewModels
             Debug.Write(Shell.Passenger);
             string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/group/" + Shell.Passenger.Id));
             Group group = JsonConvert.DeserializeObject<Group>(json);
-            foreach (var c in group.Companions)
+            if (group != null)
             {
-                Companions.Add(c);
+                foreach (var c in group.Companions)
+                {
+                    Companions.Add(c);
+                }
             }
+
         }
 
         private async void LoadChat()
         {
             string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/group/" + Shell.Passenger.Id));
             Group group = JsonConvert.DeserializeObject<Group>(json);
-            foreach (var m in group.Chat)
+            if (group != null)
             {
-                if (m.Passenger.Id == Shell.Passenger.Id)
+                foreach (var m in group.Chat)
                 {
-                    m.Alignment = HorizontalAlignment.Right;
+                    if (m.Passenger.Id == Shell.Passenger.Id)
+                    {
+                        m.Alignment = HorizontalAlignment.Right;
+                    }
+                    Chat.Add(m);
                 }
-                Chat.Add(m);
             }
         }
 

@@ -10,31 +10,30 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="1" Grid.Column="1">
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <StackPanel x:Name="PassengerLogin" HorizontalAlignment="Center"  Orientation="Vertical" >
-            <TextBox x:Name="txbFirstName" Height="32" PlaceholderText="Firstname" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
-            <TextBox x:Name="txbLastName" Height="32" PlaceholderText="Lastname" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
-            <TextBlock x:Name="txbNameValidation" Foreground="Red" Margin="10" Visibility="Collapsed" />
-            <TextBox x:Name="txbSeatNumber" Height="32" PlaceholderText="Seatnumber" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
-            <TextBlock x:Name="txbValidationLabel" Foreground="Red" Margin="10" Visibility="Collapsed" />
-            <Button Margin="10,50,10,0" HorizontalAlignment="Center" Height="32"  Width="300" Content="Log in" Click="Button_Click"/>
-        </StackPanel>
-            <StackPanel x:Name="PersonnelLogin" HorizontalAlignment="Center" Orientation="Vertical" Visibility="Collapsed">
-            <TextBox x:Name="txbPersonnelUserName" Height="32" PlaceholderText="Username" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
-            <TextBox x:Name="pswPasswordBox" Height="32" PlaceholderText="Password" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
-            <TextBlock x:Name="txbPersonnelValidation" Foreground="Red" Margin="10" Visibility="Collapsed" />
-            <Button Margin="10,50,10,0" HorizontalAlignment="Center" Height="32"  Width="300" Content="Log in" Click="Button_Click_Personnel"/>
+                <TextBox x:Name="txbFirstName" Height="32" PlaceholderText="Firstname" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
+                <TextBox x:Name="txbLastName" Height="32" PlaceholderText="Lastname" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
+                <TextBlock x:Name="txbNameValidation" Foreground="Red" Margin="10" Visibility="Collapsed" />
+                <TextBox x:Name="txbSeatNumber" Height="32" PlaceholderText="Seatnumber" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
+                <TextBlock x:Name="txbValidationLabel" Foreground="Red" Margin="10" Visibility="Collapsed" />
+                <Button Margin="10,50,10,0" HorizontalAlignment="Center" Height="32"  Width="300" Content="Log in" Click="Button_Click"/>
             </StackPanel>
-        <ToggleSwitch x:Name="toggle" HorizontalAlignment="Center" Margin="50" OffContent="I am personnel" OnContent="I am personnel" Toggled="Toggle_Toggled" />
+            <StackPanel x:Name="PersonnelLogin" HorizontalAlignment="Center" Orientation="Vertical" Visibility="Collapsed" VerticalAlignment="Center">
+                <TextBox x:Name="txbPersonnelUserName" Height="32" PlaceholderText="Username" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
+                <TextBox x:Name="pswPasswordBox" Height="32" PlaceholderText="Password" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
+                <TextBlock x:Name="txbPersonnelValidation" Foreground="Red" Margin="10" Visibility="Collapsed" />
+                <Button Margin="10,50,10,0" HorizontalAlignment="Center" Height="32"  Width="300" Content="Log in" Click="Button_Click_Personnel"/>
+            </StackPanel>
+            <ToggleSwitch x:Name="toggle" HorizontalAlignment="Center" Margin="50" OffContent="I am personnel" OnContent="I am personnel" Toggled="Toggle_Toggled" />
         </StackPanel>
     </Grid>
 </Page>

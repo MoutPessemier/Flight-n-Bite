@@ -590,14 +590,21 @@ namespace Flight_n_Bite_API.Data
             coolios.JoinGroup(mout);
 
             var indy = new Passenger() { FirstName = "Indy", LastName = "Van Cangem", SeatIdentifier = "X5" };
-            var bram = new Passenger() { FirstName = "Bram", LastName = "Van Overbeke", SeatIdentifier = "x6" };
-            var robbe = new Passenger() { FirstName = "Robbe", LastName = "Van De Vyver", SeatIdentifier = "x7" };
+            var bram = new Passenger() { FirstName = "Bram", LastName = "Van Overbeke", SeatIdentifier = "X6" };
+            var robbe = new Passenger() { FirstName = "Robbe", LastName = "Van De Vyver", SeatIdentifier = "X7" };
             Group stinkios = new Group();
             stinkios.JoinGroup(indy);
             stinkios.JoinGroup(bram);
             stinkios.JoinGroup(robbe);
 
-            coolios.Chat.Add(new Message() { body = "Nante is een mokke", Passenger = jef });
+            coolios.Chat.Add(new Message() { body = "Jow, pekes! Kheb er zin in!", Passenger = jef });
+            coolios.Chat.Add(new Message() { body = "Ja swa zeker wel", Passenger = mout });
+            coolios.Chat.Add(new Message() { body = "absoluut 😋", Passenger = nante });
+            coolios.Chat.Add(new Message() { body = "Ik ga naar die nice films zien tijdens de vlucht, gelle?", Passenger = mout });
+            coolios.Chat.Add(new Message() { body = "Zwaar wa muziek knalle", Passenger = jef });
+            coolios.Chat.Add(new Message() { body = "Ja kga ook naar ne film zien of wa slapen", Passenger = nante });
+
+
 
             _passengerRepository.Add(k);
             _passengerRepository.Add(jef);
