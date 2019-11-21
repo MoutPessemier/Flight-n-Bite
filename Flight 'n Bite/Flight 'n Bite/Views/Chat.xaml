@@ -65,7 +65,7 @@
 
        
 
-        <ListView x:Name="InvertedListView" ItemsSource="{x:Bind vm.Chat}" Grid.Column="1" Grid.Row="1">
+        <ListView x:Name="InvertedListView" Width="Auto" ItemsSource="{x:Bind vm.Chat}" Grid.Column="1" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Message">
                     <Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind Alignment }">

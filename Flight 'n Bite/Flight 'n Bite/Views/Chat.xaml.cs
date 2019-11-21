@@ -19,7 +19,7 @@ namespace Flight__n_Bite.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var message = new MessageDTO() { Body = messageBody.Text, Passenger = new Passenger() {Id = 2, FirstName= "Jef", LastName="Malfliet", SeatIdentifier="X2" } };
+            var message = new MessageDTO() { Body = messageBody.Text, Passenger = Shell.Passenger };
             vm.SendMessage(message);
             messageBody.Text = "";
         }

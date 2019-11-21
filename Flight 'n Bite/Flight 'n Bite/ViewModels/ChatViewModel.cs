@@ -5,8 +5,10 @@ using Flight__n_Bite.Views;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
+using Windows.UI.Xaml;
 
 namespace Flight__n_Bite.ViewModels
 {
@@ -27,7 +29,8 @@ namespace Flight__n_Bite.ViewModels
 
         private async void LoadCompanions()
         {
-            string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/group/" + Shell.));
+            Debug.Write(Shell.Passenger);
+            string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/group/" + Shell.Passenger.Id));
             Group group = JsonConvert.DeserializeObject<Group>(json);
             foreach (var c in group.Companions)
             {
@@ -37,13 +40,13 @@ namespace Flight__n_Bite.ViewModels
 
         private async void LoadChat()
         {
-            string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/group/" + "2"));
+            string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/group/" + Shell.Passenger.Id));
             Group group = JsonConvert.DeserializeObject<Group>(json);
             foreach(var m in group.Chat)
             {
-                if(m.Passenger.Id == 2)
+                if(m.Passenger.Id == Shell.Passenger.Id)
                 {
-                    m.Alignment = "Right";
+                    m.Alignment = HorizontalAlignment.Right;
                 }
                 Chat.Add(m);
             }
@@ -56,7 +59,10 @@ namespace Flight__n_Bite.ViewModels
             try
             {
                 var m =  JsonConvert.DeserializeObject<Message>(json);
-                // m.Alignment = "Right";
+                if (m.Passenger.Id == Shell.Passenger.Id)
+                {
+                    m.Alignment = HorizontalAlignment.Right;
+                }
                 Chat.Add(m);
             }
             catch
