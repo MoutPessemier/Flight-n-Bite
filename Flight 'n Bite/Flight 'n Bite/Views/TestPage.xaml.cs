@@ -1,8 +1,14 @@
-﻿using System;
+﻿using Flight__n_Bite.data;
+using Flight__n_Bite.Model.DTO;
+using Flight__n_Bite.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -26,5 +32,9 @@ namespace Flight__n_Bite.Views
         {
             this.InitializeComponent();
         }
+
+
+        }
     }
-}
+
+

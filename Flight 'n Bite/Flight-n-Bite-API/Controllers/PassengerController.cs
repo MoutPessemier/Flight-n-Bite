@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Flight_n_Bite_API.Model;
+using Flight_n_Bite_API.Model.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,6 +38,29 @@ namespace Flight_n_Bite_API.Controllers
         {
             var passenger = _passengerRepository.GetPassenger(model.FirstName,model.LastName,model.SeatIdentifier);
             return passenger != null ? (ActionResult<Passenger>)passenger : (ActionResult<Passenger>)BadRequest();
+        }
+
+        [AllowAnonymous]
+        [HttpPost("switchSeats")]
+        public Boolean SwitchSeats(SwitchsSeatsDTO model)
+        {
+           
+            if(model.Passenger1 == null && model.Passenger2 == null)
+            {
+                return false;
+            }
+            if (model.Passenger1 != null)
+            {
+                _passengerRepository.Update(model.Passenger1);
+                _passengerRepository.SaveChanges();
+            }
+            if (model.Passenger2 != null)
+            {
+                _passengerRepository.Update(model.Passenger2);
+                _passengerRepository.SaveChanges();
+            }
+            return true;
+           
         }
     }
 }
