@@ -10,7 +10,6 @@
     xmlns:models="using:Flight__n_Bite.Models"
     xmlns:util="using:Flight__n_Bite.Util"
     xmlns:controls="using:Template10.Controls"
-    xmlns:usercontrols="using:Flight__n_Bite.Views.UserControls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
@@ -22,39 +21,16 @@
     </Page.Resources>
 
     <StackPanel>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="VisualStateGroup">
-                <VisualState x:Name="VisualState">
-                    <VisualState.Setters>
-                        <Setter Target="newOrderlines.(FrameworkElement.Width)" Value="500"/>
-                    </VisualState.Setters>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1600"/>
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="VisualState1">
-                    <VisualState.Setters>
-                        <Setter Target="gridView.(Grid.Row)" Value="1"/>
-                        <Setter Target="newOrderlines.(Grid.Column)" Value="0"/>
-                        <Setter Target="newOrderlines.(FrameworkElement.Width)" Value="auto"/>
-                    </VisualState.Setters>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0"/>
-                    </VisualState.StateTriggers>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
         <controls:PageHeader x:Name="pageHeader" Text="Foods 'n drinks info"/>
         <Pivot>
             <PivotItem Header="All Products">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
-                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <GridView IsItemClickEnabled="True"
                               x:Name="gridView"
@@ -95,30 +71,34 @@
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
-                    <ListView Width="auto"
-                              x:Name="newOrderlines"
-                              Grid.Row="0"
-                              Grid.Column="1"
-                              Background="AliceBlue"
-                              Visibility="{x:Bind Path=vm._newOrderLineVisible}"
-                              ItemsSource="{x:Bind Path=vm.NewOrderLines}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="models:OrderLine">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock x:Name="id" Text="{Binding Id}" Visibility="Collapsed"/>
-                                    <TextBlock x:Name="name" Text="{Binding Product.Name}"/>
-                                    <TextBlock x:Name="amount" Text="{Binding Amount}"/>
-                                    <Button Click="DeleteButtonClicked">
-                                        <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
-                                    </Button>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <StackPanel x:Name="newOrderPanel"
+                                Orientation="Vertical"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Visibility="{Binding Path=NewOrderLineVisible}">
+                        <Button Click="AddOrderButton_Click" >Save Order</Button>
+                        <ListView Width="auto"
+                            x:Name="newOrderlines"
+                            Background="LightGray"
+                            ItemsSource="{x:Bind Path=vm.NewOrderLines}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="models:OrderLine">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock x:Name="id" Text="{Binding Id}" Visibility="Collapsed"/>
+                                        <TextBlock x:Name="name" Text="{Binding Product.Name}"/>
+                                        <TextBlock x:Name="amount" Text="{Binding Amount}"/>
+                                        <Button Click="DeleteButtonClicked">
+                                            <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
                 </Grid>
             </PivotItem>
             <PivotItem Header="My orders">
-                <ListView ItemsSource="{x:Bind Path=vm.Orders}">
+                <ListView ItemsSource="{x:Bind Path=vm.Orders}" x:Name="OrderList">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:Order">
                             <StackPanel Orientation="Vertical">

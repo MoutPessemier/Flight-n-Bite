@@ -30,7 +30,15 @@ namespace Flight_n_Bite_API.Controllers
             return _orderRepository.GetOrders().FirstOrDefault(p => p.Id == id);
         }
 
-        [HttpGet("/passenger/{id}")]
+        [HttpPost("addOrder")]
+        public ActionResult<Order> AddOrderLine(Order order)
+        {
+            _orderRepository.Add(order);
+            _orderRepository.SaveChanges();
+            return order;
+        }
+
+        [HttpGet("getByPassengerId/{id}")]
         public List<Order> GetOrdersByPassenger(int id)
         {
             return _orderRepository.GetOrdersByPassenger(id);

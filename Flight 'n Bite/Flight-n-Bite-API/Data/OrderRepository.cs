@@ -16,6 +16,12 @@ namespace Flight_n_Bite_API.Data
 
         public void Add(Order order)
         {
+            List<OrderLine> orderLineList = new List<OrderLine>();
+            foreach (var orderline in order.OrderLines)
+            {
+                orderLineList.Add(_context.OrderLines.FirstOrDefault(ol => ol.Id == orderline.Id));
+            }
+            order.Passenger = _context.Passengers.FirstOrDefault(p => p.Id == order.Passenger.Id);
             _context.Add(order);
         }
 

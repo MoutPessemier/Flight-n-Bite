@@ -19,7 +19,8 @@ namespace Flight__n_Bite.Views
 
         private void AddButtonClicked(object sender, RoutedEventArgs e)
         {
-            int id = ((Product)((FrameworkElement)sender).DataContext).Id;
+            var element = ((FrameworkElement)sender);
+            int id = ((Product)element.DataContext).Id;
             OrderLine orderline = new OrderLine() { Amount = vm.NewAmount, Product = vm.Products.FirstOrDefault(p => p.Id == id) };
             if (orderline != null)
                 vm.AddOrderLine(orderline);
@@ -47,6 +48,12 @@ namespace Flight__n_Bite.Views
         private void NewOrderLineButton_Click(object sender, RoutedEventArgs e)
         {
             vm.NewAmount = 1;
+        }
+
+        private void AddOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            Order newOrder = new Order() { OrderLines = vm.NewOrderLines.ToList(), Passenger = Shell.Passenger };
+            vm.AddOrder(newOrder);
         }
     }
 }
