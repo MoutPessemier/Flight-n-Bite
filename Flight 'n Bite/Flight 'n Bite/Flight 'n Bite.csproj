@@ -103,6 +103,7 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Music.cs" />
     <Compile Include="Models\Passenger.cs" />
+    <Compile Include="Models\PassengerSeat.cs" />
     <Compile Include="Models\Personnel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Day.cs" />
@@ -112,11 +113,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
     <Compile Include="Util\ListConverter.cs" />
+    <Compile Include="Util\PassengerToSeatConverter.cs" />
     <Compile Include="Util\RatingConverter.cs" />
     <Compile Include="Util\IntegerToCurrencyConverter.cs" />
     <Compile Include="Util\StringToDateConverter.cs" />
     <Compile Include="ViewModels\ContentPageViewModel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
+    <Compile Include="ViewModels\PassengersViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />

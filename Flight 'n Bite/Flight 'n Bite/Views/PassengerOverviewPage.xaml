@@ -6,24 +6,36 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:Flight__n_Bite.ViewModels"
-    xmlns:converters="using:Flight__n_Bite.Util"
-    xmlns:models="using:Flight_n_Bite_API.Model"
     xmlns:controls="using:Template10.Controls"
+    xmlns:models="using:Flight__n_Bite.Models"
+    xmlns:util="using:Flight__n_Bite.Util"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-
+    <Page.Resources>
+        <util:PassengerToSeatConverter x:Key="PassengerToSeatConverter" />
+    </Page.Resources>
     <Page.DataContext>
-        <viewmodels:FlightViewModel x:Name="vm" />
+        <viewmodels:PassengersViewModel x:Name="vm" />
     </Page.DataContext>
 
     <Grid>
         <controls:PageHeader x:Name="pageHeader" Text="Passengers">
         </controls:PageHeader>
-        <GridView ItemsSource="{x:Bind vm.Flight.Seats}" >
+        <GridView ItemsSource="{x:Bind vm.Passengers}"  IsItemClickEnabled="False" x:Name="grid"
+    CanDragItems="False"
+    AllowDrop="False"
+    CanReorderItems="False"
+    SelectionMode="Multiple"
+    SelectionChanged="Grid_SelectionChanged"
+    FlowDirection="LeftToRight">
             <GridView.ItemTemplate>
-                <DataTemplate x:DataType="models:Seat">
-                    <TextBlock x:Name="txtDescription" Text="{x:Bind Number}" Height="120" />
+                <DataTemplate x:DataType="models:PassengerSeat">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock x:Name="txtSeat" Text="{x:Bind Seat.Number}" Height="120" />
+                        <TextBlock x:Name="txtTaken" Text="{x:Bind Passenger,Converter={StaticResource PassengerToSeatConverter}}"></TextBlock>
+                        <Button Click="Button_Click" ></Button>
+                    </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

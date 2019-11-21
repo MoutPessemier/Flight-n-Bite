@@ -26,5 +26,21 @@ namespace Flight__n_Bite.Views
         {
             this.InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var items = grid.SelectedItems;
+            //switch items van plaats in backend
+
+        }
+
+        private void Grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var gv = (GridView)sender;
+            if (sender == null || gv.SelectedItems.Count > 2)
+            {
+                gv.SelectedItems.Remove(gv.SelectedItems[0]);
+            }
+        }
     }
 }
