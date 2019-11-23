@@ -94,6 +94,7 @@ namespace Flight__n_Bite.ViewModels
                 NewOrderLines.Clear();
                 _newAmount = 1;
                 OnPropertyChanged("NewOrder");
+                OnPropertyChanged("NewOrderLineVisible");
             }
         }
 

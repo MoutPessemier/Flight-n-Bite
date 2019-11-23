@@ -650,6 +650,7 @@ namespace Flight_n_Bite_API.Data
             _orderLineRepository.Add(orderline3);
             _orderLineRepository.Add(orderline4);
             _orderLineRepository.Add(orderline5);
+            _orderLineRepository.Add(orderline6);
             _orderLineRepository.SaveChanges();
 
             _orderRepository.Add(order1);

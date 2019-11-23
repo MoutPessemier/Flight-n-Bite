@@ -16,11 +16,16 @@ namespace Flight_n_Bite_API.Data
 
         public void Add(Order order)
         {
-            List<OrderLine> orderLineList = new List<OrderLine>();
-            foreach (var orderline in order.OrderLines)
+            List<OrderLine> orderLinesList = new List<OrderLine>();
+            foreach (var orderLine in order.OrderLines)
             {
-                orderLineList.Add(_context.OrderLines.FirstOrDefault(ol => ol.Id == orderline.Id));
+                orderLinesList.Add(_context.OrderLines.Include(ol => ol.Product).FirstOrDefault(ol => ol.Id == orderLine.Id));
+            } 
+            foreach (var orderLine in orderLinesList)
+            {
+                orderLine.Product = _context.Products.FirstOrDefault(p => p.Id == orderLine.Product.Id);
             }
+            order.OrderLines = orderLinesList;
             order.Passenger = _context.Passengers.FirstOrDefault(p => p.Id == order.Passenger.Id);
             _context.Add(order);
         }
