@@ -28,11 +28,11 @@ namespace Flight__n_Bite.Views
         public MoviesOverview()
         {
             this.InitializeComponent();
+            
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             vm.Movie = SerializationService.Json.Deserialize<Movie>(e.Parameter.ToString());
-            // Debug.WriteLine(movie.Cast.First().Name);
             SetSource();
         }
 
@@ -41,5 +41,10 @@ namespace Flight__n_Bite.Views
             mediaPlayer.Source = MediaSource.CreateFromUri(new Uri($"ms-appx:///Assets/Movies/{vm.Movie.Title}.mp4"));
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            mediaPlayer.Source = null;
+        }
     }
 }
