@@ -33,10 +33,10 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10*" />
-                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="2*" />
                     </Grid.RowDefinitions>
 
-                    <ScrollViewer>
+                    <ScrollViewer Grid.Row="0">
                         <StackPanel Orientation="Vertical" >
                             <ListView ItemsSource="{x:Bind vm.MusicList}" ItemClick="ListView_ItemClick" IsItemClickEnabled="True">
                                 <ListView.ItemTemplate>
@@ -47,7 +47,7 @@
                             </ListView>
                         </StackPanel>
                     </ScrollViewer>
-                    <MediaPlayerElement x:Name="mediaPlayer" Height="100" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <MediaPlayerElement Grid.Row="1" x:Name="musicPlayer" AutoPlay="True" AreTransportControlsEnabled="True" Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Grid>
             </PivotItem>
         </Pivot>

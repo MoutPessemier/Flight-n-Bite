@@ -81,7 +81,7 @@ namespace Flight_n_Bite_API.Data
                 _artistRepository.Add(cc);
                 var ed = new Artist() { Name = "Ed Sheeran" };
                 _artistRepository.Add(ed);
-                var fw = new Artist() { Name = "Fettu Wap" };
+                var fw = new Artist() { Name = "Fetty Wap" };
                 _artistRepository.Add(fw);
                 var haywyre = new Artist() { Name = "haywyre" };
                 _artistRepository.Add(haywyre);
@@ -488,7 +488,7 @@ namespace Flight_n_Bite_API.Data
 
                 var sleight = new Movie()
                 {
-                    Title = "Oblivion",
+                    Title = "Sleight",
                     Description = "A young street magician (Jacob Latimore) is left to care for his little sister after their parents' passing, and turns to illegal activities to keep a roof over their heads. When he gets in...",
                     Director = "J.D. Dillard",
                     Rating = 5.9,
@@ -567,7 +567,7 @@ namespace Flight_n_Bite_API.Data
                 var only = new Music() { Title = "Only", Artist = nf, Album = "The Search", CoverUri = "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/b0/f6/b4/b0f6b4d2-82ba-7da1-5ace-6e20ab825427/source/1200x1200bb.jpg" };
                 only.AddArtist(ss);
                 _musicRepository.Add(only);
-                var radioDream = new Music() { Title = "Radio Dream", Artist = orbicus, Album = "Radio Dream", CoverUri = "https://m.media-amazon.com/images/I/41wsK17Ex+L._AA256_.jpg" };
+                var radioDream = new Music() { Title = "Radio Dreams", Artist = orbicus, Album = "Radio Dreams", CoverUri = "https://m.media-amazon.com/images/I/41wsK17Ex+L._AA256_.jpg" };
                 _musicRepository.Add(radioDream);
                 var rewindTime = new Music() { Title = "Rewind Time", Artist = pdp, Album = "Year Review", CoverUri = "https://i1.sndcdn.com/artworks-000464167308-dwl8u7-t500x500.jpg" };
                 rewindTime.AddArtist(pib);
