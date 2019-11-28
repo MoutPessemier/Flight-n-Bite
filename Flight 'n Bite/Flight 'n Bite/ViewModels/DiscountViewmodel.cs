@@ -36,7 +36,6 @@ namespace Flight__n_Bite.ViewModels
         public DiscountViewmodel()
         {
             Products = new ObservableCollection<Product>();
-            Discount = 5;
             LoadFoodsDrinks();
         }
 
