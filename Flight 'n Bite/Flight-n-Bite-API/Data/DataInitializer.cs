@@ -57,16 +57,12 @@ namespace Flight_n_Bite_API.Data
             _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
-                var seat1 = new Seat() { Number = "X1" };
-                var seat2 = new Seat() { Number = "X2" };
-                var seat3 = new Seat() { Number = "X3" };
-                var seat4 = new Seat() { Number = "X4" };
-                var seat5 = new Seat() { Number = "X5" };
-                var seat6 = new Seat() { Number = "X6" };
-                var seat7 = new Seat() { Number = "X7" };
+     
                 var flight = new Flight() { Number = "X44795", Departure = "Zaventem", Arrival = "Madrid-Barajas Adolfo Suárez Airport", StartLatitude= 50.8855, StartLongitude= 4.4710, EndLatitude = 40.4948384, EndLongitude= -3.5740806 };
-                flight.AddSeat(seat1); flight.AddSeat(seat2); flight.AddSeat(seat3); flight.AddSeat(seat4); flight.AddSeat(seat5); flight.AddSeat(seat6); flight.AddSeat(seat7);
-                
+                for (int i = 1; i < 30; i++)
+                {
+                    flight.AddSeat(new Seat() { Number = $"X{i}" });
+                }
                 _flightRepository.Add(flight);
                 _flightRepository.SaveChanges();
 
@@ -579,7 +575,7 @@ namespace Flight_n_Bite_API.Data
                 _musicRepository.SaveChagnes();
             }
 
-            var k = new Passenger() { FirstName = "k", LastName = "k", SeatIdentifier = "X1" };
+            var k = new Passenger() { FirstName = "k", LastName = "k", SeatIdentifier = "X25" };
  
             var jef = new Passenger() { FirstName = "Jef", LastName = "Malfliet", SeatIdentifier = "X2" };
             var nante = new Passenger() { FirstName = "Nante", LastName = "Vermeulen", SeatIdentifier = "X3" };

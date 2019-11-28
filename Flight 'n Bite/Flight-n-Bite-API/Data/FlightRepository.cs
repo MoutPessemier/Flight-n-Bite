@@ -1,5 +1,6 @@
 ﻿using Flight_n_Bite_API.Model;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace Flight_n_Bite_API.Data
@@ -20,7 +21,10 @@ namespace Flight_n_Bite_API.Data
 
         public Flight GetFlight()
         {
-            return _flightDbContext.Flights.Include(f => f.Seats).FirstOrDefault();
+
+            var flight = _flightDbContext.Flights.Include(f => f.Seats).FirstOrDefault();
+            flight.Seats = flight.Seats.OrderBy(s => Int32.Parse(s.Number.Substring(1))).ToList();
+            return flight;
         }
 
         public void SaveChanges()
