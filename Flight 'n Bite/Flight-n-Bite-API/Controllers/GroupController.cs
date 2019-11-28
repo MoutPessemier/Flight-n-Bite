@@ -35,8 +35,11 @@ namespace Flight_n_Bite_API.Controllers
         public Message SendMessage(Message message)
         {
             Group group = _groupRepository.GetGroupByPassenger(message.Passenger.Id);
-            group.SendMessage(message);
-            _groupRepository.SaveChanges();
+            if(group != null)
+            {
+                group.SendMessage(message);
+                _groupRepository.SaveChanges();
+            }
             return message;
         }
 

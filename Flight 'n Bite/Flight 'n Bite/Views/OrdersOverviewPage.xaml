@@ -1,0 +1,61 @@
+﻿<Page
+    x:Class="Flight__n_Bite.Views.OrdersOverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Flight__n_Bite.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:Flight__n_Bite.Models"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:vm="using:Flight__n_Bite.ViewModels"
+    xmlns:util="using:Flight__n_Bite.Util"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:OrderOverviewViewModel x:Name="vm"/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <util:OrderIdToStringConvertor x:Key="OrderIdToStringConvertor" />
+        <util:BooleanToColorConvertor x:Key="BooleanToColorConvertor"/>
+        <util:BooleanToGlyphConvertor x:Key="BooleanToGlyphConvertor"/>
+    </Page.Resources>
+
+    <StackPanel>
+        <controls:PageHeader x:Name="pageHeader" Text="Orderoverview"/>
+        <GridView ItemsSource="{x:Bind Path=vm.Orders}" x:Name="OrderList" IsItemClickEnabled="True" ItemClick="OrderList_ItemClick">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:Order">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="32" x:Name="id" Text="{Binding Id, Converter={StaticResource OrderIdToStringConvertor}}"/>
+                            <FontIcon Margin="10,0,0,10" Foreground="{Binding IsHandled, Converter={StaticResource BooleanToColorConvertor}}" Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="{Binding IsHandled, Converter={StaticResource BooleanToGlyphConvertor}}"/>
+                        </StackPanel>
+                        
+                        <ListView ItemsSource="{x:Bind Path=OrderLines}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="models:OrderLine">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0"><Run Text="Product:"/></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="product" Text="{x:Bind Path=Product.Name}"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="1"><Run Text="Amount:"/></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="amount" Text="{x:Bind Path=Amount}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </StackPanel>
+</Page>

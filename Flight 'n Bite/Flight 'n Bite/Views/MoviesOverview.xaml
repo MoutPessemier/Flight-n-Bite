@@ -21,24 +21,26 @@
     </Page.Resources>
 
     <StackPanel Orientation="Vertical" Margin="10">
-        <StackPanel.Background>
-            <ImageBrush ImageSource="{x:Bind vm.Movie.PosterUri}"/>
-        </StackPanel.Background>
+        <TextBlock Text="{x:Bind vm.Movie.Title}"  FontSize="24"  TextWrapping="WrapWholeWords"/>
+        <TextBlock Text="{x:Bind vm.Movie.Description}" FontSize="20" Margin="0,0,0,10" TextWrapping="WrapWholeWords" />
         <StackPanel Orientation="Horizontal">
-            <StackPanel Orientation="Vertical" Margin="0,0,10,0">
-                <TextBlock Text="{x:Bind vm.Movie.Title}"  FontSize="24"  TextWrapping="WrapWholeWords"/>
-                <TextBlock Text="{x:Bind vm.Movie.Description}" FontSize="20" Margin="0,0,0,10" TextWrapping="WrapWholeWords" />
-            </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+            <StackPanel Orientation="Vertical" Width="100">
                 <TextBlock Text="Rating" FontSize="20" />
                 <TextBlock Text="{x:Bind vm.Movie.Rating, Converter={StaticResource ratingConverter}}" FontSize="20" />
             </StackPanel>
+            <StackPanel Orientation="Vertical" Width="600">
+                <TextBlock Text="Cast" FontSize="20" />
+                <TextBlock Text="{x:Bind vm.Movie.Cast, Converter={StaticResource listConverter}}" FontSize="20" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Width="200">
+                <TextBlock Text="Director" FontSize="20" />
+                <TextBlock Text="{x:Bind vm.Movie.Director}" Margin="0,0,0,10" FontSize="20" />
+            </StackPanel>
         </StackPanel>
-        <TextBlock Text="Cast" FontSize="20" />
-        <!--<TextBlock Text="{x:Bind vm.Movie.Cast, Converter={StaticResource listConverter}}"/>-->
-        <TextBlock Text="Director" FontSize="20" />
-        <TextBlock Text="{x:Bind vm.Movie.Director}" Margin="0,0,0,10" />
-        <MediaPlayerElement x:Name="mediaPlayer" Height="720" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <!--<StackPanel x:Name="MediaPlayerContainer" Orientation="Horizontal">
+            
+        </StackPanel>-->
+        <MediaPlayerElement x:Name="mediaPlayer" Margin="0,30" AreTransportControlsEnabled="True" Height="720" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </StackPanel>
 </Page>
 

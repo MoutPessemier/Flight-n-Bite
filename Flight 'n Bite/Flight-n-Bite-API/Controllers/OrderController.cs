@@ -43,5 +43,12 @@ namespace Flight_n_Bite_API.Controllers
         {
             return _orderRepository.GetOrdersByPassenger(id);
         }
+
+        [HttpPost("handleOrder")]
+        public void handleOrder(Order order)
+        {
+            _orderRepository.Handleorder(order.Id);
+            _orderRepository.SaveChanges();
+        }
     }
 }

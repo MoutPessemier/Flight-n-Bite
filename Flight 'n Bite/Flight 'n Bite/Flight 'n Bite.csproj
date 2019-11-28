@@ -118,16 +118,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
     <Compile Include="Util\ArtistConverter.cs" />
+    <Compile Include="Util\BooleanToColorConvertor.cs" />
+    <Compile Include="Util\BooleanToGlyphConvertor.cs" />
     <Compile Include="Util\ListConverter.cs" />
     <Compile Include="Util\PassengerToGlyphConverter.cs" />
     <Compile Include="Util\PassengerToSeatColor.cs" />
+    <Compile Include="Util\OrderIdToStringConvertor.cs" />
     <Compile Include="Util\PassengerToSeatConverter.cs" />
     <Compile Include="Util\RatingConverter.cs" />
     <Compile Include="Util\IntegerToCurrencyConverter.cs" />
     <Compile Include="Util\StringToDateConverter.cs" />
+    <Compile Include="Util\TemeratureConverter.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\ContentPageViewModel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
+    <Compile Include="ViewModels\OrderOverviewViewModel.cs" />
     <Compile Include="ViewModels\PassengersViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
@@ -157,6 +162,9 @@
     <Compile Include="Views\MoviesOverview.xaml.cs">
       <DependentUpon>MoviesOverview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\OrdersOverviewPage.xaml.cs">
+      <DependentUpon>OrdersOverviewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PassengersOverviewPage.xaml.cs">
       <DependentUpon>PassengersOverviewPage.xaml</DependentUpon>
     </Compile>
@@ -185,6 +193,46 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Movies\A Monster Calls.mp4" />
+    <Content Include="Assets\Movies\CHAPPIE.mp4" />
+    <Content Include="Assets\Movies\Doctor Strange.mp4" />
+    <Content Include="Assets\Movies\Edge of Tomorrow.mp4" />
+    <Content Include="Assets\Movies\Endgame.mp4" />
+    <Content Include="Assets\Movies\Ex Machina.mp4" />
+    <Content Include="Assets\Movies\Far From Home.mp4" />
+    <Content Include="Assets\Movies\Ghost in the Shell.mp4" />
+    <Content Include="Assets\Movies\Glass.mp4" />
+    <Content Include="Assets\Movies\Homecoming.mp4" />
+    <Content Include="Assets\Movies\Infinity War.mp4" />
+    <Content Include="Assets\Movies\Iron Man 2.mp4" />
+    <Content Include="Assets\Movies\Iron Man 3.mp4" />
+    <Content Include="Assets\Movies\Iron Man.mp4" />
+    <Content Include="Assets\Movies\JOKER.mp4" />
+    <Content Include="Assets\Movies\Logan.mp4" />
+    <Content Include="Assets\Movies\Oblivion.mp4" />
+    <Content Include="Assets\Movies\Sleight.mp4" />
+    <Content Include="Assets\Movies\The Imitation Game.mp4" />
+    <Content Include="Assets\Movies\World War Z.mp4" />
+    <Content Include="Assets\Music\AK-Broken.mp3" />
+    <Content Include="Assets\Music\BANNERS-Half Light.mp3" />
+    <Content Include="Assets\Music\BANNERS-Start A Riot.mp3" />
+    <Content Include="Assets\Music\Bon Iver-Holocene.mp3" />
+    <Content Include="Assets\Music\Cautious Clay-Erase.mp3" />
+    <Content Include="Assets\Music\Ed Sheeran-I See Fire.mp3" />
+    <Content Include="Assets\Music\Fetty Wap-Trap Queen %28Crankdat Remix%29.mp3" />
+    <Content Include="Assets\Music\Haywyre-Never Count On Me.mp3" />
+    <Content Include="Assets\Music\Kanye West-Heartless.mp3" />
+    <Content Include="Assets\Music\kina-i feel empty.mp3" />
+    <Content Include="Assets\Music\League of Legends-Phoenix.mp3" />
+    <Content Include="Assets\Music\Midoca-Dry the Rose.mp3" />
+    <Content Include="Assets\Music\Módl-Clementine.mp3" />
+    <Content Include="Assets\Music\NF-10 Feet Down.mp3" />
+    <Content Include="Assets\Music\NF-Mansion.mp3" />
+    <Content Include="Assets\Music\NF-Only.mp3" />
+    <Content Include="Assets\Music\Orbicus-Radio Dreams.mp3" />
+    <Content Include="Assets\Music\PewDiePie-Rewind Time.mp3" />
+    <Content Include="Assets\Music\Post Malone-Circles.mp3" />
+    <Content Include="Assets\Music\Terror Reid-When It%27s All Gone!.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -231,6 +279,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MoviesOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OrdersOverviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -43,10 +43,5 @@ namespace Flight__n_Bite.ViewModels
                 MusicList.Add(m);
             }
         }
-
-        public void PlaySong(String id)
-        {
-            //MusicList.
-        }
     }
 }

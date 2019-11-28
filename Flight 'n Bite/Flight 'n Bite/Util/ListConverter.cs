@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flight__n_Bite.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,9 @@ namespace Flight__n_Bite.Util
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var cast = ((IEnumerable<String>)value).Select(c => c + ", ").ToString();
-            return cast.Substring(0, cast.Length - 2);
+            List<string> cast = ((List<Artist>)value).Select(c => c.Name).ToList();
+            var singleString = string.Join(", ", cast.ToArray());
+            return singleString;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

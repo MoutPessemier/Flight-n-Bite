@@ -58,12 +58,11 @@ namespace Flight_n_Bite_API.Data
             if (_context.Database.EnsureCreated())
             {
      
-                var flight = new Flight() { Number = "X44795", Departure = "Brussel", Arrival = "Madrid"};
+                var flight = new Flight() { Number = "X44795", Departure = "Zaventem", Arrival = "Madrid-Barajas Adolfo Suárez Airport", StartLatitude= 50.8855, StartLongitude= 4.4710, EndLatitude = 40.4948384, EndLongitude= -3.5740806 };
                 for (int i = 1; i < 30; i++)
                 {
                     flight.AddSeat(new Seat() { Number = $"X{i}" });
                 }
-
                 _flightRepository.Add(flight);
                 _flightRepository.SaveChanges();
 
@@ -78,7 +77,7 @@ namespace Flight_n_Bite_API.Data
                 _artistRepository.Add(cc);
                 var ed = new Artist() { Name = "Ed Sheeran" };
                 _artistRepository.Add(ed);
-                var fw = new Artist() { Name = "Fettu Wap" };
+                var fw = new Artist() { Name = "Fetty Wap" };
                 _artistRepository.Add(fw);
                 var haywyre = new Artist() { Name = "haywyre" };
                 _artistRepository.Add(haywyre);
@@ -485,7 +484,7 @@ namespace Flight_n_Bite_API.Data
 
                 var sleight = new Movie()
                 {
-                    Title = "Oblivion",
+                    Title = "Sleight",
                     Description = "A young street magician (Jacob Latimore) is left to care for his little sister after their parents' passing, and turns to illegal activities to keep a roof over their heads. When he gets in...",
                     Director = "J.D. Dillard",
                     Rating = 5.9,
@@ -564,7 +563,7 @@ namespace Flight_n_Bite_API.Data
                 var only = new Music() { Title = "Only", Artist = nf, Album = "The Search", CoverUri = "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/b0/f6/b4/b0f6b4d2-82ba-7da1-5ace-6e20ab825427/source/1200x1200bb.jpg" };
                 only.AddArtist(ss);
                 _musicRepository.Add(only);
-                var radioDream = new Music() { Title = "Radio Dream", Artist = orbicus, Album = "Radio Dream", CoverUri = "https://m.media-amazon.com/images/I/41wsK17Ex+L._AA256_.jpg" };
+                var radioDream = new Music() { Title = "Radio Dreams", Artist = orbicus, Album = "Radio Dreams", CoverUri = "https://m.media-amazon.com/images/I/41wsK17Ex+L._AA256_.jpg" };
                 _musicRepository.Add(radioDream);
                 var rewindTime = new Music() { Title = "Rewind Time", Artist = pdp, Album = "Year Review", CoverUri = "https://i1.sndcdn.com/artworks-000464167308-dwl8u7-t500x500.jpg" };
                 rewindTime.AddArtist(pib);
@@ -638,10 +637,10 @@ namespace Flight_n_Bite_API.Data
             var orderline5 = new OrderLine() { Product = fristi, Amount = 1 };
             var orderline6 = new OrderLine() { Product = fristi, Amount = 1 };
 
-            var order1 = new Order() { Passenger = jef, OrderLines = new List<OrderLine>() { orderline1, orderline2} };
-            var order2 = new Order() { Passenger = nante, OrderLines = new List<OrderLine>() { orderline3, orderline4 } };
-            var order3 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 } };
-            var order4 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline6 } };
+            var order1 = new Order() { Passenger = jef, OrderLines = new List<OrderLine>() { orderline1, orderline2}, IsHandled= true };
+            var order2 = new Order() { Passenger = nante, OrderLines = new List<OrderLine>() { orderline3, orderline4 }, IsHandled = true };
+            var order3 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 }, IsHandled = true };
+            var order4 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline6 }, IsHandled = true };
 
             _productRepository.Add(fristi);
             _productRepository.Add(soldatenkoek);

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
@@ -25,6 +27,8 @@ namespace Flight__n_Bite.Views
         public FlightInfoPage()
         {
             this.InitializeComponent();
+            map.MapServiceToken = "USFEOxkmSWLfzImVMywC~5ACMQ_yNXy2whn0cMKQYFw~Avs5Y7C-hzkmDAj0s8uJx536bGKYMHTjrri6acyzzPoIcT8QS2D_NcSefaAk4cK1";
+            vm1.Map = map;
         }
     }
 }

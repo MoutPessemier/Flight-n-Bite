@@ -12,6 +12,17 @@ namespace Flight__n_Bite.Models
     {
         public int Id { get; set; }
         private Passenger _passenger { get; set; }
+        private bool _ishandled { get; set; }
+
+        public bool IsHandled {
+            get {
+                return _ishandled;
+            }
+            set {
+                _ishandled = value;
+                OnPropertyChanged("IsHandled");
+            }
+        }
         public Passenger Passenger {
             get {
                 return _passenger;
