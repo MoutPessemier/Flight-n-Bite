@@ -625,16 +625,17 @@ namespace Flight_n_Bite_API.Data
             _personnelRepository.SaveChanges();
 
 
-            var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0 };
-            var soldatenkoek = new Product() { Name = "Soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0 };
-            var borrelnootjes = new Product() { Name = "Borrelnootjes", Description = "Perfect voor bij een sterke trappist", Price = 3.0 };
-            var trappist = new Product() { Name = "Trappist", Description = "Perfect voor bij lekker borrelnootjes", Price = 7.5 };
-            var chips = new Product() { Name = "Peper en Zout chips", Description = "Voel de korrels zout op je tong!", Price = 2.5 };
-            var gin = new Product() { Name = "Bulldog Gin met Tonic", Description = "Proef de kruiden", Price = 12 };
-            var zoeteBeertjes = new Product() { Name = "Suiker Beertjes", Description = "Alleen voor echte beren!", Price = 1.5 };
-            var lasagna = new Product() { Name = "Lasange", Description = "Een Zweedse Memelord zijn lied", Price = 69 };
-            var balletjes = new Product() { Name = "Zweedse balletjes van IKEA", Description = "super smakliga bollar", Price = 15 };
-            var bigDaddy = new Product() { Name = "Big Daddy", Description = "Boord, vlees peper saus, brood", Price = 12.5 };
+
+            var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0, Discount = 0 };
+            var soldatenkoek = new Product() { Name = "Soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0, Discount = 0};
+            var borrelnootjes = new Product() { Name = "Borrelnootjes", Description = "Perfect voor bij een sterke trappist", Price = 3.0, Discount = 0 };
+            var trappist = new Product() { Name = "Trappist", Description = "Perfect voor bij lekker borrelnootjes", Price = 7.5, Discount = 0 };
+            var chips = new Product() { Name = "Peper en Zout chips", Description = "Voel de korrels zout op je tong!", Price = 2.5, Discount = 0 };
+            var gin = new Product() { Name = "Bulldog Gin met Tonic", Description = "Proef de kruiden", Price = 12, Discount = 0 };
+            var zoeteBeertjes = new Product() { Name = "Suiker Beertjes", Description = "Alleen voor echte beren!", Price = 1.5, Discount = 0 };
+            var lasagna = new Product() { Name = "Lasange", Description = "Een Zweedse Memelord zijn lied", Price = 69, Discount = 0 };
+            var balletjes = new Product() { Name = "Zweedse balletjes van IKEA", Description = "super smakliga bollar", Price = 15, Discount = 0 };
+            var bigDaddy = new Product() { Name = "Big Daddy", Description = "Boord, vlees peper saus, brood", Price = 12.5, Discount = 0 };
 
             var orderline1 = new OrderLine() { Product = fristi, Amount = 5 };
             var orderline2 = new OrderLine() { Product = soldatenkoek, Amount = 2 };

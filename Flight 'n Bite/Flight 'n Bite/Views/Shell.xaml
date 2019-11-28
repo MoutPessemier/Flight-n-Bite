@@ -42,6 +42,21 @@
 
             </Controls:HamburgerButtonInfo>
 
+
+            <!-- Discountpage button  -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:DiscountPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Width="48"
+                              Height="48" 
+                              FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE94C;"/>
+
+                    <TextBlock Margin="12,0,0,0"
+                               VerticalAlignment="Center"
+                               Text="Discounts" />
+                </StackPanel>
+
+            </Controls:HamburgerButtonInfo>
+
             <!--  FlightInfo button  -->
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FlightInfoPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
