@@ -25,23 +25,26 @@ namespace Flight__n_Bite.Views
         }
         private async void handleSwitchSeats(IList<object> items)
         {
-            var passengerseat1 = ((PassengerSeat)items[0]);
-            var passengerseat2 = ((PassengerSeat)items[1]);
-            var p1seat = passengerseat1.Seat.Number;
-            var p2seat = passengerseat2.Seat.Number;
-            if (passengerseat1.Passenger != null)
-                passengerseat1.Passenger.SeatIdentifier = p2seat;
-            if (passengerseat2.Passenger != null)
-                passengerseat2.Passenger.SeatIdentifier = p1seat;
+            if (items.Count == 2)
+            {
+                var passengerseat1 = ((PassengerSeat)items[0]);
+                var passengerseat2 = ((PassengerSeat)items[1]);
+                var p1seat = passengerseat1.Seat.Number;
+                var p2seat = passengerseat2.Seat.Number;
+                if (passengerseat1.Passenger != null)
+                    passengerseat1.Passenger.SeatIdentifier = p2seat;
+                if (passengerseat2.Passenger != null)
+                    passengerseat2.Passenger.SeatIdentifier = p1seat;
 
-            HttpService httpService = HttpService.instance;
+                HttpService httpService = HttpService.instance;
 
-            string personneljson = JsonConvert.SerializeObject(new SwitchsSeatsDTO() { Passenger1 = passengerseat1.Passenger, Passenger2 = passengerseat2.Passenger });
+                string personneljson = JsonConvert.SerializeObject(new SwitchsSeatsDTO() { Passenger1 = passengerseat1.Passenger, Passenger2 = passengerseat2.Passenger });
 
-            var json = await httpService.PostAsync("http://localhost:49527/api/passenger/switchSeats", new StringContent(personneljson, Encoding.UTF8, "application/json"));
-            var success = JsonConvert.DeserializeObject<Boolean>(json);
-            if (success)
-                vm.refreshSeats();
+                var json = await httpService.PostAsync("http://localhost:49527/api/passenger/switchSeats", new StringContent(personneljson, Encoding.UTF8, "application/json"));
+                var success = JsonConvert.DeserializeObject<Boolean>(json);
+                if (success)
+                    vm.refreshSeats();
+            }
 
         }
 

@@ -14,35 +14,57 @@
 
     <Page.Resources>
         <util:PassengerToSeatConverter x:Key="PassengerToSeatConverter" />
+        <util:PassengerToSeatColor x:Key="PassengerToSeatColor" />
+        <util:PassengerToGlyphConverter x:Key="PassengerToGlyphConverter" />
+
+
     </Page.Resources>
     <Page.DataContext>
         <viewmodels:PassengersViewModel x:Name="vm" />
     </Page.DataContext>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <controls:PageHeader x:Name="pageHeader" Text="Passengers" Grid.ColumnSpan="2" Height="48"/>
+        <controls:PageHeader x:Name="pageHeader" Text="Passengers" Height="48" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
         <GridView ItemsSource="{x:Bind vm.Passengers}"  IsItemClickEnabled="False" x:Name="grid"
     CanDragItems="False"
     AllowDrop="False"
     CanReorderItems="False"
     SelectionMode="Multiple"
     SelectionChanged="Grid_SelectionChanged"
-    FlowDirection="LeftToRight" Grid.ColumnSpan="2" Margin="-10,10,10,-10">
+    FlowDirection="LeftToRight" Margin="20,20.5,20,19" Grid.Row="1" AutomationProperties.AccessibilityView="Content" BorderThickness="0,1">
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="Width" Value="150" />
+                    <Setter Property="Height" Value="150" />
+                </Style>
+            </GridView.ItemContainerStyle>
+
             <GridView.ItemTemplate>
+
                 <DataTemplate x:DataType="models:PassengerSeat">
                     <StackPanel Orientation="Vertical">
-                        <TextBlock x:Name="txtSeat" Text="{x:Bind Seat.Number}" Height="120" />
-                        <TextBlock x:Name="txtTaken" Text="{x:Bind Passenger,Converter={StaticResource PassengerToSeatConverter}}"></TextBlock>
+                        <TextBlock x:Name="txtSeat" Text="{x:Bind Seat.Number}" Height="20" Width="30" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" />
 
+                        <FontIcon  Width="48"
+                                Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph ="{x:Bind Passenger,Converter={StaticResource PassengerToGlyphConverter}}"/>
+
+                        <TextBlock x:Name="txtTaken" Text="{x:Bind Passenger,Converter={StaticResource PassengerToSeatConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Foreground="{x:Bind Passenger,Converter={StaticResource PassengerToSeatColor}}" />
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        <Button Click="Button_Click" >Switch Seats</Button>
+        <Button Click="Button_Click" Grid.Row="1" Grid.Column="1"  Height="32" Width="102" HorizontalAlignment="Center" >Switch Seats</Button>
 
     </Grid>
 </Page>

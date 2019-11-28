@@ -119,6 +119,8 @@
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
     <Compile Include="Util\ArtistConverter.cs" />
     <Compile Include="Util\ListConverter.cs" />
+    <Compile Include="Util\PassengerToGlyphConverter.cs" />
+    <Compile Include="Util\PassengerToSeatColor.cs" />
     <Compile Include="Util\PassengerToSeatConverter.cs" />
     <Compile Include="Util\RatingConverter.cs" />
     <Compile Include="Util\IntegerToCurrencyConverter.cs" />
