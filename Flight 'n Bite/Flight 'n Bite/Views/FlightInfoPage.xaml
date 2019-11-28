@@ -17,12 +17,17 @@
     <Page.Resources>
         <util:StringToDateConverter x:Key="StringToDateConverter" />
         <util:TemeratureConverter x:Key="temperatureConverter" />
+        <util:FlightToETAConverter x:Key="FlightToETAConverter" />
+        <util:WeatherDataToGlyphConverter x:Key="WeatherDataToGlyphConverter" />
+        <util:RainWaterConverter x:Key="RainWaterConverter" />
+
+
     </Page.Resources>
 
     <StackPanel>
         <controls:PageHeader x:Name="pageHeader" Text="Flight Info">
         </controls:PageHeader>
-        <Grid Height="900">
+        <Grid Height="950">
             <Grid.RenderTransform>
                 <CompositeTransform Rotation="0.265"/>
             </Grid.RenderTransform>
@@ -40,21 +45,21 @@
                     <vm:FlightViewModel x:Name="vm1"/>
                 </StackPanel.DataContext>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="12" Text="FlightNumber:"></TextBlock>
-                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Number,Mode=OneWay}"></TextBlock>
+                    <TextBlock Margin="12" Text="FlightNumber:"/>
+                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Number,Mode=OneWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="12" Text="Departure:"></TextBlock>
-                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Departure,Mode=OneWay}"></TextBlock>
+                    <TextBlock Margin="12" Text="Departure:"/>
+                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Departure,Mode=OneWay}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="12" Text="Arrival:"></TextBlock>
-                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Arrival,Mode=OneWay}"></TextBlock>
+                    <TextBlock Margin="12" Text="Arrival:"/>
+                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Arrival,Mode=OneWay}"/>
                 </StackPanel>
-                <!--<StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="12" Text="Capacity:"></TextBlock>
-                    <TextBlock Margin="12" Text="3000"></TextBlock>
-                </StackPanel>-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="12" Text="ETA:"/>
+                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight,Mode=OneWay,Converter={StaticResource FlightToETAConverter}}"/>
+                </StackPanel>
             </StackPanel>
             <StackPanel VerticalAlignment="Center" Grid.Column="1" Grid.Row="0">
                 <StackPanel.DataContext>
@@ -63,11 +68,21 @@
                 <StackPanel Orientation="Horizontal">
 
                     <GridView Name="lvlFlights" ItemsSource="{x:Bind vm2.Dates}">
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="Margin" Value="10"/>
+                                <Setter Property="Padding" Value="10"/>
+                            </Style>
+                        </GridView.ItemContainerStyle>
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="models:Day">
                                 <StackPanel Orientation="Vertical" Margin="0,0,20,0">
-                                    <TextBlock x:Name="txtDate" Text="{x:Bind Date,Converter={StaticResource StringToDateConverter}}"/>
-                                    <TextBlock x:Name="txtTemperature" Text="{x:Bind Temperature, Converter={StaticResource temperatureConverter}}"/>
+                                    <TextBlock x:Name="txtDate" Text="{x:Bind Date,Converter={StaticResource StringToDateConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <FontIcon  Width="48"
+                                Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph ="{x:Bind CurrentWeather,Converter={StaticResource WeatherDataToGlyphConverter}}"/>
+                                    <TextBlock Text="{x:Bind RainWater,Converter={StaticResource RainWaterConverter }}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" />
+
+                                    <TextBlock x:Name="txtTemperature" Text="{x:Bind Temperature, Converter={StaticResource temperatureConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </StackPanel>
                             </DataTemplate>
                         </GridView.ItemTemplate>

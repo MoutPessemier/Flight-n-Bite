@@ -11,7 +11,6 @@ namespace Flight__n_Bite.Models
     public class Day: INotifyPropertyChanged
     {
         #region Properties
-        [JsonProperty("date")]
         private string _date;
         public string Date {
             get {
@@ -22,7 +21,6 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("Date");
             }
         }
-        [JsonProperty("value")]
         private double _temperature;
         public double Temperature {
             get {
@@ -33,12 +31,47 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("Temperature");
             }
         }
+        private double _cloudCover;
+
+        public double CloudCover {
+            get {
+                return _cloudCover;
+            }
+            set {
+                _cloudCover = value;
+                OnPropertyChanged("CloudCover");
+            }
+        }
+        private double _rainWater;
+
+        public double RainWater {
+            get {
+                return _rainWater;
+            }
+            set {
+                _rainWater = value;
+                OnPropertyChanged("RainWater");
+            }
+        }
         #endregion
 
         public Day()
         {
 
         }
+        public string CurrentWeather{
+            get {
+                if (RainWater > 50)
+                    return "Rainy";
+                if (CloudCover > 50)
+                {
+                    return "Cloudy";
+                }
+                return "Sunny";
+            }
+        }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -18,6 +18,11 @@ namespace Flight_n_Bite_API.Model
         public double EndLatitude { get; set; }
         public double EndLongitude { get; set; }
 
+        public double Duration { get; set; }
+        public double DepartureTime { get; set; }
+        public double Delay { get; set; }
+
+
         public Flight()
         {
             Seats = new List<Seat>();

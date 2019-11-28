@@ -21,7 +21,16 @@ namespace Flight__n_Bite.Models
     public class Coordinates
     {
         [JsonProperty("dates")]
-        public List<Day> Dates { get; set; }
+        public List<DateValue> Dates { get; set; }
+    }
+    public class DateValue
+    {
+        [JsonProperty("date")]
+        public string Date { get; set; }
+        [JsonProperty("value")]
+        public double Value { get; set; }
     }
 
-}
+
+
+    }
