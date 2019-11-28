@@ -9,73 +9,73 @@
     xmlns:vm="using:Flight__n_Bite.ViewModels"
     xmlns:models="using:Flight__n_Bite.Models"
     xmlns:util="using:Flight__n_Bite.Util"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
     <Page.Resources>
         <util:StringToDateConverter x:Key="StringToDateConverter" />
+        <util:TemeratureConverter x:Key="temperatureConverter" />
     </Page.Resources>
 
     <StackPanel>
-            <controls:PageHeader x:Name="pageHeader" Text="Flight Info">
-            </controls:PageHeader>
-            <Grid Height="900">
-                <Grid.RenderTransform>
-                    <CompositeTransform Rotation="0.265"/>
-                </Grid.RenderTransform>
+        <controls:PageHeader x:Name="pageHeader" Text="Flight Info">
+        </controls:PageHeader>
+        <Grid Height="900">
+            <Grid.RenderTransform>
+                <CompositeTransform Rotation="0.265"/>
+            </Grid.RenderTransform>
 
-                <Grid.RowDefinitions >
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
-                    <StackPanel.DataContext>
-                        <vm:FlightViewModel x:Name="vm1"/>
-                    </StackPanel.DataContext>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="12" Text="FlightNumber:"></TextBlock>
-                        <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Number,Mode=OneWay}"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="12" Text="Departure:"></TextBlock>
-                        <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Departure,Mode=OneWay}"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="12" Text="Arrival:"></TextBlock>
-                        <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Arrival,Mode=OneWay}"></TextBlock>
-                    </StackPanel>
-                    <!--<StackPanel Orientation="Horizontal">
+            <Grid.RowDefinitions >
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="10" Grid.Column="0" Grid.Row="0">
+                <StackPanel.DataContext>
+                    <vm:FlightViewModel x:Name="vm1"/>
+                </StackPanel.DataContext>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="12" Text="FlightNumber:"></TextBlock>
+                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Number,Mode=OneWay}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="12" Text="Departure:"></TextBlock>
+                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Departure,Mode=OneWay}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="12" Text="Arrival:"></TextBlock>
+                    <TextBlock Margin="12" Text="{x:Bind vm1.Flight.Arrival,Mode=OneWay}"></TextBlock>
+                </StackPanel>
+                <!--<StackPanel Orientation="Horizontal">
                     <TextBlock Margin="12" Text="Capacity:"></TextBlock>
                     <TextBlock Margin="12" Text="3000"></TextBlock>
                 </StackPanel>-->
-                </StackPanel>
-                <StackPanel VerticalAlignment="Center" Grid.Column="1" Grid.Row="0">
-                    <StackPanel.DataContext>
-                        <vm:WeatherViewModel x:Name="vm2"/>
-                    </StackPanel.DataContext>
-                    <StackPanel Orientation="Horizontal">
-                       
-                        <ListView Name="lvlFlights" ItemsSource="{x:Bind vm2.Dates}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Day">
-                                    <StackPanel>
-                                    <TextBlock x:Name="txtDate" Text="{x:Bind Date,Converter={StaticResource StringToDateConverter}}"/>
-                                    <TextBlock x:Name="txtTemperature" Text="{x:Bind Temperature}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" Grid.Column="1" Grid.Row="0">
+                <StackPanel.DataContext>
+                    <vm:WeatherViewModel x:Name="vm2" />
+                </StackPanel.DataContext>
+                <StackPanel Orientation="Horizontal">
 
+                    <GridView Name="lvlFlights" ItemsSource="{x:Bind vm2.Dates}">
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Day">
+                                <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                                    <TextBlock x:Name="txtDate" Text="{x:Bind Date,Converter={StaticResource StringToDateConverter}}"/>
+                                    <TextBlock x:Name="txtTemperature" Text="{x:Bind Temperature, Converter={StaticResource temperatureConverter}}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
                 </StackPanel>
-            </Grid>
-        </StackPanel>
+            </StackPanel>
+            <maps:MapControl x:Name="map" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="2"/>
+        </Grid>
+    </StackPanel>
 </Page>
 

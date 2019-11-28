@@ -123,6 +123,7 @@
     <Compile Include="Util\RatingConverter.cs" />
     <Compile Include="Util\IntegerToCurrencyConverter.cs" />
     <Compile Include="Util\StringToDateConverter.cs" />
+    <Compile Include="Util\TemeratureConverter.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\ContentPageViewModel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />

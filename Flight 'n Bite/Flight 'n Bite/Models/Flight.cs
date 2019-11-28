@@ -54,6 +54,48 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("Seats");
             }
         }
+        private double _startLatitude;
+        public double StartLatitude {
+            get {
+                return _startLatitude;
+            }
+            set {
+                _startLatitude = value;
+                OnPropertyChanged("StartLatitude");
+            }
+        }
+        private double _startLongitude;
+        public double StartLongitude {
+            get {
+                return _startLongitude;
+            }
+            set {
+                _startLongitude = value;
+                OnPropertyChanged("StartLongitude");
+            }
+        }
+
+        private double _endLatitude;
+        public double EndLatitude {
+            get {
+                return _endLatitude;
+            }
+            set {
+                _endLatitude = value;
+                OnPropertyChanged("EndLatitude");
+            }
+        }
+        private double _endLongitude;
+        public double EndLongitude {
+            get {
+                return _endLongitude;
+            }
+            set {
+                _endLongitude = value;
+                OnPropertyChanged("EndLongitude");
+            }
+        }
+
 
         #endregion
         public Flight()
