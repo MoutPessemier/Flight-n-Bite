@@ -95,7 +95,36 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("EndLongitude");
             }
         }
-
+        private double _duration;
+        public double Duration {
+            get {
+                return _duration;
+            }
+            set {
+                _duration = value;
+                OnPropertyChanged("Duration");
+            }
+        }
+        private double _departureTime;
+        public double DepartureTime {
+            get {
+                return _departureTime;
+            }
+            set {
+                _departureTime = value;
+                OnPropertyChanged("DepartureTime");
+            }
+        }
+        private double _delay;
+        public double Delay {
+            get {
+                return _endLongitude;
+            }
+            set {
+                _delay = value;
+                OnPropertyChanged("Delay");
+            }
+        }
 
         #endregion
         public Flight()

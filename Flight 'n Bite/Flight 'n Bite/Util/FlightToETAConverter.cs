@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flight__n_Bite.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,13 +8,19 @@ using Windows.UI.Xaml.Data;
 
 namespace Flight__n_Bite.Util
 {
-    public class StringToDateConverter : IValueConverter
+    class FlightToETAConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            char[] sep = { '-'};
-            var temp = ((string)value).Substring(0, 10).Split(sep);
-            return temp[2] + "/" + temp[1];
+            var flight = (Flight)value;
+            if(flight != null) { 
+            var ETA = flight.DepartureTime + flight.Duration + flight.Delay;
+            var ETAHOUR = Math.Floor(ETA);
+            var ETAMINUTES = Math.Floor((ETA - ETAHOUR) * 60);
+            return $"{ETAHOUR}u{ETAMINUTES}";
+            }
+            return "";
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

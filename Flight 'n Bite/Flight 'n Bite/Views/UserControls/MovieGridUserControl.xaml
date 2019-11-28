@@ -56,7 +56,16 @@
         </VisualStateManager.VisualStateGroups>
         <Image x:Name="imgPoster" Source="{Binding PosterUri}"  Margin="0,0,0,10" />
         <TextBlock Text="{Binding Title}" FontSize="20sp" FontWeight="Bold" Padding="10,0" Margin="0,0,0,5" />
+
         <TextBlock x:Name="txtDescription" Text="{Binding Description}" Height="120" Padding="10,0"  Margin="0,0,0,5" TextWrapping="WrapWholeWords" />
-        <TextBlock Text="{Binding Rating}" Padding="10,0"/>
+        <StackPanel Orientation="Horizontal" >
+            <FontIcon  Width="48"
+                                Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph ="&#xE735;" FocusVisualPrimaryBrush="#FF251D09" Foreground="#FFFFCB42" />
+            <TextBlock Text="{Binding Rating}" Padding="0,15"/>
+
+           
+
+        </StackPanel>
+
     </StackPanel>
 </UserControl>

@@ -58,7 +58,8 @@ namespace Flight_n_Bite_API.Data
             if (_context.Database.EnsureCreated())
             {
      
-                var flight = new Flight() { Number = "X44795", Departure = "Zaventem", Arrival = "Madrid-Barajas Adolfo Suárez Airport", StartLatitude= 50.8855, StartLongitude= 4.4710, EndLatitude = 40.4948384, EndLongitude= -3.5740806 };
+                var flight = new Flight() { Number = "X44795", Departure = "Zaventem", Arrival = "Madrid-Barajas Adolfo Suárez Airport", StartLatitude= 50.8855, StartLongitude= 4.4710, EndLatitude = 40.4948384, EndLongitude= -3.5740806, DepartureTime=18.1,Duration=2.05,Delay=0 };
+
                 for (int i = 1; i < 30; i++)
                 {
                     flight.AddSeat(new Seat() { Number = $"X{i}" });
