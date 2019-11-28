@@ -45,6 +45,11 @@ namespace Flight_n_Bite_API.Data
             return _context.Orders.Include(o => o.OrderLines).ThenInclude(ol => ol.Product).Where(o => o.Passenger.Id == passengerId).ToList();
         }
 
+        public void Handleorder(int id)
+        {
+            _context.Orders.FirstOrDefault(o => o.Id == id).IsHandled = true;
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

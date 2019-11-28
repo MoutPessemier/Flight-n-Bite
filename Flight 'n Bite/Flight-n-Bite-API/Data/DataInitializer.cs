@@ -641,10 +641,10 @@ namespace Flight_n_Bite_API.Data
             var orderline5 = new OrderLine() { Product = fristi, Amount = 1 };
             var orderline6 = new OrderLine() { Product = fristi, Amount = 1 };
 
-            var order1 = new Order() { Passenger = jef, OrderLines = new List<OrderLine>() { orderline1, orderline2} };
-            var order2 = new Order() { Passenger = nante, OrderLines = new List<OrderLine>() { orderline3, orderline4 } };
-            var order3 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 } };
-            var order4 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline6 } };
+            var order1 = new Order() { Passenger = jef, OrderLines = new List<OrderLine>() { orderline1, orderline2}, IsHandled= true };
+            var order2 = new Order() { Passenger = nante, OrderLines = new List<OrderLine>() { orderline3, orderline4 }, IsHandled = true };
+            var order3 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 }, IsHandled = true };
+            var order4 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline6 }, IsHandled = true };
 
             _productRepository.Add(fristi);
             _productRepository.Add(soldatenkoek);

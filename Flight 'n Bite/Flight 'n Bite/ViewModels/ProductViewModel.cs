@@ -56,7 +56,14 @@ namespace Flight__n_Bite.ViewModels
 
         private async void LoadOrders()
         {
-            string json = await HttpService.GetStringAsync(new Uri("http://localhost:49527/api/order/getByPassengerId/" + Shell.Passenger.Id));
+            string json = null;
+            if (Shell.Passenger != null)
+            {
+                json = await HttpService.GetStringAsync(new Uri("http://localhost:49527/api/order/getByPassengerId/" + Shell.Passenger.Id));
+            } else
+            {
+                json = await HttpService.GetStringAsync(new Uri("http://localhost:49527/api/order"));
+            }
             IList<Order> orderList = JsonConvert.DeserializeObject<ObservableCollection<Order>>(json);
 
             foreach (var o in orderList)
@@ -87,6 +94,7 @@ namespace Flight__n_Bite.ViewModels
         {
             if (NewOrderLines.Count() > 0)
             {
+                newOrder.IsHandled = false;
                 string newOrderjson = JsonConvert.SerializeObject(newOrder);
                 string json = await HttpService.PostAsync("http://localhost:49527/api/order/addOrder", new StringContent(newOrderjson, Encoding.UTF8, "application/json"));
                 Order orderWithId = JsonConvert.DeserializeObject<Order>(json);
