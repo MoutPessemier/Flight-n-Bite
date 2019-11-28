@@ -10,29 +10,44 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       xmlns:views="using:Flight__n_Bite.Views"
       mc:Ignorable="d">
-    
+
 
     <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
         <Controls:HamburgerMenu.PrimaryButtons>
 
-                <!--  passengeroverviewpage button  -->
+            <!--  passengeroverviewpage button  -->
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PassengersOverviewPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
-                    <StackPanel Orientation="Horizontal">
-                        <SymbolIcon Width="48"
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Width="48"
                                 Height="48"
                                 Symbol="Home" />
-                        <TextBlock Margin="12,0,0,0"
+                    <TextBlock Margin="12,0,0,0"
                                VerticalAlignment="Center"
                                Text="Passengers" />
-                    </StackPanel>
+                </StackPanel>
 
-                </Controls:HamburgerButtonInfo>
+            </Controls:HamburgerButtonInfo>
 
-                <!--  FlightInfo button  -->
+            <!-- Ordersoverviewpage button  -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:OrdersOverviewPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Width="48"
+                              Height="48" 
+                              FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF0B5;"/>
+
+                    <TextBlock Margin="12,0,0,0"
+                               VerticalAlignment="Center"
+                               Text="Orders" />
+                </StackPanel>
+
+            </Controls:HamburgerButtonInfo>
+
+            <!--  FlightInfo button  -->
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FlightInfoPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
-                    <FontIcon  Width="48"
-                                Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE709;"/>
+                    <FontIcon Width="48"
+                              Height="48"
+                              FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE709;"/>
 
                     <TextBlock Margin="12,0,0,0"
                                VerticalAlignment="Center"
@@ -80,8 +95,8 @@
 
             </Controls:HamburgerButtonInfo>
         </Controls:HamburgerMenu.PrimaryButtons>
-        
-        
+
+
 
         <Controls:HamburgerMenu.SecondaryButtons>
             <!--  profile button  -->

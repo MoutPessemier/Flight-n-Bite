@@ -11,6 +11,7 @@ namespace Flight_n_Bite_API.Model
         List<Order> GetOrdersByPassenger(int userId);
         List<OrderLine> GetOrderLinesByOrder(int id);
         void Add(Order order);
+        void Handleorder(int id);
         void SaveChanges();
     }
 }

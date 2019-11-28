@@ -6,6 +6,7 @@ namespace Flight_n_Bite_API.Model
     {
         public int Id { get; set; }
         public Passenger Passenger { get; set; }
+        public bool IsHandled { get; set; }
         public List<OrderLine> OrderLines { get; set; }
     }
 }
