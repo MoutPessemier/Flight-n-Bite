@@ -122,6 +122,8 @@
     <Compile Include="Util\BooleanToGlyphConvertor.cs" />
     <Compile Include="Util\IntegerToPercentageConvertor.cs" />
     <Compile Include="Util\ListConverter.cs" />
+    <Compile Include="Util\PassengerToGlyphConverter.cs" />
+    <Compile Include="Util\PassengerToSeatColor.cs" />
     <Compile Include="Util\OrderIdToStringConvertor.cs" />
     <Compile Include="Util\PassengerToSeatConverter.cs" />
     <Compile Include="Util\RatingConverter.cs" />

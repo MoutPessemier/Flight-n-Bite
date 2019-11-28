@@ -26,7 +26,7 @@
             <PivotItem Header="All Products">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -37,16 +37,20 @@
                               Grid.Row="0"
                               Grid.Column="0"
                               ItemsSource="{x:Bind Path=vm.Products}">
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="Margin" Value="10"/>
+                            </Style>
+                        </GridView.ItemContainerStyle>
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="models:Product">
-                                <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Vertical"  Width="250">
                                     <Image/>
-                                    <!--<TextBlock x:Name="id" Text="{Binding Id}" Visibility="Collapsed"/>-->
-                                    <TextBlock x:Name="name" FontSize="32" Text="{Binding Name}"/>
-                                    <TextBlock x:Name="description" FontSize="12" Text="{Binding Description}" Width="250"/>
-                                    <TextBlock x:Name="price" FontFamily="24" Text="{Binding Price, Converter={StaticResource IntegerCurrencyConverter}}"/>
+                                    <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}" Margin="0,0,0,5" TextWrapping="WrapWholeWords" Height="60"/>
+                                    <TextBlock x:Name="description" FontSize="12" Text="{Binding Description}" Margin="0,0,0,5" TextWrapping="WrapWholeWords" Height="20"/>
+                                    <TextBlock x:Name="price" FontFamily="24" Margin="0,0,0,5" Height="20" Text="{Binding Price, Converter={StaticResource IntegerCurrencyConverter}}"/>
                                     <Button Click="NewOrderLineButton_Click">
-                                        <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED0E;"/>
+                                        <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7BF;"/>
                                         <Button.Flyout>
                                             <Flyout>
                                                 <StackPanel Orientation="Vertical">
@@ -83,14 +87,20 @@
                             ItemsSource="{x:Bind Path=vm.NewOrderLines}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="models:OrderLine">
-                                    <StackPanel Orientation="Horizontal">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="5*" />
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
                                         <TextBlock x:Name="id" Text="{Binding Id}" Visibility="Collapsed"/>
-                                        <TextBlock x:Name="name" Text="{Binding Product.Name}"/>
-                                        <TextBlock x:Name="amount" Text="{Binding Amount}"/>
-                                        <Button Click="DeleteButtonClicked">
+                                        <TextBlock x:Name="name" Text="{Binding Product.Name}" Grid.Column="0"/>
+                                        <TextBlock Text=":" Grid.Column="0" />
+                                        <TextBlock x:Name="amount" Text="{Binding Amount}"  Grid.Column="1"/>
+                                        <Button Click="DeleteButtonClicked" Grid.Column="2">
                                             <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
                                         </Button>
-                                    </StackPanel>
+                                    </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
@@ -102,25 +112,20 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:Order">
                             <StackPanel Orientation="Vertical">
-                                <TextBlock FontSize="32" x:Name="id" Text="{x:Bind Path=Id}"/>
-                                <TextBlock FontSize="32"><Run Text="OrderLines:"/></TextBlock>
+                                <TextBlock FontSize="32" Text="OrderLines:"></TextBlock>
                                 <ListView ItemsSource="{x:Bind Path=OrderLines}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate x:DataType="models:OrderLine">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock Grid.Row="0" Grid.Column="0"><Run Text="Product:"/></TextBlock>
-                                                <TextBlock Grid.Row="1" Grid.Column="0" x:Name="product" Text="{x:Bind Path=Product.Name}"/>
-                                                <TextBlock Grid.Row="0" Grid.Column="1"><Run Text="Amount:"/></TextBlock>
-                                                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="amount" Text="{x:Bind Path=Amount}"/>
-                                            </Grid>
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                                    <TextBlock Text="Product:" Margin="0,0,10,0"/>
+                                                    <TextBlock x:Name="product" Text="{x:Bind Path=Product.Name}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Amount:" Margin="0,0,10,0"/>
+                                                    <TextBlock x:Name="amount" Text="{x:Bind Path=Amount}"/>
+                                                </StackPanel>
+                                            </StackPanel>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>

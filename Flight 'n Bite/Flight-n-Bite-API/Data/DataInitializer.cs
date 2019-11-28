@@ -57,16 +57,12 @@ namespace Flight_n_Bite_API.Data
             _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
-                var seat1 = new Seat() { Number = "X1" };
-                var seat2 = new Seat() { Number = "X2" };
-                var seat3 = new Seat() { Number = "X3" };
-                var seat4 = new Seat() { Number = "X4" };
-                var seat5 = new Seat() { Number = "X5" };
-                var seat6 = new Seat() { Number = "X6" };
-                var seat7 = new Seat() { Number = "X7" };
-                var flight = new Flight() { Number = "X44795", Departure = "Zaventem", Arrival = "Madrid-Barajas Adolfo Suárez Airport", StartLatitude= 50.8855, StartLongitude= 4.4710, EndLatitude = 40.4948384, EndLongitude= -3.5740806 };
-                flight.AddSeat(seat1); flight.AddSeat(seat2); flight.AddSeat(seat3); flight.AddSeat(seat4); flight.AddSeat(seat5); flight.AddSeat(seat6); flight.AddSeat(seat7);
-                
+
+                var flight = new Flight() { Number = "X44795", Departure = "Zaventem", Arrival = "Madrid-Barajas Adolfo Suárez Airport", StartLatitude = 50.8855, StartLongitude = 4.4710, EndLatitude = 40.4948384, EndLongitude = -3.5740806 };
+                for (int i = 1; i < 30; i++)
+                {
+                    flight.AddSeat(new Seat() { Number = $"X{i}" });
+                }
                 _flightRepository.Add(flight);
                 _flightRepository.SaveChanges();
 
@@ -579,8 +575,8 @@ namespace Flight_n_Bite_API.Data
                 _musicRepository.SaveChagnes();
             }
 
-            var k = new Passenger() { FirstName = "k", LastName = "k", SeatIdentifier = "X1" };
- 
+            var k = new Passenger() { FirstName = "k", LastName = "k", SeatIdentifier = "X25" };
+
             var jef = new Passenger() { FirstName = "Jef", LastName = "Malfliet", SeatIdentifier = "X2" };
             var nante = new Passenger() { FirstName = "Nante", LastName = "Vermeulen", SeatIdentifier = "X3" };
             var mout = new Passenger() { FirstName = "Mout", LastName = "Pessemier", SeatIdentifier = "X4" };
@@ -620,7 +616,7 @@ namespace Flight_n_Bite_API.Data
             _groupRepository.SaveChanges();
 
             var personel = new Personnel { UserName = "Piloot@hotmail.com" };
-            var personel2 = new Personnel { UserName = "Stewardess@hotmail.com"};
+            var personel2 = new Personnel { UserName = "Stewardess@hotmail.com" };
             await CreateUser(personel.UserName, "Piloot123!");
             await CreateUser(personel2.UserName, "Stewardess123!");
 
@@ -629,10 +625,17 @@ namespace Flight_n_Bite_API.Data
             _personnelRepository.SaveChanges();
 
 
+
             var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0, Discount = 0 };
-            var soldatenkoek = new Product() { Name = "soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0, Discount = 0 };
-            var borrelnootjes = new Product() { Name = "borrelnootjes", Description = "Perfect voor bij een sterke trappist", Price = 3.0, Discount = 0 };
+            var soldatenkoek = new Product() { Name = "Soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0, Discount = 0};
+            var borrelnootjes = new Product() { Name = "Borrelnootjes", Description = "Perfect voor bij een sterke trappist", Price = 3.0, Discount = 0 };
             var trappist = new Product() { Name = "Trappist", Description = "Perfect voor bij lekker borrelnootjes", Price = 7.5, Discount = 0 };
+            var chips = new Product() { Name = "Peper en Zout chips", Description = "Voel de korrels zout op je tong!", Price = 2.5, Discount = 0 };
+            var gin = new Product() { Name = "Bulldog Gin met Tonic", Description = "Proef de kruiden", Price = 12, Discount = 0 };
+            var zoeteBeertjes = new Product() { Name = "Suiker Beertjes", Description = "Alleen voor echte beren!", Price = 1.5, Discount = 0 };
+            var lasagna = new Product() { Name = "Lasange", Description = "Een Zweedse Memelord zijn lied", Price = 69, Discount = 0 };
+            var balletjes = new Product() { Name = "Zweedse balletjes van IKEA", Description = "super smakliga bollar", Price = 15, Discount = 0 };
+            var bigDaddy = new Product() { Name = "Big Daddy", Description = "Boord, vlees peper saus, brood", Price = 12.5, Discount = 0 };
 
             var orderline1 = new OrderLine() { Product = fristi, Amount = 5 };
             var orderline2 = new OrderLine() { Product = soldatenkoek, Amount = 2 };
@@ -641,7 +644,7 @@ namespace Flight_n_Bite_API.Data
             var orderline5 = new OrderLine() { Product = fristi, Amount = 1 };
             var orderline6 = new OrderLine() { Product = fristi, Amount = 1 };
 
-            var order1 = new Order() { Passenger = jef, OrderLines = new List<OrderLine>() { orderline1, orderline2}, IsHandled= true };
+            var order1 = new Order() { Passenger = jef, OrderLines = new List<OrderLine>() { orderline1, orderline2 }, IsHandled = true };
             var order2 = new Order() { Passenger = nante, OrderLines = new List<OrderLine>() { orderline3, orderline4 }, IsHandled = true };
             var order3 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline5 }, IsHandled = true };
             var order4 = new Order() { Passenger = mout, OrderLines = new List<OrderLine>() { orderline6 }, IsHandled = true };
@@ -650,6 +653,12 @@ namespace Flight_n_Bite_API.Data
             _productRepository.Add(soldatenkoek);
             _productRepository.Add(borrelnootjes);
             _productRepository.Add(trappist);
+            _productRepository.Add(chips);
+            _productRepository.Add(gin);
+            _productRepository.Add(zoeteBeertjes);
+            _productRepository.Add(lasagna);
+            _productRepository.Add(balletjes);
+            _productRepository.Add(bigDaddy);
             _productRepository.SaveChanges();
 
             _orderLineRepository.Add(orderline1);
@@ -670,7 +679,7 @@ namespace Flight_n_Bite_API.Data
 
         private async Task CreateUser(string username, string password)
         {
-            var user = new IdentityUser {UserName = username,Email= username};
+            var user = new IdentityUser { UserName = username, Email = username };
             await _userManager.CreateAsync(user, password);
         }
     }
