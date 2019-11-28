@@ -15,8 +15,6 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <StackPanel x:Name="PassengerLogin" HorizontalAlignment="Center"  Orientation="Vertical" >
@@ -29,7 +27,7 @@
             </StackPanel>
             <StackPanel x:Name="PersonnelLogin" HorizontalAlignment="Center" Orientation="Vertical" Visibility="Collapsed" VerticalAlignment="Center">
                 <TextBox x:Name="txbPersonnelUserName" Height="32" PlaceholderText="Username" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
-                <TextBox x:Name="pswPasswordBox" Height="32" PlaceholderText="Password" TextAlignment="Left" Width="300" Margin="10, 10, 10, 3"/>
+                <PasswordBox x:Name="pswPasswordBox" Height="32" PlaceholderText="Password" Width="300" Margin="10, 10, 10, 3"/>
                 <TextBlock x:Name="txbPersonnelValidation" Foreground="Red" Margin="10" Visibility="Collapsed" />
                 <Button Margin="10,50,10,0" HorizontalAlignment="Center" Height="32"  Width="300" Content="Log in" Click="Button_Click_Personnel"/>
             </StackPanel>

@@ -29,5 +29,12 @@ namespace Flight_n_Bite_API.Controllers
         {
             return _productRepository.GetProducts().FirstOrDefault(p => p.Id == id);
         }
+
+        [HttpPost]
+        public void GiveDiscount(Product productWithDiscount)
+        {
+            _productRepository.GiveDicount(productWithDiscount);
+            _productRepository.SaveChanges();
+        }
     }
 }

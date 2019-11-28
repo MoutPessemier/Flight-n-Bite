@@ -121,6 +121,7 @@
     <Compile Include="Util\BooleanToColorConvertor.cs" />
     <Compile Include="Util\BooleanToGlyphConvertor.cs" />
     <Compile Include="Util\FlightToETAConverter.cs" />
+    <Compile Include="Util\IntegerToPercentageConvertor.cs" />
     <Compile Include="Util\ListConverter.cs" />
     <Compile Include="Util\PassengerToGlyphConverter.cs" />
     <Compile Include="Util\PassengerToSeatColor.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Util\WeatherDataToGlyphConverter.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\ContentPageViewModel.cs" />
+    <Compile Include="ViewModels\DiscountViewmodel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
     <Compile Include="ViewModels\OrderOverviewViewModel.cs" />
     <Compile Include="ViewModels\PassengersViewModel.cs" />
@@ -152,6 +154,9 @@
     </Compile>
     <Compile Include="Views\ContentPage.xaml.cs">
       <DependentUpon>ContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DiscountPage.xaml.cs">
+      <DependentUpon>DiscountPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FlightInfoPage.xaml.cs">
       <DependentUpon>FlightInfoPage.xaml</DependentUpon>
@@ -266,6 +271,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DiscountPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
