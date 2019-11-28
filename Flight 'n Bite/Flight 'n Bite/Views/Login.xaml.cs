@@ -114,7 +114,7 @@ namespace Flight__n_Bite.Views
         private void Button_Click_Personnel(object sender, RoutedEventArgs e)
         {
             txbPersonnelValidation.Visibility = Visibility.Collapsed;
-            if (string.IsNullOrEmpty(txbPersonnelUserName.Text) || string.IsNullOrWhiteSpace(txbPersonnelUserName.Text) || string.IsNullOrEmpty(pswPasswordBox.Text) || string.IsNullOrWhiteSpace(pswPasswordBox.Text))
+            if (string.IsNullOrEmpty(txbPersonnelUserName.Text) || string.IsNullOrWhiteSpace(txbPersonnelUserName.Text) || string.IsNullOrEmpty(pswPasswordBox.Password) || string.IsNullOrWhiteSpace(pswPasswordBox.Password))
             {
                 txbPersonnelValidation.Text = "Username or password cannot be empty";
                 txbPersonnelValidation.Visibility = Visibility.Visible;
@@ -126,7 +126,7 @@ namespace Flight__n_Bite.Views
 
         private async void HandleLoginPersonnel()
         {
-            var personnel = await LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Text);
+            var personnel = await LoginPersonnel(txbPersonnelUserName.Text, pswPasswordBox.Password);
             if (personnel != null && personnel.Username != null)
             {
                 _settings.IsFullScreen = false;
