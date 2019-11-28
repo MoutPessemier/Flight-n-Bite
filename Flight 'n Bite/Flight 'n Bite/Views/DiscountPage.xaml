@@ -1,0 +1,82 @@
+﻿<Page
+    x:Class="Flight__n_Bite.Views.DiscountPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Flight__n_Bite.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:Flight__n_Bite.Models"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:util="using:Flight__n_Bite.Util"
+    xmlns:vm="using:Flight__n_Bite.ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:DiscountViewmodel x:Name="vm"/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <util:IntegerToCurrencyConverter x:Key="IntegerCurrencyConverter" />
+        <util:IntegerToPercentageConverter x:Key="IntegerToPercentageConverter" />
+    </Page.Resources>
+
+    <StackPanel>
+        <controls:PageHeader x:Name="pageHeader" Text="Discount page"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <GridView IsItemClickEnabled="True"
+                              x:Name="gridView"
+                              Grid.Row="0"
+                              Grid.Column="0"
+                              ItemsSource="{x:Bind Path=vm.Products}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Product">
+                        <StackPanel Orientation="Vertical">
+                            <Image/>
+                            <TextBlock x:Name="id" Visibility="Collapsed" Text="{Binding Id}"/>
+                            <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}"/>
+                            <TextBlock x:Name="description" FontSize="12" Text="{Binding Description}" Width="250"/>
+                            <TextBlock x:Name="price" FontFamily="24" Text="{Binding Price, Converter={StaticResource IntegerCurrencyConverter}}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Current Discount: "/>
+                                <TextBlock x:Name="discount" FontFamily="12" Text="{Binding Discount, Converter={StaticResource IntegerToPercentageConverter}}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Click="ChangeProductButton_Click" Margin="0,0,10,0">
+                                    <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8CB;"/>
+                                    <Button.Flyout>
+                                        <Flyout>
+                                            <StackPanel Orientation="Vertical">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Discount: " />
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Button Click="MinDiscountButton_Click">
+                                                            <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE949;"/>
+                                                        </Button>
+                                                        <TextBox IsReadOnly="True" x:Name="amount" Text="{Binding Path=DataContext.Discount, ElementName=gridView, Converter={StaticResource IntegerToPercentageConverter}}"/>
+                                                        <Button Click="PlusDiscountButton_Click">
+                                                            <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE948;"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Button Click="ConfirmButton_Click">Add</Button>
+                                            </StackPanel>
+                                        </Flyout>
+                                    </Button.Flyout>
+                                </Button>
+                                <Button Click="ResetButton_Click" Content="Reset"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </Grid>
+    </StackPanel>
+</Page>

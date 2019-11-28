@@ -45,7 +45,7 @@ namespace Flight_n_Bite_API.Controllers
         }
 
         [HttpPost("handleOrder")]
-        public void handleOrder(Order order)
+        public void HandleOrder(Order order)
         {
             _orderRepository.Handleorder(order.Id);
             _orderRepository.SaveChanges();

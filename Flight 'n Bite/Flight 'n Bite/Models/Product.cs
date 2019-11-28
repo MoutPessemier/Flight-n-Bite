@@ -40,6 +40,16 @@ namespace Flight__n_Bite.Models
                 OnPropertyChanged("Description");
                 }
         }
+        private int _discount { get; set; }
+        public int Discount {
+            get {
+                return _discount;
+            }
+            set {
+                _discount = value;
+                OnPropertyChanged("Discount");
+            }
+        }
 
         public Product()
         {

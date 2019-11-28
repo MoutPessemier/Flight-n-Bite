@@ -629,10 +629,10 @@ namespace Flight_n_Bite_API.Data
             _personnelRepository.SaveChanges();
 
 
-            var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0 };
-            var soldatenkoek = new Product() { Name = "soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0 };
-            var borrelnootjes = new Product() { Name = "borrelnootjes", Description = "Perfect voor bij een sterke trappist", Price = 3.0 };
-            var trappist = new Product() { Name = "Trappist", Description = "Perfect voor bij lekker borrelnootjes", Price = 7.5 };
+            var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0, Discount = 0 };
+            var soldatenkoek = new Product() { Name = "soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0, Discount = 0 };
+            var borrelnootjes = new Product() { Name = "borrelnootjes", Description = "Perfect voor bij een sterke trappist", Price = 3.0, Discount = 0 };
+            var trappist = new Product() { Name = "Trappist", Description = "Perfect voor bij lekker borrelnootjes", Price = 7.5, Discount = 0 };
 
             var orderline1 = new OrderLine() { Product = fristi, Amount = 5 };
             var orderline2 = new OrderLine() { Product = soldatenkoek, Amount = 2 };
