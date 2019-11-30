@@ -18,6 +18,8 @@
 
     <Page.Resources>
         <util:IntegerToCurrencyConverter x:Key="IntegerCurrencyConverter" />
+        <util:DiscountToVisibiltyConvertor x:Key="DiscountToVisibiltyConvertor"/>
+        <util:IntegerToPercentageConverter x:Key="IntegerToPercentageConverter"/>
     </Page.Resources>
 
     <StackPanel>
@@ -46,7 +48,20 @@
                             <DataTemplate x:DataType="models:Product">
                                 <StackPanel Orientation="Vertical"  Width="250">
                                     <Image/>
-                                    <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}" Margin="0,0,0,5" TextWrapping="WrapWholeWords" Height="60"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}" Margin="0,0,0,5" TextWrapping="WrapWholeWords" Height="60"/>
+                                        <Canvas>
+                                            <TextBlock Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Foreground="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,4,0,0" FontFamily="Segoe MDL2 Assets" FontSize="32">&#xE735;</TextBlock>
+                                            <TextBlock Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Foreground="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48,44,0,0" FontFamily="Segoe MDL2 Assets" FontSize="40">
+                                                <TextBlock.RenderTransform>
+                                                    <RotateTransform x:Name="MyTransform" Angle="180" CenterX="0" CenterY="0" />
+                                                </TextBlock.RenderTransform> 
+                                                &#xE735;</TextBlock>
+                                            <Border Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Background="DarkRed" Margin="17,13,0,0">
+                                                <TextBlock Foreground="White" FontSize="11" Text="{Binding Discount, Converter={StaticResource IntegerToPercentageConverter}}"/>
+                                            </Border>
+                                        </Canvas>
+                                    </StackPanel>
                                     <TextBlock x:Name="description" FontSize="12" Text="{Binding Description}" Margin="0,0,0,5" TextWrapping="WrapWholeWords" Height="20"/>
                                     <TextBlock x:Name="price" FontFamily="24" Margin="0,0,0,5" Height="20" Text="{Binding Price, Converter={StaticResource IntegerCurrencyConverter}}"/>
                                     <Button Click="NewOrderLineButton_Click">
@@ -80,7 +95,11 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Visibility="{Binding Path=NewOrderLineVisible}">
-                        <Button Click="AddOrderButton_Click" >Save Order</Button>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="AddOrderButton_Click">Save Order</Button>
+                            <TextBlock Foreground="DarkGreen" Margin="10,5,5,0">Total cost:</TextBlock>
+                            <TextBlock Foreground="DarkGreen" Margin="0,5,0,0" x:Name="totalCost" Text="{Binding TotalCost, Converter={StaticResource IntegerCurrencyConverter}}"></TextBlock>
+                        </StackPanel>
                         <ListView Width="auto"
                             x:Name="newOrderlines"
                             Background="LightGray"
@@ -97,8 +116,8 @@
                                         <TextBlock x:Name="name" Text="{Binding Product.Name}" Grid.Column="0"/>
                                         <TextBlock Text=":" Grid.Column="0" />
                                         <TextBlock x:Name="amount" Text="{Binding Amount}"  Grid.Column="1"/>
-                                        <Button Click="DeleteButtonClicked" Grid.Column="2">
-                                            <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
+                                        <Button Background="DarkRed" Click="DeleteButtonClicked" Grid.Column="2">
+                                            <FontIcon Foreground="White" Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
                                         </Button>
                                     </Grid>
                                 </DataTemplate>
