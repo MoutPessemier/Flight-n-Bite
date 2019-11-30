@@ -21,6 +21,16 @@ namespace Flight__n_Bite.ViewModels
         public ObservableCollection<OrderLine> NewOrderLines { get; set; }
         public Visibility NewOrderLineVisible { get; private set; }
         private HttpService HttpService = HttpService.instance;
+        public double TotalCost {
+            get {
+                return _totalCost;
+            }
+            set {
+                _totalCost = value;
+                OnPropertyChanged("TotalCost");
+            }
+        }
+        private double _totalCost { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         private int _newAmount { get; set; }
         public int NewAmount {
@@ -39,6 +49,7 @@ namespace Flight__n_Bite.ViewModels
             Orders = new ObservableCollection<Order>();
             NewOrderLines = new ObservableCollection<OrderLine>();
             _newAmount = 1;
+            _totalCost = 0;
             LoadFoodsDrinks();
             LoadOrders();
         }
@@ -60,7 +71,8 @@ namespace Flight__n_Bite.ViewModels
             if (Shell.Passenger != null)
             {
                 json = await HttpService.GetStringAsync(new Uri("http://localhost:49527/api/order/getByPassengerId/" + Shell.Passenger.Id));
-            } else
+            }
+            else
             {
                 json = await HttpService.GetStringAsync(new Uri("http://localhost:49527/api/order"));
             }
@@ -78,7 +90,10 @@ namespace Flight__n_Bite.ViewModels
             string json = await HttpService.PostAsync("http://localhost:49527/api/orderLine/addOrderLine", new StringContent(newOrderLinejson, Encoding.UTF8, "application/json"));
             OrderLine orderLineWithId = JsonConvert.DeserializeObject<OrderLine>(json);
             NewOrderLines.Add(orderLineWithId);
-            OnPropertyChanged("NewOrderlines");
+
+            double Normalprice = orderLineWithId.Amount * orderLineWithId.Product.Price;
+            TotalCost += Normalprice - Normalprice / 100 * orderLineWithId.Product.Discount;
+
             OnPropertyChanged("NewOrderLineVisible");
         }
 
@@ -87,7 +102,11 @@ namespace Flight__n_Bite.ViewModels
             await HttpService.DeleteByIdAsync("http://localhost:49527/api/orderLine/deleteOrderLine/", id);
             OrderLine deleteOrderLine = NewOrderLines.FirstOrDefault(ol => ol.Id == id);
             NewOrderLines.Remove(deleteOrderLine);
-            OnPropertyChanged("NewOrderlines");
+
+            double Normalprice = deleteOrderLine.Amount * deleteOrderLine.Product.Price;
+            TotalCost -= Normalprice - Normalprice / 100 * deleteOrderLine.Product.Discount;
+
+            OnPropertyChanged("NewOrderLineVisible");
         }
 
         public async void AddOrder(Order newOrder)
@@ -101,6 +120,7 @@ namespace Flight__n_Bite.ViewModels
                 Orders.Add(orderWithId);
                 NewOrderLines.Clear();
                 _newAmount = 1;
+                _totalCost = 0;
                 OnPropertyChanged("NewOrder");
                 OnPropertyChanged("NewOrderLineVisible");
             }

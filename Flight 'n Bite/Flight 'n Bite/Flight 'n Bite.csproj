@@ -120,6 +120,7 @@
     <Compile Include="Util\ArtistConverter.cs" />
     <Compile Include="Util\BooleanToColorConvertor.cs" />
     <Compile Include="Util\BooleanToGlyphConvertor.cs" />
+    <Compile Include="Util\DiscountToVisibiltyConvertor.cs" />
     <Compile Include="Util\FlightToETAConverter.cs" />
     <Compile Include="Util\IntegerToPercentageConvertor.cs" />
     <Compile Include="Util\ListConverter.cs" />

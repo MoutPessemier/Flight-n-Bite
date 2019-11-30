@@ -627,7 +627,7 @@ namespace Flight_n_Bite_API.Data
 
 
 
-            var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0, Discount = 0 };
+            var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0, Discount = 10 };
             var soldatenkoek = new Product() { Name = "Soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0, Discount = 0};
             var borrelnootjes = new Product() { Name = "Borrelnootjes", Description = "Perfect voor bij een sterke trappist", Price = 3.0, Discount = 0 };
             var trappist = new Product() { Name = "Trappist", Description = "Perfect voor bij lekker borrelnootjes", Price = 7.5, Discount = 0 };
