@@ -21,34 +21,40 @@
         <util:IntegerToPercentageConverter x:Key="IntegerToPercentageConverter" />
     </Page.Resources>
 
-    <StackPanel>
+    <Grid>
         <controls:PageHeader x:Name="pageHeader" Text="Discount page"/>
-        <Grid>
+        <Grid Margin="0,50,0,0" >
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <GridView IsItemClickEnabled="True"
                               x:Name="gridView"
                               Grid.Row="0"
                               Grid.Column="0"
                               ItemsSource="{x:Bind Path=vm.Products}">
+                <GridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="Margin" Value="15"/>
+                        <Setter Property="Padding" Value="10"/>
+                    </Style>
+                </GridView.ItemContainerStyle>
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="models:Product">
                         <StackPanel Orientation="Vertical">
                             <Image/>
                             <TextBlock x:Name="id" Visibility="Collapsed" Text="{Binding Id}"/>
-                            <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}"/>
-                            <TextBlock x:Name="description" FontSize="12" Text="{Binding Description}" Width="250"/>
-                            <TextBlock x:Name="price" FontFamily="24" Text="{Binding Price, Converter={StaticResource IntegerCurrencyConverter}}"/>
+                            <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}" TextWrapping="Wrap" Height="75" Width="250"/>
+                            <TextBlock x:Name="description" FontSize="12" Text="{Binding Description}"/>
+                            <TextBlock x:Name="price" FontFamily="24" Text="{Binding Price, Converter={StaticResource IntegerCurrencyConverter}}"  Margin="0,10,0,10"/>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Current Discount: "/>
-                                <TextBlock x:Name="discount" FontFamily="12" Text="{Binding Discount, Converter={StaticResource IntegerToPercentageConverter}}"/>
+                                <TextBlock Text="Current Discount:" />
+                                <TextBlock x:Name="discount" FontFamily="12" Text="{Binding Discount, Converter={StaticResource IntegerToPercentageConverter}}"  Margin="5,0,0,0"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal"  Margin="0,10,0,10">
                                 <Button Click="ChangeProductButton_Click" Margin="0,0,10,0">
                                     <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8CB;"/>
                                     <Button.Flyout>
@@ -78,5 +84,5 @@
                 </GridView.ItemTemplate>
             </GridView>
         </Grid>
-    </StackPanel>
+    </Grid>
 </Page>
