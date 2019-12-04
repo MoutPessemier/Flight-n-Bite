@@ -64,11 +64,17 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <GridView IsItemClickEnabled="True" x:Name="gridView" ItemsSource="{x:Bind Path=vm.Products}" Grid.Row="0" Grid.Column="0">
+                        <GridView.ItemContainerStyle>
+                        <Style TargetType="GridViewItem">
+                            <Setter Property="Padding" Value="25"/>
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                        </GridView.ItemContainerStyle>
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="models:Product">
-                                <StackPanel Orientation="Vertical"  Width="200">
+                                <StackPanel Orientation="Vertical"  Width="175">
                                     <Image/>
-                                    <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}" Margin="0,0,0,5" TextWrapping="Wrap" Width="200" Height="100"/>
+                                    <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}" Margin="0,0,0,5" TextWrapping="Wrap" Width="200" Height="80"/>
                                     <TextBlock x:Name="description" FontSize="12" Text="{Binding Description}" Margin="0,0,0,5" TextWrapping="WrapWholeWords" Height="20"/>
                                     <TextBlock x:Name="price" FontFamily="24" Margin="0,0,0,5" Height="20" Text="{Binding Price, Converter={StaticResource IntegerCurrencyConverter}}"/>
                                 <StackPanel Orientation="Horizontal">
@@ -149,7 +155,11 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:Order">
                             <StackPanel Orientation="Vertical">
-                                <TextBlock FontSize="32" Text="OrderLines:"></TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="32" Text="Order:" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock FontSize="32" Text="{Binding Id}"/>
+                                </StackPanel>
+                                <TextBlock FontSize="24" Text="Orderlines:"></TextBlock>
                                 <ListView ItemsSource="{x:Bind Path=OrderLines}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate x:DataType="models:OrderLine">
