@@ -22,49 +22,57 @@
         <util:IntegerToPercentageConverter x:Key="IntegerToPercentageConverter"/>
     </Page.Resources>
 
-    <StackPanel>
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="gridView.(Grid.Row)" Value="1"/>
+                        <Setter Target="gridView.(Grid.Column)" Value="0"/>
+                        <Setter Target="newOrderPanel.(Grid.Row)" Value="0"/>
+                        <Setter Target="newOrderPanel.(Grid.Column)" Value="0"/>
+                        <Setter Target="Row2.Height" Value="*"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualState1">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="gridView.(Grid.Row)" Value="0"/>
+                        <Setter Target="gridView.(Grid.Column)" Value="0"/>
+                        <Setter Target="newOrderPanel.(Grid.Row)" Value="0"/>
+                        <Setter Target="newOrderPanel.(Grid.Column)" Value="1"/>
+                        <Setter Target="Row2.Height" Value="auto"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <controls:PageHeader x:Name="pageHeader" Text="Foods 'n drinks info"/>
-        <Pivot>
+        <Pivot Title="" Margin="0,30,0,0">
             <PivotItem Header="All Products">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition x:Name="Row1" Height="auto"/>
+                        <RowDefinition x:Name="Row2" Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <GridView IsItemClickEnabled="True"
-                              x:Name="gridView"
-                              Grid.Row="0"
-                              Grid.Column="0"
-                              ItemsSource="{x:Bind Path=vm.Products}">
-                        <GridView.ItemContainerStyle>
-                            <Style TargetType="GridViewItem">
-                                <Setter Property="Margin" Value="10"/>
-                            </Style>
-                        </GridView.ItemContainerStyle>
+                    <GridView IsItemClickEnabled="True" x:Name="gridView" ItemsSource="{x:Bind Path=vm.Products}" Grid.Row="0" Grid.Column="0">
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="models:Product">
-                                <StackPanel Orientation="Vertical"  Width="250">
+                                <StackPanel Orientation="Vertical"  Width="200">
                                     <Image/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}" Margin="0,0,0,5" TextWrapping="WrapWholeWords" Height="60"/>
-                                        <Canvas>
-                                            <TextBlock Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Foreground="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,4,0,0" FontFamily="Segoe MDL2 Assets" FontSize="32">&#xE735;</TextBlock>
-                                            <TextBlock Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Foreground="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48,44,0,0" FontFamily="Segoe MDL2 Assets" FontSize="40">
-                                                <TextBlock.RenderTransform>
-                                                    <RotateTransform x:Name="MyTransform" Angle="180" CenterX="0" CenterY="0" />
-                                                </TextBlock.RenderTransform> 
-                                                &#xE735;</TextBlock>
-                                            <Border Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Background="DarkRed" Margin="17,13,0,0">
-                                                <TextBlock Foreground="White" FontSize="11" Text="{Binding Discount, Converter={StaticResource IntegerToPercentageConverter}}"/>
-                                            </Border>
-                                        </Canvas>
-                                    </StackPanel>
+                                    <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}" Margin="0,0,0,5" TextWrapping="Wrap" Width="200" Height="100"/>
                                     <TextBlock x:Name="description" FontSize="12" Text="{Binding Description}" Margin="0,0,0,5" TextWrapping="WrapWholeWords" Height="20"/>
                                     <TextBlock x:Name="price" FontFamily="24" Margin="0,0,0,5" Height="20" Text="{Binding Price, Converter={StaticResource IntegerCurrencyConverter}}"/>
-                                    <Button Click="NewOrderLineButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Click="NewOrderLineButton_Click" Margin="0,0,100,0">
                                         <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7BF;"/>
                                         <Button.Flyout>
                                             <Flyout>
@@ -86,6 +94,18 @@
                                             </Flyout>
                                         </Button.Flyout>
                                     </Button>
+                                        <Canvas>
+                                            <TextBlock Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Foreground="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,-10,0,0" FontFamily="Segoe MDL2 Assets" FontSize="32">&#xE735;</TextBlock>
+                                            <TextBlock Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Foreground="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48,30,0,0" FontFamily="Segoe MDL2 Assets" FontSize="40">
+                                                <TextBlock.RenderTransform>
+                                                    <RotateTransform x:Name="MyTransform" Angle="180" CenterX="0" CenterY="0" />
+                                                </TextBlock.RenderTransform> 
+                                                &#xE735;</TextBlock>
+                                            <Border Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Margin="17,0,0,0">
+                                                <TextBlock Foreground="White" FontSize="11" Text="{Binding Discount, Converter={StaticResource IntegerToPercentageConverter}}"/>
+                                            </Border>
+                                        </Canvas>
+                                    </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
                         </GridView.ItemTemplate>
@@ -94,32 +114,30 @@
                                 Orientation="Vertical"
                                 Grid.Row="0"
                                 Grid.Column="1"
+                                Width="450"
+                                Margin="0,10,0,10"
                                 Visibility="{Binding Path=NewOrderLineVisible}">
                         <StackPanel Orientation="Horizontal">
                             <Button Click="AddOrderButton_Click">Save Order</Button>
-                            <TextBlock Foreground="DarkGreen" Margin="10,5,5,0">Total cost:</TextBlock>
-                            <TextBlock Foreground="DarkGreen" Margin="0,5,0,0" x:Name="totalCost" Text="{Binding TotalCost, Converter={StaticResource IntegerCurrencyConverter}}"></TextBlock>
+                            <TextBlock Foreground="DarkGreen" Margin="10,6,5,0">Total cost:</TextBlock>
+                            <TextBlock Foreground="DarkGreen" Margin="0,6,0,0" x:Name="totalCost" Text="{Binding TotalCost, Converter={StaticResource IntegerCurrencyConverter}}"></TextBlock>
                         </StackPanel>
                         <ListView Width="auto"
                             x:Name="newOrderlines"
                             Background="LightGray"
+                            Margin="0,10,0,0"
                             ItemsSource="{x:Bind Path=vm.NewOrderLines}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="models:OrderLine">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="5*" />
-                                            <ColumnDefinition Width="1*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                        </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
                                         <TextBlock x:Name="id" Text="{Binding Id}" Visibility="Collapsed"/>
-                                        <TextBlock x:Name="name" Text="{Binding Product.Name}" Grid.Column="0"/>
-                                        <TextBlock Text=":" Grid.Column="0" />
-                                        <TextBlock x:Name="amount" Text="{Binding Amount}"  Grid.Column="1"/>
-                                        <Button Background="DarkRed" Click="DeleteButtonClicked" Grid.Column="2">
+                                        <TextBlock FontSize="24" x:Name="name" Text="{Binding Product.Name}" Margin="0,0,5,0"/>
+                                        <TextBlock FontSize="24" Margin="0,0,5,0">x</TextBlock>
+                                        <TextBlock FontSize="24" x:Name="amount" Text="{Binding Amount}" Margin="0,0,20,0"/>
+                                        <Button Background="DarkRed" Click="DeleteButtonClicked">
                                             <FontIcon Foreground="White" Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
                                         </Button>
-                                    </Grid>
+                                    </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
@@ -154,5 +172,5 @@
                 </ListView>
             </PivotItem>
         </Pivot>
-    </StackPanel>
+    </Grid>
 </Page>
