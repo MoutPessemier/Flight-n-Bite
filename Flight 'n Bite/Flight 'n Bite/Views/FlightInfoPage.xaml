@@ -20,6 +20,7 @@
         <util:FlightToETAConverter x:Key="FlightToETAConverter" />
         <util:WeatherDataToGlyphConverter x:Key="WeatherDataToGlyphConverter" />
         <util:RainWaterConverter x:Key="RainWaterConverter" />
+        <util:AvailabiltyToVisibilityConverter x:Key="AvailabiltyToVisibilityConverter" />
 
 
     </Page.Resources>
@@ -60,13 +61,18 @@
                     <TextBlock Margin="12" Text="ETA:"/>
                     <TextBlock Margin="12" Text="{x:Bind vm1.Flight,Mode=OneWay,Converter={StaticResource FlightToETAConverter}}"/>
                 </StackPanel>
+
             </StackPanel>
             <StackPanel VerticalAlignment="Center" Grid.Column="1" Grid.Row="0">
                 <StackPanel.DataContext>
                     <vm:WeatherViewModel x:Name="vm2" />
                 </StackPanel.DataContext>
+                <StackPanel Orientation="Horizontal" Margin="60,0,0,0">
+                    <TextBlock Visibility="{x:Bind vm2.WeatherAvailable, Converter={StaticResource AvailabiltyToVisibilityConverter},Mode=OneWay}" FontFamily="Segoe MDL2 Assets" FontSize="100">&#xE753;</TextBlock>
+                    <TextBlock Visibility="{x:Bind vm2.WeatherAvailable, Converter={StaticResource AvailabiltyToVisibilityConverter},Mode=OneWay}"  Foreground="DarkRed" FontFamily="Segoe MDL2 Assets" FontSize="25">&#xE894;</TextBlock>
+                </StackPanel>
+                <TextBlock Visibility="{x:Bind vm2.WeatherAvailable, Converter={StaticResource AvailabiltyToVisibilityConverter},Mode=OneWay}" Margin="60,0,0,0" >Weather not available</TextBlock>
                 <StackPanel Orientation="Horizontal">
-
                     <GridView Name="lvlFlights" ItemsSource="{x:Bind vm2.Dates}">
                         <GridView.ItemContainerStyle>
                             <Style TargetType="GridViewItem">
