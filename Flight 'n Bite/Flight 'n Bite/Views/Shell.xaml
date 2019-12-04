@@ -56,6 +56,20 @@
                 </StackPanel>
 
             </Controls:HamburgerButtonInfo>
+            
+            <!-- Send Messages as Personnel -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PersonnelMessagePage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Width="48"
+                              Height="48" 
+                              FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEDB3;"/>
+
+                    <TextBlock Margin="12,0,0,0"
+                               VerticalAlignment="Center"
+                               Text="Send Messages" />
+                </StackPanel>
+
+            </Controls:HamburgerButtonInfo>
 
             <!--  FlightInfo button  -->
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FlightInfoPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">

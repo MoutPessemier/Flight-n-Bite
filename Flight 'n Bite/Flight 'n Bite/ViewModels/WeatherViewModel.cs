@@ -24,7 +24,7 @@ namespace Flight__n_Bite.ViewModels
         public WeatherViewModel()
         {
             Dates = new ObservableCollection<Day>();
-            LoadWeather();
+            //LoadWeather();
         }
 
         private async void LoadWeather()
