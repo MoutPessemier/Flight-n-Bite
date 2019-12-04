@@ -119,6 +119,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
     <Compile Include="Util\ArtistConverter.cs" />
+    <Compile Include="Util\AvailabiltyToVisibilityConverter.cs" />
     <Compile Include="Util\BooleanToColorConvertor.cs" />
     <Compile Include="Util\BooleanToGlyphConvertor.cs" />
     <Compile Include="Util\DiscountToVisibiltyConvertor.cs" />
