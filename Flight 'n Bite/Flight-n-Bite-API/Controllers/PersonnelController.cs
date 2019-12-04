@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Flight_n_Bite_API.Model;
 using Flight_n_Bite_API.Model.DTO;
@@ -35,7 +36,6 @@ namespace Flight_n_Bite_API.Controllers
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<Personnel>> logIn(PersonnelLoginDTO model)
-
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
 
@@ -53,6 +53,27 @@ namespace Flight_n_Bite_API.Controllers
             return BadRequest();
         }
 
+        [AllowAnonymous]
+        [HttpGet("getMessages")]
+        public List<PersonnelMessage> getMessages()
+        {
+            List<PersonnelMessage> personnelMessages = new List<PersonnelMessage>();
+            var personnel = _personnelRepository.GetAllPersonnel();
+            foreach(Personnel person in personnel)
+            {
+                personnelMessages.AddRange(person.Messages);
+            }
+            return personnelMessages;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("AddMessage")]
+        public void AddMessage(PersonnelMessage message)
+        {
+            var personnel = _personnelRepository.GetPersonnel(message.Personnel.UserName);
+            personnel.addMessage(message);
+            _personnelRepository.SaveChanges();
+        }
         
     }
 }
