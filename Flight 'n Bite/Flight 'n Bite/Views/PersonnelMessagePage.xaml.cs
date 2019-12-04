@@ -26,5 +26,9 @@ namespace Flight__n_Bite.Views
         {
             this.InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

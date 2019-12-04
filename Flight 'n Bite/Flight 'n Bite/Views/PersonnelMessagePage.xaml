@@ -5,8 +5,14 @@
     xmlns:local="using:Flight__n_Bite.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:Flight__n_Bite.ViewModels"
+    xmlns:models="using:Flight__n_Bite.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <viewmodels:PersonnelMessagePageViewModel x:Name="vm" />
+    </Page.DataContext>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,5 +25,22 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <TextBlock Text="Send Messages" TextAlignment="Center" FontSize="32sp" Grid.Column="0" Grid.Row="0"/>
+
+        <ListView x:Name="InvertedListView" Width="Auto" ItemsSource="{x:Bind vm.Messages}" Grid.Column="1" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:PersonnelMessage">
+                    <Grid Height="Auto" Margin="4">
+                        <StackPanel MinHeight="25" Width="350" Padding="10, 0, 0, 10" CornerRadius="4">
+                            <TextBlock Text="{x:Bind Body}" Padding="0, 0, 0, 10" FontSize="15" TextWrapping="WrapWholeWords"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+            <TextBox x:Name="messageBody" Width="1150" Height="35" Margin="15,0,15,0"/>
+            <Button Content="Send" Click="Button_Click" />
+        </StackPanel>
     </Grid>
 </Page>

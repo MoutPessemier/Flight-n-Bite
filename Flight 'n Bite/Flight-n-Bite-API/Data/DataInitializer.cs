@@ -617,6 +617,8 @@ namespace Flight_n_Bite_API.Data
             _groupRepository.SaveChanges();
 
             var personel = new Personnel { UserName = "Piloot@hotmail.com" };
+            personel.addMessage(new PersonnelMessage() { Body = "Please fasten your seatbelt and follow the safety guide!" });
+            personel.addMessage(new PersonnelMessage() { Body = "All right ladies and gentleman, seatbelts can be loosend and devices can be switched on but keep those on airplaine mode!"});
             var personel2 = new Personnel { UserName = "Stewardess@hotmail.com" };
             await CreateUser(personel.UserName, "Piloot123!");
             await CreateUser(personel2.UserName, "Stewardess123!");

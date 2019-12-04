@@ -68,9 +68,9 @@ namespace Flight_n_Bite_API.Controllers
 
         [AllowAnonymous]
         [HttpPost("AddMessage")]
-        public void AddMessage(PersonnelMessage message)
+        public void AddMessage(string username, PersonnelMessage message)
         {
-            var personnel = _personnelRepository.GetPersonnel(message.Personnel.UserName);
+            var personnel = _personnelRepository.GetPersonnel(username);
             personnel.addMessage(message);
             _personnelRepository.SaveChanges();
         }

@@ -110,6 +110,7 @@
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\PassengerSeat.cs" />
     <Compile Include="Models\Personnel.cs" />
+    <Compile Include="Models\PersonnelMessage.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\RootObject.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="ViewModels\FlightViewModel.cs" />
     <Compile Include="ViewModels\OrderOverviewViewModel.cs" />
     <Compile Include="ViewModels\PassengersViewModel.cs" />
+    <Compile Include="ViewModels\PersonnelMessagePageViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
