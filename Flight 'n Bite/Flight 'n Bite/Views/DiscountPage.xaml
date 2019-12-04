@@ -72,7 +72,7 @@
                                                         </Button>
                                                     </StackPanel>
                                                 </StackPanel>
-                                                <Button Click="ConfirmButton_Click">Add</Button>
+                                                <Button Click="ConfirmButton_Click">Save</Button>
                                             </StackPanel>
                                         </Flyout>
                                     </Button.Flyout>
