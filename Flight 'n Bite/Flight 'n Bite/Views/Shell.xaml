@@ -63,7 +63,7 @@
             </Controls:HamburgerButtonInfo>
 
             <!-- Send Messages as Personnel -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PersonnelMessagePage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PersonnelMessagePage" Visibility="{x:Bind MyViewModel.IsPersonnel,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon Width="48"
                               Height="48" 
@@ -130,7 +130,7 @@
             </Controls:HamburgerButtonInfo>
 
             <!-- Receive messages in your message inbox -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:InboxPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:InboxPage" Visibility="{x:Bind MyViewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon Width="48"
                               Height="48" 
