@@ -98,6 +98,7 @@
     <Compile Include="data\HttpService.cs" />
     <Compile Include="Models\DTO\MessageDTO.cs" />
     <Compile Include="Models\DTO\PersonnelLoginDTO.cs" />
+    <Compile Include="Models\DTO\PersonnelMessageDTO.cs" />
     <Compile Include="Models\DTO\SwitchsSeatsDTO.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Flight.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="ViewModels\ContentPageViewModel.cs" />
     <Compile Include="ViewModels\DiscountViewmodel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
+    <Compile Include="ViewModels\InboxPageViewModel.cs" />
     <Compile Include="ViewModels\OrderOverviewViewModel.cs" />
     <Compile Include="ViewModels\PassengersViewModel.cs" />
     <Compile Include="ViewModels\PersonnelMessagePageViewModel.cs" />
@@ -167,6 +169,9 @@
     </Compile>
     <Compile Include="Views\FoodsDrinksPage.xaml.cs">
       <DependentUpon>FoodsDrinksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InboxPage.xaml.cs">
+      <DependentUpon>InboxPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -290,6 +295,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FoodsDrinksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InboxPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

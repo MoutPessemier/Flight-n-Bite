@@ -72,9 +72,9 @@ namespace Flight__n_Bite.ViewModels
                 }
                 Chat.Add(m);
             }
-            catch
+            catch(Exception e)
             {
-
+                Debug.Write(e.Message);
             }
         }
     }

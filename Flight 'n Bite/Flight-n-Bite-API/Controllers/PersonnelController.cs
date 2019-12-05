@@ -68,11 +68,17 @@ namespace Flight_n_Bite_API.Controllers
 
         [AllowAnonymous]
         [HttpPost("AddMessage")]
-        public void AddMessage(string username, PersonnelMessage message)
+        public PersonnelMessage AddMessage(PersonnelMessageDTO message)
         {
-            var personnel = _personnelRepository.GetPersonnel(username);
-            personnel.addMessage(message);
-            _personnelRepository.SaveChanges();
+            var personnel = _personnelRepository.GetPersonnel(message.Email);
+            if(personnel != null)
+            {
+                var m = new PersonnelMessage() { Body = message.Message.Body };
+                personnel.addMessage(m);
+                _personnelRepository.SaveChanges();
+                return m;
+            }
+            return null;
         }
         
     }
