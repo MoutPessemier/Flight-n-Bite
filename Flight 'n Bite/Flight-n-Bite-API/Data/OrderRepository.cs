@@ -20,7 +20,7 @@ namespace Flight_n_Bite_API.Data
             foreach (var orderLine in order.OrderLines)
             {
                 orderLinesList.Add(_context.OrderLines.Include(ol => ol.Product).FirstOrDefault(ol => ol.Id == orderLine.Id));
-            } 
+            }
             foreach (var orderLine in orderLinesList)
             {
                 orderLine.Product = _context.Products.FirstOrDefault(p => p.Id == orderLine.Product.Id);
@@ -28,6 +28,23 @@ namespace Flight_n_Bite_API.Data
             order.OrderLines = orderLinesList;
             order.Passenger = _context.Passengers.FirstOrDefault(p => p.Id == order.Passenger.Id);
             _context.Add(order);
+        }
+
+        public void DeleteOrder(int id)
+        {
+            var order = _context.Orders.Include(o => o.OrderLines).FirstOrDefault(o => o.Id == id);
+            if (order != null)
+            {
+                foreach (var orderline in order.OrderLines)
+                {
+                    var orderLineForDb = _context.OrderLines.FirstOrDefault(ol => ol.Id == orderline.Id);
+                    if (orderLineForDb != null)
+                    {
+                        _context.OrderLines.Remove(orderLineForDb);
+                    }
+                }
+                _context.Orders.Remove(order);
+            }
         }
 
         public List<OrderLine> GetOrderLinesByOrder(int id)

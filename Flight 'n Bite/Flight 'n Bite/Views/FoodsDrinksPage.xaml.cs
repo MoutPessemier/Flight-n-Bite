@@ -52,7 +52,7 @@ namespace Flight__n_Bite.Views
 
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            Order newOrder = new Order() { OrderLines = vm.NewOrderLines.ToList(), Passenger = Shell.Passenger };
+            Order newOrder = new Order() { OrderLines = vm.NewOrderLines.ToList(), Passenger = Shell.Passenger, IsHandled= false };
             vm.AddOrder(newOrder);
         }
     }

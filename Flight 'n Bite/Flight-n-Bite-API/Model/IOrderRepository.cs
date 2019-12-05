@@ -12,6 +12,7 @@ namespace Flight_n_Bite_API.Model
         List<OrderLine> GetOrderLinesByOrder(int id);
         void Add(Order order);
         void Handleorder(int id);
+        void DeleteOrder(int id);
         void SaveChanges();
     }
 }

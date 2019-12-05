@@ -44,5 +44,11 @@ namespace Flight__n_Bite.ViewModels
             Orders.FirstOrDefault(o => o.Id == order.Id).IsHandled = true;
             // httpservice post request voor handeling order en in backend ook toevoegen aan controller en repo
         }
+
+        public async void DeleteOrder(Order order)
+        {
+            await HttpService.DeleteByIdAsync("http://localhost:49527/api/order/deleteOrder/", order.Id);
+            Orders.Remove(order);
+        }
     }
 }
