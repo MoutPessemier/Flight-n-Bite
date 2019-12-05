@@ -18,7 +18,7 @@ namespace Flight__n_Bite.Views
         public static Shell Instance { get; set; }
         public static HamburgerMenu HamburgerMenu => Instance.MyHamburgerMenu;
         Services.SettingsServices.SettingsService _settings;
-        public static ShellViewModel viewModel;
+        public static ShellViewModel viewModel => Instance.MyViewModel;
         public static Passenger Passenger { get; set; }
         public static Personnel Personnel { get; set; }
 
@@ -28,7 +28,6 @@ namespace Flight__n_Bite.Views
             Instance = this;
             InitializeComponent();
             _settings = Services.SettingsServices.SettingsService.Instance;
-            viewModel = new ShellViewModel();
         }
 
         public Shell(INavigationService navigationService) : this()
