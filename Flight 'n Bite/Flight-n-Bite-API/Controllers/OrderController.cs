@@ -37,6 +37,13 @@ namespace Flight_n_Bite_API.Controllers
             _orderRepository.SaveChanges();
             return order;
         }
+        [HttpDelete("deleteOrder/{id}")]
+        public void DeleteOrder(int id)
+        {
+            _orderRepository.DeleteOrder(id);
+            _orderRepository.SaveChanges();
+        }
+
 
         [HttpGet("getByPassengerId/{id}")]
         public List<Order> GetOrdersByPassenger(int id)
