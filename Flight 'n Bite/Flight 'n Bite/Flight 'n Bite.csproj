@@ -98,6 +98,7 @@
     <Compile Include="data\HttpService.cs" />
     <Compile Include="Models\DTO\MessageDTO.cs" />
     <Compile Include="Models\DTO\PersonnelLoginDTO.cs" />
+    <Compile Include="Models\DTO\PersonnelMessageDTO.cs" />
     <Compile Include="Models\DTO\SwitchsSeatsDTO.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Flight.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\PassengerSeat.cs" />
     <Compile Include="Models\Personnel.cs" />
+    <Compile Include="Models\PersonnelMessage.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\RootObject.cs" />
@@ -139,8 +141,10 @@
     <Compile Include="ViewModels\ContentPageViewModel.cs" />
     <Compile Include="ViewModels\DiscountViewmodel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
+    <Compile Include="ViewModels\InboxPageViewModel.cs" />
     <Compile Include="ViewModels\OrderOverviewViewModel.cs" />
     <Compile Include="ViewModels\PassengersViewModel.cs" />
+    <Compile Include="ViewModels\PersonnelMessagePageViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
@@ -166,6 +170,9 @@
     <Compile Include="Views\FoodsDrinksPage.xaml.cs">
       <DependentUpon>FoodsDrinksPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\InboxPage.xaml.cs">
+      <DependentUpon>InboxPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -177,6 +184,9 @@
     </Compile>
     <Compile Include="Views\PassengersOverviewPage.xaml.cs">
       <DependentUpon>PassengersOverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonnelMessagePage.xaml.cs">
+      <DependentUpon>PersonnelMessagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -288,6 +298,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\InboxPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -301,6 +315,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PassengersOverviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonnelMessagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
