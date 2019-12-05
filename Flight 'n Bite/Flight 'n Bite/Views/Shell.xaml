@@ -9,14 +9,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       xmlns:views="using:Flight__n_Bite.Views"
+      xmlns:vm="using:Flight__n_Bite.ViewModels"
       mc:Ignorable="d">
-
+    
+    
+    <Page.DataContext>
+        <vm:ShellViewModel x:Name="MyViewModel"/>
+    </Page.DataContext>
 
     <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
         <Controls:HamburgerMenu.PrimaryButtons>
 
             <!--  passengeroverviewpage button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PassengersOverviewPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PassengersOverviewPage" Visibility="{x:Bind MyViewModel.IsPersonnel,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Width="48"
                                 Height="48"
@@ -29,7 +34,7 @@
             </Controls:HamburgerButtonInfo>
 
             <!-- Ordersoverviewpage button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:OrdersOverviewPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:OrdersOverviewPage" Visibility="{x:Bind MyViewModel.IsPersonnel,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon Width="48"
                               Height="48" 
@@ -44,7 +49,7 @@
 
 
             <!-- Discountpage button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:DiscountPage" Visibility="{x:Bind viewModel.IsPersonnel,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:DiscountPage" Visibility="{x:Bind MyViewModel.IsPersonnel,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon Width="48"
                               Height="48" 
@@ -57,8 +62,22 @@
 
             </Controls:HamburgerButtonInfo>
 
+            <!-- Send Messages as Personnel -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PersonnelMessagePage" Visibility="{x:Bind MyViewModel.IsPersonnel,Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Width="48"
+                              Height="48" 
+                              FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEDB3;"/>
+
+                    <TextBlock Margin="12,0,0,0"
+                               VerticalAlignment="Center"
+                               Text="Send Messages" />
+                </StackPanel>
+
+            </Controls:HamburgerButtonInfo>
+
             <!--  FlightInfo button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FlightInfoPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FlightInfoPage" Visibility="{x:Bind MyViewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon Width="48"
                               Height="48"
@@ -71,7 +90,7 @@
 
             </Controls:HamburgerButtonInfo>
             <!--  ContentPage button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:ContentPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:ContentPage" Visibility="{x:Bind MyViewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon  Width="48"
                                 Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B2;"/>
@@ -85,7 +104,7 @@
 
             <!--  Foods 'n Drinks button  -->
 
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FoodsDrinksPage" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:FoodsDrinksPage" Visibility="{x:Bind MyViewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon  Width="48"
                                 Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED56;"/>
@@ -98,7 +117,7 @@
             </Controls:HamburgerButtonInfo>
 
             <!-- Chat button -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:Chat" Visibility="{x:Bind viewModel.IsPassenger,Mode=OneWay}">
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:Chat" Visibility="{x:Bind MyViewModel.IsPassenger,Mode=OneWay}">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon  Width="48"
                                 Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8BD;"/>
@@ -109,9 +128,22 @@
                 </StackPanel>
 
             </Controls:HamburgerButtonInfo>
+
+            <!-- Receive messages in your message inbox -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:InboxPage" Visibility="{x:Bind MyViewModel.IsPassenger,Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Width="48"
+                              Height="48" 
+                              FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEDB3;"/>
+
+                    <TextBlock Margin="12,0,0,0"
+                               VerticalAlignment="Center"
+                               Text="Inbox" />
+                </StackPanel>
+
+            </Controls:HamburgerButtonInfo>
+
         </Controls:HamburgerMenu.PrimaryButtons>
-
-
 
         <Controls:HamburgerMenu.SecondaryButtons>
             <!--  profile button  -->
