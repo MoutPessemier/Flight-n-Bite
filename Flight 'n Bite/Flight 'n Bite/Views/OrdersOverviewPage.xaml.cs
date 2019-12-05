@@ -24,5 +24,15 @@ namespace Flight__n_Bite.Views
                 vm.HandleOrder(order);
             }
         }
+
+        private void DeclineButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
+
+        private void AcceptButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }

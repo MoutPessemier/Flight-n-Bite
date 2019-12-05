@@ -121,6 +121,7 @@
     <Compile Include="Util\AvailabiltyToVisibilityConverter.cs" />
     <Compile Include="Util\BooleanToColorConvertor.cs" />
     <Compile Include="Util\BooleanToGlyphConvertor.cs" />
+    <Compile Include="Util\BooleanToVisibilityConvertor.cs" />
     <Compile Include="Util\DiscountToVisibiltyConvertor.cs" />
     <Compile Include="Util\FlightToETAConverter.cs" />
     <Compile Include="Util\IntegerToPercentageConvertor.cs" />
