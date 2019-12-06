@@ -3,7 +3,7 @@ This app is made as a school project to learn the Windows platform. The setting 
 
 ## Usage
 1. Clone repo
-2. start up API service
+2. Start up API service
 3. Run frontend
 
 ## Credentials
