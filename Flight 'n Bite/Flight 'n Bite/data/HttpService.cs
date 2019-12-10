@@ -51,15 +51,13 @@ namespace Flight__n_Bite.data
 
         public async Task<string> GetStringAsync(Uri uri)
         {
-            string json = await _httpClient.GetStringAsync(uri);
-            return json;
+            return await _httpClient.GetStringAsync(uri);
         }
 
 
         public async Task<string> GetWeatherAsync(Uri uri)
         {
-            string json = await _weatherhttpClient.GetStringAsync(uri);
-            return json;
+            return await _weatherhttpClient.GetStringAsync(uri);
         }
 
         public async Task<string> PostAsync(string uri, StringContent content)

@@ -37,9 +37,6 @@
                 <TextBlock Text="{x:Bind vm.Movie.Director}" Margin="0,0,0,10" FontSize="20" />
             </StackPanel>
         </StackPanel>
-        <!--<StackPanel x:Name="MediaPlayerContainer" Orientation="Horizontal">
-            
-        </StackPanel>-->
         <MediaPlayerElement x:Name="mediaPlayer" Margin="0,30" AreTransportControlsEnabled="True" Height="720" Width="1280" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </StackPanel>
 </Page>
