@@ -1,6 +1,9 @@
 # Flight-n-Bite
 This app is made as a school project to learn the Windows platform. The setting is about a software packet used on a plane to watch movies, listen to music, order food and much more.
+## Group
+Name: Gent_T1
 
+Members: Mout Pessemier, Jef Malfiet and Nante Vermeulen
 ## Usage
 1. Clone repo
 2. Start up API service
