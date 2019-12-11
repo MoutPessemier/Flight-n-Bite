@@ -20,7 +20,7 @@ namespace Flight__n_Bite.ViewModels
         public ObservableCollection<Order> Orders { get; set; }
         public ObservableCollection<OrderLine> NewOrderLines { get; set; }
         public Visibility NewOrderLineVisible { get; private set; }
-        private HttpService HttpService = HttpService.instance;
+        private readonly HttpService HttpService = HttpService.instance;
         public double TotalCost {
             get {
                 return _totalCost;
@@ -140,10 +140,7 @@ namespace Flight__n_Bite.ViewModels
                 }
             }
 
-            if (PropertyChanged != null)
-            {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

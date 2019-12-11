@@ -3,13 +3,8 @@ using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace Flight__n_Bite.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class FoodsDrinksPage : Page
     {
         public FoodsDrinksPage()
@@ -52,7 +47,7 @@ namespace Flight__n_Bite.Views
 
         private void AddOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            Order newOrder = new Order() { OrderLines = vm.NewOrderLines.ToList(), Passenger = Shell.Passenger, IsHandled= false };
+            Order newOrder = new Order() { OrderLines = vm.NewOrderLines.ToList(), Passenger = Shell.Passenger, IsHandled = false };
             vm.AddOrder(newOrder);
         }
     }

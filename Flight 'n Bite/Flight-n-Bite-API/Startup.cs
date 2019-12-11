@@ -54,7 +54,7 @@ namespace Flight_n_Bite_API
             app.UseMvc();
             app.UseCors("AllowAllOrigins");
 
-           dataInitializer.InitializeData().Wait();
+            dataInitializer.InitializeData().Wait();
         }
     }
 }

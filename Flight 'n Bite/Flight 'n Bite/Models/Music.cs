@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Flight__n_Bite.Models
 {
-    public class Music: INotifyPropertyChanged
+    public class Music : INotifyPropertyChanged
     {
         #region Fields
         private string _title;

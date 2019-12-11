@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Flight_n_Bite_API.Model;
-using Microsoft.AspNetCore.Http;
+﻿using Flight_n_Bite_API.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Flight_n_Bite_API.Controllers

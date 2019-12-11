@@ -4,15 +4,12 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Flight__n_Bite.ViewModels
 {
     public class InboxPageViewModel
     {
-        HttpService httpService = HttpService.instance;
+        private readonly HttpService httpService = HttpService.instance;
         public ObservableCollection<PersonnelMessage> Messages { get; set; }
 
         public InboxPageViewModel()

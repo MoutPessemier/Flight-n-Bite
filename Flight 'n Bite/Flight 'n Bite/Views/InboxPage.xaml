@@ -2,7 +2,6 @@
     x:Class="Flight__n_Bite.Views.InboxPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Flight__n_Bite.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:Flight__n_Bite.Models"
@@ -24,7 +23,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-
         <TextBlock Text="Inbox" TextAlignment="Center" FontSize="40" Grid.Column="0" Grid.Row="0" />
         <TextBlock Text="Here you find the important messages the crew has sent you. Keep an eye out for incomming messages!" Padding="16" FontSize="20" TextWrapping="WrapWholeWords" Grid.Column="0" Grid.Row="1" />
         <TextBlock Text="Messages"  FontSize="40" Grid.Column="1" Grid.Row="0" Margin="20,0,0,5" />
