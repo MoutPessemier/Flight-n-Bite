@@ -4,8 +4,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace Flight__n_Bite.ViewModels
 {
@@ -13,7 +11,8 @@ namespace Flight__n_Bite.ViewModels
     {
         public ObservableCollection<Music> MusicList { get; set; }
         public ObservableCollection<Movie> MovieList { get; set; }
-        HttpService httpService = HttpService.instance;
+
+        private readonly HttpService httpService = HttpService.instance;
 
         public ContentPageViewModel()
         {

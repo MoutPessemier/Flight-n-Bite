@@ -4,13 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.UI;
@@ -41,7 +35,7 @@ namespace Flight__n_Bite.ViewModels
         private async void LoadFlight()
         {
             HttpService httpService = HttpService.instance;
-           
+
             string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/flight"));
             Flight = JsonConvert.DeserializeObject<Flight>(json);
             LoadPOI();
@@ -76,7 +70,7 @@ namespace Flight__n_Bite.ViewModels
             positions.Add(arrivalLocation);
 
             Geopath geopath = new Geopath(positions);
-            MapPolyline path = new MapPolyline() { Visible = true, Path = geopath, StrokeColor=Color.FromArgb(255,50,75,50), StrokeThickness=3 };
+            MapPolyline path = new MapPolyline() { Visible = true, Path = geopath, StrokeColor = Color.FromArgb(255, 50, 75, 50), StrokeThickness = 3 };
             Map.MapElements.Add(path);
 
             Map.Center = departure;

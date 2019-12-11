@@ -7,16 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Flight__n_Bite.ViewModels
 {
     public class PersonnelMessagePageViewModel
     {
-        HttpService httpService = HttpService.instance;
+        private readonly HttpService httpService = HttpService.instance;
         public ObservableCollection<PersonnelMessage> Messages { get; set; }
 
         public PersonnelMessagePageViewModel()
@@ -29,7 +27,7 @@ namespace Flight__n_Bite.ViewModels
         {
             var json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/personnel/getMessages"));
             List<PersonnelMessage> list = JsonConvert.DeserializeObject<List<PersonnelMessage>>(json);
-            foreach(var m in list)
+            foreach (var m in list)
             {
                 Messages.Add(m);
             }
@@ -45,7 +43,7 @@ namespace Flight__n_Bite.ViewModels
                 var m = JsonConvert.DeserializeObject<PersonnelMessage>(json);
                 Messages.Add(m);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.Write(e.Message);
             }

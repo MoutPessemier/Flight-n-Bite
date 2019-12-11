@@ -19,7 +19,7 @@ namespace Flight__n_Bite.ViewModels
         {
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
-                // designtime
+                // designtime yeet
             }
             else
             {

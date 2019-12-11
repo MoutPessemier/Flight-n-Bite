@@ -64,8 +64,8 @@
                     </Grid.ColumnDefinitions>
                     <GridView IsItemClickEnabled="True" x:Name="gridView" ItemsSource="{x:Bind Path=vm.Products}" Grid.Row="0" Grid.Column="0">
                         <GridView.ItemContainerStyle>
-                        <Style TargetType="GridViewItem">
-                            <Setter Property="Padding" Value="5"/>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="Padding" Value="5"/>
                                 <Setter Property="Margin" Value="5"/>
                             </Style>
                         </GridView.ItemContainerStyle>
@@ -76,29 +76,29 @@
                                     <TextBlock x:Name="name" FontSize="24" Text="{Binding Name}" Margin="0,0,0,5" TextWrapping="Wrap" Width="175" Height="100"/>
                                     <TextBlock x:Name="description" FontSize="12" Text="{Binding Description}" Margin="0,0,0,5" TextWrapping="WrapWholeWords" Height="20"/>
                                     <TextBlock x:Name="price" FontFamily="24" Margin="0,0,0,5" Height="20" Text="{Binding Price, Converter={StaticResource IntegerCurrencyConverter}}"/>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Click="NewOrderLineButton_Click" Margin="0,0,100,0">
-                                        <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7BF;"/>
-                                        <Button.Flyout>
-                                            <Flyout>
-                                                <StackPanel Orientation="Vertical">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="Amount: " />
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Click="NewOrderLineButton_Click" Margin="0,0,100,0">
+                                            <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7BF;"/>
+                                            <Button.Flyout>
+                                                <Flyout>
+                                                    <StackPanel Orientation="Vertical">
                                                         <StackPanel Orientation="Horizontal">
-                                                            <Button Click="MinAmountButton_Click">
-                                                                <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE949;"/>
-                                                            </Button>
-                                                            <TextBox IsReadOnly="True" x:Name="amount" Text="{Binding Path=DataContext.NewAmount, ElementName=gridView}"/>
-                                                            <Button Click="PlusAmountButton_Click">
-                                                                <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE948;"/>
-                                                            </Button>
+                                                            <TextBlock Text="Amount: " />
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Button Click="MinAmountButton_Click">
+                                                                    <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE949;"/>
+                                                                </Button>
+                                                                <TextBox IsReadOnly="True" x:Name="amount" Text="{Binding Path=DataContext.NewAmount, ElementName=gridView}"/>
+                                                                <Button Click="PlusAmountButton_Click">
+                                                                    <FontIcon Width="20" Height="20" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE948;"/>
+                                                                </Button>
+                                                            </StackPanel>
                                                         </StackPanel>
+                                                        <Button Click="AddButtonClicked">Add</Button>
                                                     </StackPanel>
-                                                    <Button Click="AddButtonClicked">Add</Button>
-                                                </StackPanel>
-                                            </Flyout>
-                                        </Button.Flyout>
-                                    </Button>
+                                                </Flyout>
+                                            </Button.Flyout>
+                                        </Button>
                                         <Canvas>
                                             <TextBlock Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Foreground="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,-10,0,0" FontFamily="Segoe MDL2 Assets" FontSize="32">&#xE735;</TextBlock>
                                             <TextBlock Visibility="{Binding Discount, Converter={StaticResource DiscountToVisibiltyConvertor}}" Foreground="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48,30,0,0" FontFamily="Segoe MDL2 Assets" FontSize="40">

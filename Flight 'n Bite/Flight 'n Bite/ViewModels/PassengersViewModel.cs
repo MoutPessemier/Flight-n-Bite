@@ -1,19 +1,14 @@
 ﻿using Flight__n_Bite.data;
 using Flight__n_Bite.Models;
-using Flight_n_Bite_API.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Flight__n_Bite.ViewModels
 {
-    class PassengersViewModel 
+    class PassengersViewModel
     {
         public ObservableCollection<PassengerSeat> Passengers { get; set; }
 
@@ -25,11 +20,10 @@ namespace Flight__n_Bite.ViewModels
 
         private void LoadFlightAndPassengers()
         {
-            refreshSeats();
+            RefreshSeats();
         }
-        public async void refreshSeats()
+        public async void RefreshSeats()
         {
-
             HttpService httpService = HttpService.instance;
 
             string jsonflight = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/flight"));
@@ -44,12 +38,7 @@ namespace Flight__n_Bite.ViewModels
                     Passengers.Add(new PassengerSeat() { Passenger = passenger, Seat = seat });
                 else
                     Passengers.Add(new PassengerSeat() { Seat = seat });
-
-
             }
         }
-
-       
-    
     }
 }

@@ -2,7 +2,6 @@
     x:Class="Flight__n_Bite.Views.PassengersOverviewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Flight__n_Bite.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:Flight__n_Bite.ViewModels"
@@ -16,9 +15,8 @@
         <util:PassengerToSeatConverter x:Key="PassengerToSeatConverter" />
         <util:PassengerToSeatColor x:Key="PassengerToSeatColor" />
         <util:PassengerToGlyphConverter x:Key="PassengerToGlyphConverter" />
-
-
     </Page.Resources>
+
     <Page.DataContext>
         <viewmodels:PassengersViewModel x:Name="vm" />
     </Page.DataContext>
@@ -49,22 +47,17 @@
                     <Setter Property="Height" Value="150" />
                 </Style>
             </GridView.ItemContainerStyle>
-
             <GridView.ItemTemplate>
-
                 <DataTemplate x:DataType="models:PassengerSeat">
                     <StackPanel Orientation="Vertical">
                         <TextBlock x:Name="txtSeat" Text="{x:Bind Seat.Number}" Height="20" Width="30" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" />
-
                         <FontIcon  Width="48"
                                 Height="48" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph ="{x:Bind Passenger,Converter={StaticResource PassengerToGlyphConverter}}"/>
-
                         <TextBlock x:Name="txtTaken" Text="{x:Bind Passenger,Converter={StaticResource PassengerToSeatConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Foreground="{x:Bind Passenger,Converter={StaticResource PassengerToSeatColor}}" />
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
         <Button Click="Button_Click" Grid.Row="1" Grid.Column="1"  Height="32" Width="102" HorizontalAlignment="Center" >Switch Seats</Button>
-
     </Grid>
 </Page>

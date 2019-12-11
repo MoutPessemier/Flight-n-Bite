@@ -8,7 +8,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Flight__n_Bite.ViewModels
 {
@@ -42,7 +41,6 @@ namespace Flight__n_Bite.ViewModels
             string orderjson = JsonConvert.SerializeObject(order);
             await HttpService.PostAsync("http://localhost:49527/api/order/handleOrder", new StringContent(orderjson, Encoding.UTF8, "application/json"));
             Orders.FirstOrDefault(o => o.Id == order.Id).IsHandled = true;
-            // httpservice post request voor handeling order en in backend ook toevoegen aan controller en repo
         }
 
         public async void DeleteOrder(Order order)

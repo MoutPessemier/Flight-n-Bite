@@ -4,16 +4,10 @@ using Flight__n_Bite.Services.SettingsServices;
 using Windows.ApplicationModel.Activation;
 using Template10.Controls;
 using Template10.Common;
-using System;
-using System.Linq;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Controls;
 
 namespace Flight__n_Bite
 {
-    /// Documentation on APIs used in this page:
-    /// https://github.com/Windows-XAML/Template10/wiki
-
     [Bindable]
     sealed partial class App : BootStrapper
     {
@@ -46,7 +40,6 @@ namespace Flight__n_Bite
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            // TODO: add your long-running task here
             await NavigationService.NavigateAsync(typeof(Views.Login));
         }
     }
