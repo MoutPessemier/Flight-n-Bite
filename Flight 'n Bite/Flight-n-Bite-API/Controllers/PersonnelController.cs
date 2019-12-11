@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Flight_n_Bite_API.Model;
 using Flight_n_Bite_API.Model.DTO;
@@ -59,7 +58,7 @@ namespace Flight_n_Bite_API.Controllers
         {
             List<PersonnelMessage> personnelMessages = new List<PersonnelMessage>();
             var personnel = _personnelRepository.GetAllPersonnel();
-            foreach(Personnel person in personnel)
+            foreach (Personnel person in personnel)
             {
                 personnelMessages.AddRange(person.Messages);
             }
@@ -71,7 +70,7 @@ namespace Flight_n_Bite_API.Controllers
         public PersonnelMessage AddMessage(PersonnelMessageDTO message)
         {
             var personnel = _personnelRepository.GetPersonnel(message.Email);
-            if(personnel != null)
+            if (personnel != null)
             {
                 var m = new PersonnelMessage() { Body = message.Message.Body };
                 personnel.addMessage(m);
@@ -80,6 +79,6 @@ namespace Flight_n_Bite_API.Controllers
             }
             return null;
         }
-        
+
     }
 }

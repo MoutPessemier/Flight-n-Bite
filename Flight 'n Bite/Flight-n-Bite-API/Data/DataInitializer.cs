@@ -1,9 +1,6 @@
 ﻿using Flight_n_Bite_API.Model;
 using Microsoft.AspNetCore.Identity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Flight_n_Bite_API.Data
@@ -57,8 +54,8 @@ namespace Flight_n_Bite_API.Data
             _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
-                
-                var flight = new Flight() { Number = "X44795", Departure = "Zaventem", Arrival = "Madrid-Barajas Adolfo Suárez Airport",StartLatitude = 50.900999, StartLongitude= 4.4833857, EndLatitude = 40.4983322, EndLongitude= -3.5697922, DepartureTime=18.1,Duration=2.05,Delay=0 };
+
+                var flight = new Flight() { Number = "X44795", Departure = "Zaventem", Arrival = "Madrid-Barajas Adolfo Suárez Airport", StartLatitude = 50.900999, StartLongitude = 4.4833857, EndLatitude = 40.4983322, EndLongitude = -3.5697922, DepartureTime = 18.1, Duration = 2.05, Delay = 0 };
 
                 for (int i = 1; i < 30; i++)
                 {
@@ -618,7 +615,7 @@ namespace Flight_n_Bite_API.Data
 
             var personel = new Personnel { UserName = "Piloot@hotmail.com" };
             personel.addMessage(new PersonnelMessage() { Body = "Please fasten your seatbelt and follow the safety guide!" });
-            personel.addMessage(new PersonnelMessage() { Body = "All right ladies and gentleman, seatbelts can be loosend and devices can be switched on but keep those on airplaine mode!"});
+            personel.addMessage(new PersonnelMessage() { Body = "All right ladies and gentleman, seatbelts can be loosend and devices can be switched on but keep those on airplaine mode!" });
             var personel2 = new Personnel { UserName = "Stewardess@hotmail.com" };
             await CreateUser(personel.UserName, "Piloot123!");
             await CreateUser(personel2.UserName, "Stewardess123!");
@@ -630,7 +627,7 @@ namespace Flight_n_Bite_API.Data
 
 
             var fristi = new Product() { Name = "Fristi", Description = "Dat lekkere drankje, alleen voor grotere jongens", Price = 5.0, Discount = 10 };
-            var soldatenkoek = new Product() { Name = "Soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0, Discount = 0};
+            var soldatenkoek = new Product() { Name = "Soldatenkoek", Description = "Een lekkere gewone koek voor brave mannekes", Price = 2.0, Discount = 0 };
             var borrelnootjes = new Product() { Name = "Borrelnootjes", Description = "Perfect voor bij een sterke trappist", Price = 3.0, Discount = 0 };
             var trappist = new Product() { Name = "Trappist", Description = "Perfect voor bij lekker borrelnootjes", Price = 7.5, Discount = 0 };
             var chips = new Product() { Name = "Peper en Zout chips", Description = "Voel de korrels zout op je tong!", Price = 2.5, Discount = 0 };

@@ -22,7 +22,8 @@ namespace Flight_n_Bite_API.Data
         {
             return _context.Passengers.FirstOrDefault(p => p.Id == passengerId);
         }
-        public Passenger GetPassenger(string firstname,string lastname, string seatIdentifier)
+
+        public Passenger GetPassenger(string firstname, string lastname, string seatIdentifier)
         {
             return _context.Passengers.FirstOrDefault(p => p.SeatIdentifier == seatIdentifier && p.LastName == lastname && p.FirstName == firstname);
         }

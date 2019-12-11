@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Flight_n_Bite_API.Model;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Flight_n_Bite_API.Controllers
@@ -35,7 +31,7 @@ namespace Flight_n_Bite_API.Controllers
         public Message SendMessage(Message message)
         {
             Group group = _groupRepository.GetGroupByPassenger(message.Passenger.Id);
-            if(group != null)
+            if (group != null)
             {
                 group.SendMessage(message);
                 _groupRepository.SaveChanges();
