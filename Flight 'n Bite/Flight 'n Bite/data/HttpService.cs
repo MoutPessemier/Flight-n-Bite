@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using Flight__n_Bite.Models;
 using Windows.UI.Xaml;
 
 namespace Flight__n_Bite.data
@@ -26,7 +20,6 @@ namespace Flight__n_Bite.data
                 if (_instance == null)
                 {
                     _instance = new HttpService();
-
                 }
                 return _instance;
             }
@@ -34,7 +27,6 @@ namespace Flight__n_Bite.data
         private HttpService()
         {
             _httpClient = new HttpClient();
-       
 
             var username = Application.Current.Resources["WeatherAPI_username"];
             var password = Application.Current.Resources["WeatherAPI_password"];
@@ -44,7 +36,6 @@ namespace Flight__n_Bite.data
             _weatherhttpClient = new HttpClient()
             {
                 DefaultRequestHeaders = { Authorization = authValue }
-
             };
 
         }

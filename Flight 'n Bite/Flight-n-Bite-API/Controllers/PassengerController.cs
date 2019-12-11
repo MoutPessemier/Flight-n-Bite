@@ -36,7 +36,7 @@ namespace Flight_n_Bite_API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<Passenger>> LogIn(Passenger model)
         {
-            var passenger = _passengerRepository.GetPassenger(model.FirstName,model.LastName,model.SeatIdentifier);
+            var passenger = _passengerRepository.GetPassenger(model.FirstName, model.LastName, model.SeatIdentifier);
             return passenger != null ? (ActionResult<Passenger>)passenger : (ActionResult<Passenger>)BadRequest();
         }
 
@@ -44,8 +44,8 @@ namespace Flight_n_Bite_API.Controllers
         [HttpPost("switchSeats")]
         public Boolean SwitchSeats(SwitchsSeatsDTO model)
         {
-           
-            if(model.Passenger1 == null && model.Passenger2 == null)
+
+            if (model.Passenger1 == null && model.Passenger2 == null)
             {
                 return false;
             }
@@ -60,7 +60,7 @@ namespace Flight_n_Bite_API.Controllers
                 _passengerRepository.SaveChanges();
             }
             return true;
-           
+
         }
     }
 }

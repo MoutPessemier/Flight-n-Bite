@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Flight__n_Bite.Models
 {
@@ -32,13 +27,14 @@ namespace Flight__n_Bite.Models
             }
         }
         private string _description { get; set; }
-        public string Description { get {
+        public string Description {
+            get {
                 return _description;
-            } 
+            }
             set {
                 _description = value;
                 OnPropertyChanged("Description");
-                }
+            }
         }
         private int _discount { get; set; }
         public int Discount {

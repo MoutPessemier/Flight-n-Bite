@@ -18,8 +18,9 @@ namespace Flight_n_Bite_API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Music> GetSongs() {
-           return _musicRepository.GetSongs();
+        public IEnumerable<Music> GetSongs()
+        {
+            return _musicRepository.GetSongs();
         }
 
         [HttpGet("{id}")]

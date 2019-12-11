@@ -1,10 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Flight__n_Bite.Models
 {
@@ -30,7 +25,4 @@ namespace Flight__n_Bite.Models
         [JsonProperty("value")]
         public double Value { get; set; }
     }
-
-
-
-    }
+}

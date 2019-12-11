@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Flight__n_Bite.Models
 {
-    public class Artist: INotifyPropertyChanged
+    public class Artist : INotifyPropertyChanged
     {
         #region Fields
         private string _name;

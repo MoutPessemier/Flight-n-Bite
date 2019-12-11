@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
 namespace Flight_n_Bite_API.Model
 {
@@ -30,5 +26,4 @@ namespace Flight_n_Bite_API.Model
             }
         }
     }
-
 }

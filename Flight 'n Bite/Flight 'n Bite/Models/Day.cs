@@ -1,14 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Flight__n_Bite.Models
 {
-    public class Day: INotifyPropertyChanged
+    public class Day : INotifyPropertyChanged
     {
         #region Properties
         private string _date;
@@ -59,7 +54,7 @@ namespace Flight__n_Bite.Models
         {
 
         }
-        public string CurrentWeather{
+        public string CurrentWeather {
             get {
                 if (RainWater > 50)
                     return "Rainy";

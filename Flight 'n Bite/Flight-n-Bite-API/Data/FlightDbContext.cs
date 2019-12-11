@@ -20,7 +20,7 @@ namespace Flight_n_Bite_API.Data
         public DbSet<Passenger> Passengers { get; set; }
         public DbSet<Group> Groups { get; set; }
 
-        public FlightDbContext(DbContextOptions<FlightDbContext> options) : base(options){}
+        public FlightDbContext(DbContextOptions<FlightDbContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
