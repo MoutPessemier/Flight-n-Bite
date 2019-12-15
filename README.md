@@ -59,7 +59,7 @@ If weather api is not expired:
 
 ## Links:
 
-### Mout Pessmier
+### Mout Pessemier
  - [Twitter](https://twitter.com/MoutPessemier)
  - [LinkedIn](https://www.linkedin.com/in/moutpessemier/)
  
