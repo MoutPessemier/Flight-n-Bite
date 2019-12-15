@@ -11,12 +11,10 @@ using System.Text;
 
 namespace Flight__n_Bite.ViewModels
 {
-    class OrderOverviewViewModel : INotifyPropertyChanged
+    class OrderOverviewViewModel
     {
         public ObservableCollection<Order> Orders { get; set; }
         private readonly HttpService HttpService = HttpService.instance;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public OrderOverviewViewModel()
         {

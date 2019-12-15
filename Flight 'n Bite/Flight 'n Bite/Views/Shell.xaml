@@ -137,22 +137,6 @@
                                Text="User profile" />
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
-            <!--  settingspage button  -->
-            <Controls:HamburgerButtonInfo x:Name="SettingsButton"
-                                          PageParameter="0"
-                                          PageType="views:SettingsPage">
-                <Controls:HamburgerButtonInfo.NavigationTransitionInfo>
-                    <SuppressNavigationTransitionInfo />
-                </Controls:HamburgerButtonInfo.NavigationTransitionInfo>
-                <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Width="48"
-                                Height="48"
-                                Symbol="Setting" />
-                    <TextBlock Margin="12,0,0,0"
-                               VerticalAlignment="Center"
-                               Text="Settings" />
-                </StackPanel>
-            </Controls:HamburgerButtonInfo>
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:Login">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon  Width="48"
