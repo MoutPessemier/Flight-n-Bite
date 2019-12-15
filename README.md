@@ -64,7 +64,9 @@ Switch over to a personnel account and log in with:
    - Password: Piloot123!
    
 ## Weather not available?
-If the weather API credentialsare expired:
+The Weather API has an limit of 100 request per day
+
+If the weather API credentials are expired:
 1. Visit: https://www.meteomatics.com/en/eshop/
 2. Make a new account
 3. Change the variables in App.xaml to your new credentials
@@ -74,6 +76,7 @@ If weather api credentails are not expired but it still doesn't work:
 - It's possible that an antivirus pops up a Firewall Alert that says: Flight__n_Bite does not have a valid digital signature.
    - You can ignore this or click 'ok', DO NOT CHANGE SOMETHING IN THIS POP-UP WINDOW.
 - The weather api won't work if it's not allowed by your firewall.
+
 
 ## Links
 
