@@ -1,5 +1,5 @@
 # Flight-n-Bite
-This app is made as a school project to learn the Windows platform. The task was to create an application that is used on a plane.
+This app is made as a school project to learn the Windows platform. The task was to create an application that can be used on a plane flight.
 
 As a passenger, you can watch movies, listen to music, order food, look up the weather of your destination and chat with your travel companions.
 
@@ -8,7 +8,8 @@ As a personnel member, you can message the passengers, handle their orders, chan
 ## Group
 Name: Gent_T1
 
-Members: Mout Pessemier, Jef Malfiet and Nante Vermeulen
+Members: Mout Pessemier, Jef Malfliet and Nante Vermeulen
+
 ## Usage
 1. Clone repo
 2. Start up API service
@@ -26,38 +27,39 @@ Log in with:
  
 #### Real passenger (with group access)
 Log in with:
-   - Firstname: Mout
-   - Lastname: Pessemier
+   - Firstname:  Mout
+   - Lastname:   Pessemier
    - Seatnumber: x4
    
 #### Real passenger (same group as Mout)
 Log in with:
-   - Firstname: Nante
-   - Lastname: Vermeulen
+   - Firstname:  Nante
+   - Lastname:   Vermeulen
    - Seatnumber: x3
    
 or log in with:
-   - Firstname: Jef
-   - Lastname: Malfliet
+   - Firstname:  Jef
+   - Lastname:   Malfliet
    - Seatnumber: x2
    
 ### Personnel
 Switch over to a personnel account and log in with:
-   - Email: piloot@hotmail.com
+   - Email:    piloot@hotmail.com
    - Password: Piloot123!
    
 ## Weather not available?
-If the weather API account is expired:
+If the weather API credentialsare expired:
 1. Visit: https://www.meteomatics.com/en/eshop/
 2. Make a new account
-3. Change the variables in App.xaml
+3. Change the variables in App.xaml to your new credentials
 
-If weather api is not expired:
+If weather api credentails are not expired but it still doesn't work:
 
-- It's possible that an antivirus pops up a Firewall Alert which says: Flight__n_Bite does not have a valid digital signature.
+- It's possible that an antivirus pops up a Firewall Alert that says: Flight__n_Bite does not have a valid digital signature.
+   - You can ignore this or click 'ok', DO NOT CHANGE SOMETHING IN THIS POP-UP WINDOW.
 - The weather api won't work if it's not allowed by your firewall.
 
-## Links:
+## Links
 
 ### Mout Pessemier
  - [Twitter](https://twitter.com/MoutPessemier)
@@ -71,4 +73,4 @@ If weather api is not expired:
  - [Twitter](https://twitter.com/Tjaaaaaf)
  - [LinkedIn](https://www.linkedin.com/in/jefmalfliet/)
 
-Copyright 2019 © by Mout Pessemier, Jef Malfiet and Nante Vermeulen
+Copyright 2019 © by Mout Pessemier, Jef Malfliet and Nante Vermeulen
