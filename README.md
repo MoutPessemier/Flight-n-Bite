@@ -30,12 +30,16 @@ Switch over to personnel and log in with:
    - Email: piloot@hotmail.com
    - Password: Piloot123!
    
-## Weather 
+## Weather not available?
 If weather API is expired
 1. Visit: https://www.meteomatics.com/en/eshop/
 2. Make a new account
 3. Change the variables in App.xaml
 
+If weather api is not expired
+
+- It's possible that an antivirus pops up an Firewall Alert which says : Flight__n_Bite does not have a valid digital signature.
+- The weather api won't work if it's not allowed
 ## Links:
 
 ### Mout Pessmier
