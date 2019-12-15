@@ -42,6 +42,20 @@ or log in with:
    - Lastname:   Malfliet
    - Seatnumber: x2
    
+#### Real passenger (other group then Mout)
+Log in with:
+   - Firstname:  Indy
+   - Lastname:   Van Canegem
+   - Seatnumber: x5
+   
+#### Real passenger (same group as Indy)
+   - Firstname:  Bram
+   - Lastname:   Van Overbeke
+   - Seatnumber: x6
+   or log in with:
+   - Firstname:  Robbe
+   - Lastname:   Van De Vyver
+   - Seatnumber: x7
 ### Personnel
 Switch over to a personnel account and log in with:
    - Email:    piloot@hotmail.com
