@@ -34,10 +34,10 @@ namespace Flight_n_Bite_API.Controllers
         }
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<ActionResult<Passenger>> LogIn(Passenger model)
+        public ActionResult<Passenger> LogIn(Passenger model)
         {
             var passenger = _passengerRepository.GetPassenger(model.FirstName, model.LastName, model.SeatIdentifier);
-            return passenger != null ? (ActionResult<Passenger>)passenger : (ActionResult<Passenger>)BadRequest();
+            return passenger == null ? (ActionResult<Passenger>)BadRequest() : (ActionResult<Passenger>)passenger;
         }
 
         [AllowAnonymous]
