@@ -49,11 +49,12 @@ Log in with:
    - Seatnumber: x5
    
 #### Real passenger (same group as Indy)
+Log in with:
    - Firstname:  Bram
    - Lastname:   Van Overbeke
    - Seatnumber: x6
    
-   or log in with:
+or log in with:
    - Firstname:  Robbe
    - Lastname:   Van De Vyver
    - Seatnumber: x7
