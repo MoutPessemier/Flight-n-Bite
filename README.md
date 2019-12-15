@@ -64,7 +64,7 @@ Switch over to a personnel account and log in with:
    - Password: Piloot123!
    
 ## Weather not available?
-The Weather API has an limit of 100 request per day
+The Weather API has a limit of 100 request per day
 
 If the weather API credentials are expired:
 1. Visit: https://www.meteomatics.com/en/eshop/
