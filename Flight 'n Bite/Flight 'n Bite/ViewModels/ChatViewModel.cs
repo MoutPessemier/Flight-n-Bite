@@ -5,22 +5,36 @@ using Flight__n_Bite.Views;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Windows.UI.Xaml;
 
 namespace Flight__n_Bite.ViewModels
 {
-    public class ChatViewModel
+    public class ChatViewModel : INotifyPropertyChanged
     {
         HttpService httpService = HttpService.instance;
         public ObservableCollection<Passenger> Companions { get; set; }
         public ObservableCollection<Message> Chat { get; set; }
         public Group Group { get; set; }
 
+        private bool _groupAvailable;
+        public bool GroupAvailable {
+            get {
+                return _groupAvailable;
+            }
+            set {
+                _groupAvailable = value;
+                OnPropertyChanged("GroupAvailable");
+            }
+        }
+
         public ChatViewModel()
         {
+            GroupAvailable = false;
             Companions = new ObservableCollection<Passenger>();
             Chat = new ObservableCollection<Message>();
             LoadCompanions();
@@ -33,6 +47,8 @@ namespace Flight__n_Bite.ViewModels
             Group group = JsonConvert.DeserializeObject<Group>(json);
             if (group != null)
             {
+                Group = group;
+                GroupAvailable = true;
                 foreach (var c in group.Companions)
                 {
                     Companions.Add(c);
@@ -75,6 +91,12 @@ namespace Flight__n_Bite.ViewModels
             {
                 Debug.Write(e.Message);
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
