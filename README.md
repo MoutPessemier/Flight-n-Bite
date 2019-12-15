@@ -42,7 +42,7 @@ or log in with:
    - Lastname:   Malfliet
    - Seatnumber: x2
    
-#### Real passenger (other group then Mout)
+#### Real passenger (other group than Mouts group)
 Log in with:
    - Firstname:  Indy
    - Lastname:   Van Canegem
