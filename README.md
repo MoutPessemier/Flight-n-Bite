@@ -25,6 +25,12 @@ Log in with:
    - Lastname: Pessemier
    - Seatnumber: x4
    
+#### Real passenger (same group as Mout)
+Log in with:
+   - Firstname: Nante
+   - Lastname: Vermeulen
+   - Seatnumber: x3
+   
 ### Personnel
 Switch over to personnel and log in with:
    - Email: piloot@hotmail.com
