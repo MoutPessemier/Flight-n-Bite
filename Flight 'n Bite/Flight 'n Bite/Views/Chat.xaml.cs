@@ -9,12 +9,6 @@ namespace Flight__n_Bite.Views
         public Chat()
         {
             InitializeComponent();
-            if(vm.Group == null)
-            {
-                sendBtn.IsEnabled = false;
-                messageBody.IsEnabled = false;
-                messageBody.Text = "You don't have a group to chat with.";
-            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

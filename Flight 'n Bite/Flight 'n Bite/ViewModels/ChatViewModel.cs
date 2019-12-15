@@ -14,7 +14,7 @@ using Windows.UI.Xaml;
 
 namespace Flight__n_Bite.ViewModels
 {
-    public class ChatViewModel
+    public class ChatViewModel : INotifyPropertyChanged
     {
         HttpService httpService = HttpService.instance;
         public ObservableCollection<Passenger> Companions { get; set; }
@@ -34,7 +34,7 @@ namespace Flight__n_Bite.ViewModels
 
         public ChatViewModel()
         {
-            _groupAvailable = false;
+            GroupAvailable = false;
             Companions = new ObservableCollection<Passenger>();
             Chat = new ObservableCollection<Message>();
             LoadCompanions();
@@ -48,7 +48,7 @@ namespace Flight__n_Bite.ViewModels
             if (group != null)
             {
                 Group = group;
-                _groupAvailable = true;
+                GroupAvailable = true;
                 foreach (var c in group.Companions)
                 {
                     Companions.Add(c);

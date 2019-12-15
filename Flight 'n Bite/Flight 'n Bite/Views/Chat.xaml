@@ -16,7 +16,7 @@
 
     <Page.Resources>
         <util:AvailabiltyToVisibilityConverter x:Key="AvailabiltyToVisibilityConverter" />
-        <util:AvailabilityToCollapseConverter x:Key="AvailabilityToCollapseConverter" />
+        <util:BooleanToVisibilityConvertor x:Key="BooleanToVisibilityConvertor" />
     </Page.Resources>
 
     <Grid>
@@ -81,7 +81,7 @@
             <TextBox x:Name="messageBody" Width="1150" Height="35" Margin="15,0,15,0"/>
             <Button x:Name="sendBtn" Content="Send" Click="Button_Click" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Visibility="{x:Bind vm.GroupAvailable, Converter={StaticResource AvailabilityToCollapseConverter},Mode=OneWay}">
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Visibility="{x:Bind vm.GroupAvailable, Converter={StaticResource BooleanToVisibilityConvertor},Mode=OneWay}">
             <TextBox Text="You don't have a group to chat with" IsEnabled="False" Width="1150" Height="35" Margin="15,0,15,0"/>
             <Button Content="Send" IsEnabled="False" />
         </StackPanel>
