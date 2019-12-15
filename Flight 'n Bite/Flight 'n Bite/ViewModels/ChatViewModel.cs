@@ -29,7 +29,6 @@ namespace Flight__n_Bite.ViewModels
 
         private async void LoadCompanions()
         {
-            Debug.Write(Shell.Passenger);
             string json = await httpService.GetStringAsync(new Uri("http://localhost:49527/api/group/" + Shell.Passenger.Id));
             Group group = JsonConvert.DeserializeObject<Group>(json);
             if (group != null)
