@@ -583,7 +583,7 @@ namespace Flight_n_Bite_API.Data
             coolios.JoinGroup(nante);
             coolios.JoinGroup(mout);
 
-            var indy = new Passenger() { FirstName = "Indy", LastName = "Van Cangem", SeatIdentifier = "X5" };
+            var indy = new Passenger() { FirstName = "Indy", LastName = "Van Canegem", SeatIdentifier = "X5" };
             var bram = new Passenger() { FirstName = "Bram", LastName = "Van Overbeke", SeatIdentifier = "X6" };
             var robbe = new Passenger() { FirstName = "Robbe", LastName = "Van De Vyver", SeatIdentifier = "X7" };
             Group stinkios = new Group();
