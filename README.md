@@ -52,7 +52,7 @@ If the weather API account is expired:
 2. Make a new account
 3. Change the variables in App.xaml
 
-If weather api is not expired
+If weather api is not expired:
 
 - It's possible that an antivirus pops up a Firewall Alert which says: Flight__n_Bite does not have a valid digital signature.
 - The weather api won't work if it's not allowed by your firewall.
