@@ -348,10 +348,10 @@ namespace Flight_n_Bite_API.Data
                     Rating = 8.5,
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"
                 };
-                endgame.AddActor(rdj);
-                endgame.AddActor(ch);
-                endgame.AddActor(che);
-                endgame.AddActor(mr);
+                infinityWar.AddActor(rdj);
+                infinityWar.AddActor(ch);
+                infinityWar.AddActor(che);
+                infinityWar.AddActor(mr);
                 _movieRepository.Add(infinityWar);
 
                 var exMachina = new Movie()
@@ -419,7 +419,7 @@ namespace Flight_n_Bite_API.Data
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg"
                 };
                 ironMan.AddActor(rdj);
-                ironMan.AddActor(th);
+                ironMan.AddActor(teh);
                 ironMan.AddActor(jeb);
                 ironMan.AddActor(gp);
                 _movieRepository.Add(ironMan);
@@ -446,10 +446,10 @@ namespace Flight_n_Bite_API.Data
                     Rating = 7.2,
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BMjE5MzcyNjk1M15BMl5BanBnXkFtZTcwMjQ4MjcxOQ@@._V1_SX300.jpg"
                 };
-                ironMan2.AddActor(rdj);
-                ironMan2.AddActor(gp);
-                ironMan2.AddActor(sj);
-                ironMan2.AddActor(gup);
+                ironMan3.AddActor(rdj);
+                ironMan3.AddActor(gp);
+                ironMan3.AddActor(sj);
+                ironMan3.AddActor(gup);
                 _movieRepository.Add(ironMan3);
 
                 var logan = new Movie()
@@ -544,7 +544,7 @@ namespace Flight_n_Bite_API.Data
                 _musicRepository.Add(heartless);
                 var iFeelEmpty = new Music() { Title = "i feel empty", Artist = kina, Album = "roses", CoverUri = "https://i1.sndcdn.com/avatars-000567588429-psv9vi-t500x500.jpg" };
                 _musicRepository.Add(iFeelEmpty);
-                var phoenix = new Music() { Title = "Phoenix", Artist = lol, Album = "Worlds 2019", CoverUri = "https://i1.sndcdn.com/avatars-000703750309-ghcj1l-t500x500.jpg" };
+                var phoenix = new Music() { Title = "Phoenix", Artist = lol, Album = "Worlds 2019", CoverUri = "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/c9/8f/19/c98f1936-4006-34fb-e761-ec642fa27d62/source/1200x1200bb.jpg" };
                 phoenix.AddArtist(cr);
                 phoenix.AddArtist(chc);
                 _musicRepository.Add(phoenix);

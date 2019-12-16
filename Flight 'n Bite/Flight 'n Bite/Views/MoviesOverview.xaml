@@ -31,7 +31,7 @@
                 <TextBlock Text="Cast" FontSize="20" />
                 <TextBlock Text="{x:Bind vm.Movie.Cast, Converter={StaticResource listConverter}}" FontSize="20" />
             </StackPanel>
-            <StackPanel Orientation="Vertical" Width="200">
+            <StackPanel Orientation="Vertical" Width="600" Margin="50,0,0,0">
                 <TextBlock Text="Director" FontSize="20" />
                 <TextBlock Text="{x:Bind vm.Movie.Director}" Margin="0,0,0,10" FontSize="20" />
             </StackPanel>
