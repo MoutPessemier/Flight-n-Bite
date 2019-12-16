@@ -27,11 +27,11 @@
                 <TextBlock Text="Rating" FontSize="20" />
                 <TextBlock Text="{x:Bind vm.Movie.Rating, Converter={StaticResource ratingConverter}}" FontSize="20" />
             </StackPanel>
-            <StackPanel Orientation="Vertical" Width="600">
+            <StackPanel Orientation="Vertical" Width="800">
                 <TextBlock Text="Cast" FontSize="20" />
                 <TextBlock Text="{x:Bind vm.Movie.Cast, Converter={StaticResource listConverter}}" FontSize="20" />
             </StackPanel>
-            <StackPanel Orientation="Vertical" Width="600" Margin="50,0,0,0">
+            <StackPanel Orientation="Vertical" Width="530" Margin="50,0,0,0">
                 <TextBlock Text="Director" FontSize="20" />
                 <TextBlock Text="{x:Bind vm.Movie.Director}" Margin="0,0,0,10" FontSize="20" />
             </StackPanel>

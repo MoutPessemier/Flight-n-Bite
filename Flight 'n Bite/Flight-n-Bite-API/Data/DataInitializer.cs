@@ -69,6 +69,8 @@ namespace Flight_n_Bite_API.Data
                 _artistRepository.Add(ak);
                 var banners = new Artist() { Name = "BANNERS" };
                 _artistRepository.Add(banners);
+                var banners2 = new Artist() { Name = "BANNERS" };
+                _artistRepository.Add(banners2);
                 var bi = new Artist() { Name = "Bon Iver" };
                 _artistRepository.Add(bi);
                 var cc = new Artist() { Name = "Cautious Clay" };
@@ -91,6 +93,10 @@ namespace Flight_n_Bite_API.Data
                 _artistRepository.Add(modl);
                 var nf = new Artist() { Name = "NF" };
                 _artistRepository.Add(nf);
+                var nf2 = new Artist() { Name = "NF" };
+                _artistRepository.Add(nf2);
+                var nf3 = new Artist() { Name = "NF" };
+                _artistRepository.Add(nf3);
                 var orbicus = new Artist() { Name = "Orbicus" };
                 _artistRepository.Add(orbicus);
                 var pdp = new Artist() { Name = "PewDiePie" };
@@ -127,6 +133,8 @@ namespace Flight_n_Bite_API.Data
                 _artistRepository.Add(bw);
                 var slj = new Artist() { Name = "Samuel L. Jackson" };
                 _artistRepository.Add(slj);
+                var slj2 = new Artist() { Name = "Samuel L. Jackson" };
+                _artistRepository.Add(slj2);
                 var atj = new Artist() { Name = "Anya Taylor-Joy" };
                 _artistRepository.Add(atj);
                 var lmd = new Artist() { Name = "Lewis MacDougall" };
@@ -146,7 +154,8 @@ namespace Flight_n_Bite_API.Data
                 var ylv = new Artist() { Name = "Yo-Mandi Visser" };
                 _artistRepository.Add(ylv);
                 var bc = new Artist() { Name = "Benedict Cumberbatch" };
-                _artistRepository.Add(bc);
+                var bc2 = new Artist() { Name = "Benedict Cumberbatch" };
+                _artistRepository.Add(bc2);
                 var ce = new Artist() { Name = "Chiwetel Ejiofor" };
                 _artistRepository.Add(ce);
                 var rca = new Artist() { Name = "Rachel McAdams" };
@@ -155,6 +164,8 @@ namespace Flight_n_Bite_API.Data
                 _artistRepository.Add(bew);
                 var tc = new Artist() { Name = "Tom Cruise" };
                 _artistRepository.Add(tc);
+                var tc2 = new Artist() { Name = "Tom Cruise" };
+                _artistRepository.Add(tc2);
                 var eb = new Artist() { Name = "Emily Blunt" };
                 _artistRepository.Add(eb);
                 var bg = new Artist() { Name = "Brendan Gleeson" };
@@ -163,12 +174,28 @@ namespace Flight_n_Bite_API.Data
                 _artistRepository.Add(bp);
                 var rdj = new Artist() { Name = "Robert Downey Jr." };
                 _artistRepository.Add(rdj);
+                var rdj2 = new Artist() { Name = "Robert Downey Jr." };
+                _artistRepository.Add(rdj2);
+                var rdj3 = new Artist() { Name = "Robert Downey Jr." };
+                _artistRepository.Add(rdj3);
+                var rdj4 = new Artist() { Name = "Robert Downey Jr." };
+                _artistRepository.Add(rdj4);
+                var rdj5 = new Artist() { Name = "Robert Downey Jr." };
+                _artistRepository.Add(rdj5);
+                var rdj6 = new Artist() { Name = "Robert Downey Jr." };
+                _artistRepository.Add(rdj6);
                 var ch = new Artist() { Name = "Chris Hemsworth" };
                 _artistRepository.Add(ch);
+                var ch2 = new Artist() { Name = "Chris Hemsworth" };
+                _artistRepository.Add(ch2);
                 var che = new Artist() { Name = "Chris Evans" };
                 _artistRepository.Add(che);
+                var che2 = new Artist() { Name = "Chris Evans" };
+                _artistRepository.Add(che2);
                 var mr = new Artist() { Name = "Mark Ruffalo" };
                 _artistRepository.Add(mr);
+                var mr2 = new Artist() { Name = "Mark Ruffalo" };
+                _artistRepository.Add(mr2);
                 var dg = new Artist() { Name = "Domhnall Gleeson" };
                 _artistRepository.Add(dg);
                 var av = new Artist() { Name = "Alicia Vikander" };
@@ -179,12 +206,20 @@ namespace Flight_n_Bite_API.Data
                 _artistRepository.Add(sm);
                 var th = new Artist() { Name = "Tom Holland" };
                 _artistRepository.Add(th);
+                var th2 = new Artist() { Name = "Tom Holland" };
+                _artistRepository.Add(th2);
                 var jg = new Artist() { Name = "Jake Gyllenhaal" };
                 _artistRepository.Add(jg);
                 var mt = new Artist() { Name = "Marisa Tomei" };
                 _artistRepository.Add(mt);
+                var mt2 = new Artist() { Name = "Marisa Tomei" };
+                _artistRepository.Add(mt2);
                 var sj = new Artist() { Name = "Scarlet Johansson" };
                 _artistRepository.Add(sj);
+                var sj2 = new Artist() { Name = "Scarlet Johansson" };
+                _artistRepository.Add(sj2);
+                var sj3 = new Artist() { Name = "Scarlet Johansson" };
+                _artistRepository.Add(sj3);
                 var pa = new Artist() { Name = "Pilou Asbæk" };
                 _artistRepository.Add(pa);
                 var tak = new Artist() { Name = "Takeshi Kitano" };
@@ -199,6 +234,10 @@ namespace Flight_n_Bite_API.Data
                 _artistRepository.Add(jeb);
                 var gp = new Artist() { Name = "Gwyneth Paltrow" };
                 _artistRepository.Add(gp);
+                var gp2 = new Artist() { Name = "Gwyneth Paltrow" };
+                _artistRepository.Add(gp2);
+                var gp3 = new Artist() { Name = "Gwyneth Paltrow" };
+                _artistRepository.Add(gp3);
                 var dc = new Artist() { Name = "Don Cheadle" };
                 _artistRepository.Add(dc);
                 var gup = new Artist() { Name = "Guy Pearce" };
@@ -224,13 +263,13 @@ namespace Flight_n_Bite_API.Data
                 var sr = new Artist() { Name = "Storm Reid" };
                 _artistRepository.Add(sr);
                 var da = new Artist() { Name = "Donzaleigh Abernathy" };
-                _artistRepository.Add(ar);
+                _artistRepository.Add(da);
                 var kk = new Artist() { Name = "Keira Knightley" };
                 _artistRepository.Add(kk);
                 var mg = new Artist() { Name = "Matthew Goode" };
-                _artistRepository.Add(ar);
+                _artistRepository.Add(mg);
                 var rk = new Artist() { Name = "Rory Kinnear" };
-                _artistRepository.Add(ar);
+                _artistRepository.Add(rk);
                 var brp = new Artist() { Name = "Brad Pitt" };
                 _artistRepository.Add(brp);
                 var me = new Artist() { Name = "Mireille Enos" };
@@ -348,10 +387,10 @@ namespace Flight_n_Bite_API.Data
                     Rating = 8.5,
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"
                 };
-                infinityWar.AddActor(rdj);
-                infinityWar.AddActor(ch);
-                infinityWar.AddActor(che);
-                infinityWar.AddActor(mr);
+                infinityWar.AddActor(rdj2);
+                infinityWar.AddActor(ch2);
+                infinityWar.AddActor(che2);
+                infinityWar.AddActor(mr2);
                 _movieRepository.Add(infinityWar);
 
                 var exMachina = new Movie()
@@ -376,7 +415,7 @@ namespace Flight_n_Bite_API.Data
                     Rating = 7.6,
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BMGZlNTY1ZWUtYTMzNC00ZjUyLWE0MjQtMTMxN2E3ODYxMWVmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg"
                 };
-                farFromHome.AddActor(slj);
+                farFromHome.AddActor(slj2);
                 farFromHome.AddActor(th);
                 farFromHome.AddActor(jg);
                 farFromHome.AddActor(mt);
@@ -404,9 +443,9 @@ namespace Flight_n_Bite_API.Data
                     Rating = 7.4,
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BNTk4ODQ1MzgzNl5BMl5BanBnXkFtZTgwMTMyMzM4MTI@._V1_SX300.jpg"
                 };
-                homecoming.AddActor(rdj);
-                homecoming.AddActor(th);
-                homecoming.AddActor(mt);
+                homecoming.AddActor(rdj3);
+                homecoming.AddActor(th2);
+                homecoming.AddActor(mt2);
                 homecoming.AddActor(mk);
                 _movieRepository.Add(homecoming);
 
@@ -418,7 +457,7 @@ namespace Flight_n_Bite_API.Data
                     Rating = 7.9,
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg"
                 };
-                ironMan.AddActor(rdj);
+                ironMan.AddActor(rdj4);
                 ironMan.AddActor(teh);
                 ironMan.AddActor(jeb);
                 ironMan.AddActor(gp);
@@ -432,9 +471,9 @@ namespace Flight_n_Bite_API.Data
                     Rating = 7.0,
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_SX300.jpg"
                 };
-                ironMan2.AddActor(rdj);
-                ironMan2.AddActor(gp);
-                ironMan2.AddActor(sj);
+                ironMan2.AddActor(rdj5);
+                ironMan2.AddActor(gp2);
+                ironMan2.AddActor(sj2);
                 ironMan2.AddActor(dc);
                 _movieRepository.Add(ironMan2);
 
@@ -446,9 +485,9 @@ namespace Flight_n_Bite_API.Data
                     Rating = 7.2,
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BMjE5MzcyNjk1M15BMl5BanBnXkFtZTcwMjQ4MjcxOQ@@._V1_SX300.jpg"
                 };
-                ironMan3.AddActor(rdj);
-                ironMan3.AddActor(gp);
-                ironMan3.AddActor(sj);
+                ironMan3.AddActor(rdj6);
+                ironMan3.AddActor(gp3);
+                ironMan3.AddActor(sj3);
                 ironMan3.AddActor(gup);
                 _movieRepository.Add(ironMan3);
 
@@ -474,7 +513,7 @@ namespace Flight_n_Bite_API.Data
                     Rating = 7.0,
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BMTQwMDY0MTA4MF5BMl5BanBnXkFtZTcwNzI3MDgxOQ@@._V1_SX300.jpg"
                 };
-                oblivion.AddActor(tc);
+                oblivion.AddActor(tc2);
                 oblivion.AddActor(mf);
                 oblivion.AddActor(ok);
                 oblivion.AddActor(ar);
@@ -502,7 +541,7 @@ namespace Flight_n_Bite_API.Data
                     Rating = 8.0,
                     PosterUri = "https://m.media-amazon.com/images/M/MV5BOTgwMzFiMWYtZDhlNS00ODNkLWJiODAtZDVhNzgyNzJhYjQ4L2ltYWdlXkEyXkFqcGdeQXVyNzEzOTYxNTQ@._V1_SX300.jpg"
                 };
-                theImmitationGame.AddActor(bc);
+                theImmitationGame.AddActor(bc2);
                 theImmitationGame.AddActor(kk);
                 theImmitationGame.AddActor(mg);
                 theImmitationGame.AddActor(rk);
@@ -528,7 +567,7 @@ namespace Flight_n_Bite_API.Data
                 _musicRepository.Add(broken);
                 var halfLight = new Music() { Title = "Half Light", Artist = banners, Album = "The Royals SoundTrack", CoverUri = "https://c.saavncdn.com/994/Half-Light-English-2016-500x500.jpg" };
                 _musicRepository.Add(halfLight);
-                var startARiot = new Music() { Title = "Start A Riot", Artist = banners, Album = "Banners", CoverUri = "https://is2-ssl.mzstatic.com/image/thumb/Music118/v4/1d/64/d3/1d64d37d-5c3c-8d63-50c6-8a0b75b0d5fc/source/1200x1200bb.jpg" };
+                var startARiot = new Music() { Title = "Start A Riot", Artist = banners2, Album = "Banners", CoverUri = "https://is2-ssl.mzstatic.com/image/thumb/Music118/v4/1d/64/d3/1d64d37d-5c3c-8d63-50c6-8a0b75b0d5fc/source/1200x1200bb.jpg" };
                 _musicRepository.Add(startARiot);
                 var holocene = new Music() { Title = "Holocene", Artist = bi, Album = "Bon Iver", CoverUri = "https://upload.wikimedia.org/wikipedia/en/5/5f/Bon_iver.jpg" };
                 _musicRepository.Add(holocene);
@@ -555,10 +594,10 @@ namespace Flight_n_Bite_API.Data
                 var tenFeetDown = new Music() { Title = "10 Feet Down", Artist = nf, Album = "Perception", CoverUri = "https://images.genius.com/02543f01dfa688d0e7de36632a1cd58b.1000x1000x1.jpg" };
                 tenFeetDown.AddArtist(ruelle);
                 _musicRepository.Add(tenFeetDown);
-                var mansion = new Music() { Title = "Mansion", Artist = nf, Album = "Mansion", CoverUri = "https://upload.wikimedia.org/wikipedia/en/4/42/Mansion_by_NF.png" };
+                var mansion = new Music() { Title = "Mansion", Artist = nf2, Album = "Mansion", CoverUri = "https://upload.wikimedia.org/wikipedia/en/4/42/Mansion_by_NF.png" };
                 mansion.AddArtist(fleurie);
                 _musicRepository.Add(mansion);
-                var only = new Music() { Title = "Only", Artist = nf, Album = "The Search", CoverUri = "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/b0/f6/b4/b0f6b4d2-82ba-7da1-5ace-6e20ab825427/source/1200x1200bb.jpg" };
+                var only = new Music() { Title = "Only", Artist = nf3, Album = "The Search", CoverUri = "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/b0/f6/b4/b0f6b4d2-82ba-7da1-5ace-6e20ab825427/source/1200x1200bb.jpg" };
                 only.AddArtist(ss);
                 _musicRepository.Add(only);
                 var radioDream = new Music() { Title = "Radio Dreams", Artist = orbicus, Album = "Radio Dreams", CoverUri = "https://m.media-amazon.com/images/I/41wsK17Ex+L._AA256_.jpg" };
