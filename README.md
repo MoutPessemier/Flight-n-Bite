@@ -92,4 +92,4 @@ If weather api credentails are not expired but it still doesn't work:
  - [Twitter](https://twitter.com/Tjaaaaaf)
  - [LinkedIn](https://www.linkedin.com/in/jefmalfliet/)
 
-Copyright 2019 © by Mout Pessemier, Jef Malfliet and Nante Vermeulen
+Made by Mout Pessemier, Jef Malfliet and Nante Vermeulen
